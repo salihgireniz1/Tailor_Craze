@@ -15,6 +15,7 @@ public abstract class BaseSpool : MonoBehaviour
     public List<Yarn> _contents = new();
     protected bool _inProgress;
     public float rollDir = 1f;
+    private float _rollDuration = 1f;
     public void Start()
     {
         // Rotate when in progress.
@@ -23,7 +24,7 @@ public abstract class BaseSpool : MonoBehaviour
         .Where(_ => _inProgress)
         .Subscribe(_ =>
         {
-            _body.Rotate(0f, 1080f / YarnController.Instance._rollDuration * rollDir * Time.deltaTime, 0f);
+            _body.Rotate(0f, 1080f / _rollDuration * rollDir * Time.deltaTime, 0f);
             foreach (var item in _contents)
             {
                 item.Spline.RebuildImmediate();
@@ -37,12 +38,13 @@ public abstract class BaseSpool : MonoBehaviour
         return _contents[_contents.Count - 1];
     }
     [Button]
-    public virtual async UniTask UnrollTopYarn()
+    public virtual async UniTask UnrollTopYarn(float duration)
     {
         if (_inProgress) return;
+        _rollDuration = duration;
         _inProgress = true;
-
-        var unroll = YarnController.Instance.Rolling(_contents[_contents.Count - 1], RollType.UnRoll, this);
+        Debug.Log("Unrolling will take " + duration + " seconds.");
+        var unroll = YarnController.Instance.Rolling(_contents[_contents.Count - 1], RollType.UnRoll, this, duration);
         await unroll;
 
         RemoveContent(_contents.Count - 1);

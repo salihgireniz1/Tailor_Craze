@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class SelectionController : MonoSingleton<SelectionController>
 {
-    public DepositSpool[] FillerSpools;
     public ReactiveProperty<Spool> SelectedSpool = new ReactiveProperty<Spool>();
 
     private void Start()
@@ -28,7 +27,7 @@ public class SelectionController : MonoSingleton<SelectionController>
     {
         if (spool.IsEmpty)
         {
-            // await YarnConnection.Instance.BreakConnection();
+            await YarnConnection.Instance.BreakConnection();
             Debug.Log(" There is no available deposit. Destroy leftovers.");
             return;
         }
@@ -40,20 +39,20 @@ public class SelectionController : MonoSingleton<SelectionController>
             if (match != latestFillable)
             {
                 latestFillable = match;
-                // await YarnConnection.Instance.BreakConnection();
+                await YarnConnection.Instance.BreakConnection();
             }
             YarnConnection.Instance.SetConnectionPoints(topYarn, match.Connector);
             var setConnection = YarnConnection.Instance.ActivateConnection(topYarn.Data);
-            var unrollTop = spool.UnrollTopYarn();
+            var unrollTop = spool.UnrollTopYarn(match.FillDuration);
             // await setConnection;
             var filling = match.Fill(topYarn.Data);
             // await UniTask.WhenAll(filling, unrollTop);
-            await filling;
-            await YarnConnection.Instance.BreakConnection();
+            await unrollTop;
+            // await YarnConnection.Instance.BreakConnection();
         }
         else
         {
-            // await YarnConnection.Instance.BreakConnection();
+            await YarnConnection.Instance.BreakConnection();
             // There is no available deposit. destroy this.
             return;
         }

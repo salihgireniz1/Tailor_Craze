@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Knit : MonoBehaviour
 {
-    public float _activitionDuration = 0.75f;
+    // public float _activitionDuration = 0.75f;
     public float targetScale = 0.15f;
     public Ease _activitionEasing = Ease.OutBack;
     public SpriteRenderer image;
@@ -19,8 +19,8 @@ public class Knit : MonoBehaviour
         image.color = color;
         transform.localScale = Vector3.zero;
     }
-    public UniTask Activate()
+    public UniTask Activate(float activisionDuration)
     {
-        return transform.DOScale(Vector3.one * targetScale, _activitionDuration).SetEase(_activitionEasing).ToUniTask();
+        return transform.DOScale(Vector3.one * targetScale, activisionDuration).SetEase(Ease.Linear).ToUniTask();
     }
 }

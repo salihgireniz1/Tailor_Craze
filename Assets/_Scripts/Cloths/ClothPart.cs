@@ -14,7 +14,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [SerializeField] private YarnType _type;
     Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
-    public int YarnCountToFill => _requiredYarnCount;
 
     private void Start()
     {
@@ -40,12 +39,16 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     }
     public bool CanBeFilled(YarnData data)
     {
-        Debug.Log($"{this.Type}vs{data.Type}");
         return this.Type == data.Type && !IsFilled;
     }
-
+    private bool _filling;
     public async UniTask Fill(YarnData data)
     {
+        while (_filling)
+        {
+            Debug.Log("Waiting to fill...");
+            await UniTask.Yield();
+        }
         var path = _knitAparts[_currentFillness];
         _currentFillness++;
         await TravelPath(path);
@@ -53,15 +56,20 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     }
     public async UniTask TravelPath(List<Knit> path)
     {
-        int delayMS = Mathf.RoundToInt(YarnController.Instance.RollDuration * 1000 / path.Count);
+        float knitDuration = ClothsController.Instance.knittingDuration;
+        Debug.Log("Estimated duration to fill: " + (knitDuration * path.Count));
+        float current = Time.time;
+        _filling = true;
         foreach (var knit in path)
         {
             // Activate the knit
+            var task = knit.Activate(knitDuration);
             currentKnit = knit;
             Position.Value = knit.transform.position;
-            await UniTask.Delay(delayMS);
-            currentKnit.Activate().Forget();
+            await task;
         }
+        _filling = false;
+        Debug.Log("Fill duration: " + (Time.time - current));
     }
     Dictionary<int, List<Knit>> DivideKnitsIntoParts(int n)
     {
@@ -85,4 +93,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     public YarnType Type { get => _type; private set => _type = value; }
     public ReactiveProperty<Vector3> Position { get; } = new();
     public bool IsFilled => _currentFillness >= _requiredYarnCount;
+    public int YarnCountToFill => _requiredYarnCount;
+    public float FillDuration => ClothsController.Instance.knittingDuration * (_knitAparts[_currentFillness].Count + 1);
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class YarnController : MonoSingleton<YarnController>
 {
     [SerializeField] YarnDataContainer _yarnDataContainer;
-    [SerializeField] public float _rollDuration;
+    [SerializeField] private float _rollDuration;
     [SerializeField] Transform _spoolBody;
     public YarnData GetYarnData(YarnType yarnType)
     {
@@ -28,20 +28,17 @@ public class YarnController : MonoSingleton<YarnController>
             return null;
         }
     }
-    public UniTask Rolling(Yarn yarn, RollType rollType, BaseSpool yarnSpool)
+    public UniTask Rolling(Yarn yarn, RollType rollType, BaseSpool yarnSpool, float duration)
     {
         float rollDir = rollType == RollType.Roll ? -1f : 1f;
         yarnSpool.rollDir = rollDir;
-        // Calculate the total rotation amount needed (1080 degrees = 360 * 3)
-        float totalRotation = 1080f;
-        // Calculate the rotation per second
-        float rotationSpeed = totalRotation / _rollDuration;
+
 
         return DOTween.To(
                 () => yarn.Tube.clipTo,
                 clip => yarn.Tube.clipTo = clip,
                 rollType == RollType.Roll ? 1f : 0f,
-                _rollDuration
+                duration
             )
             .SetEase(Ease.Linear)
             // .OnUpdate(

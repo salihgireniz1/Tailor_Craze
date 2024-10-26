@@ -19,7 +19,7 @@ public class DepositSpool : BaseSpool, IFillable
         filledYarnData = data;
         myYarn.Tube.clipTo = 0;
         myYarn.Tube.color = data.color;
-        await YarnController.Instance.Rolling(myYarn, RollType.Roll, this);
+        await YarnController.Instance.Rolling(myYarn, RollType.Roll, this, FillDuration);
         _inProgress = false;
     }
     public bool CanBeFilled(YarnData data)
@@ -33,4 +33,6 @@ public class DepositSpool : BaseSpool, IFillable
     }
     public bool IsFilled { get => _isFilled; }
     public IConnect Connector => myYarn;
+
+    public float FillDuration => YarnController.Instance.RollDuration;
 }

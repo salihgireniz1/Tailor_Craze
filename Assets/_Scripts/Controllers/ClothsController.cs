@@ -3,6 +3,7 @@ using System.Collections.Generic;
 public class ClothsController : MonoSingleton<ClothsController>
 {
     public List<Cloth> activeCloths = new();
+    public float knittingDuration = 0.1f;
 
     public ClothPart GetClothWithData(YarnData data)
     {

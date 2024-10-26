@@ -36,11 +36,16 @@ public class YarnConnection : MonoSingleton<YarnConnection>
     {
         this.EndConnect = to;
         this.StartConnect = from;
-        // endNode.transform.DOMove(EndConnect.Position.Value, 0.1f).SetEase(Ease.Linear);
-        // startNode.transform.DOMove(StartConnect.Position.Value, 0.1f).SetEase(Ease.Linear);
-
-        endNode.transform.position = EndConnect.Position.Value;
-        startNode.transform.position = StartConnect.Position.Value;
+        if (isActive)
+        {
+            endNode.transform.DOMove(EndConnect.Position.Value, 0.1f).SetEase(Ease.Linear);
+            startNode.transform.DOMove(StartConnect.Position.Value, 0.1f).SetEase(Ease.Linear);
+        }
+        else
+        {
+            endNode.transform.position = EndConnect.Position.Value;
+            startNode.transform.position = StartConnect.Position.Value;
+        }
 
         // EndConnect.Position.Subscribe(pos =>
         // {
