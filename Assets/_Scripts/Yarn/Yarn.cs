@@ -9,24 +9,19 @@ public class Yarn : MonoBehaviour, IConnect
     {
         if (!Tube) Tube = GetComponent<TubeGenerator>();
         if (!Spline) Spline = GetComponent<SplineComputer>();
-        Position = new ReactiveProperty<Vector3>(connectionPoint.position);
     }
-    public void InitializeYarn(YarnData data)
+    public virtual void InitializeYarn(YarnData data)
     {
         if (!Tube) Tube = GetComponent<TubeGenerator>();
         if (!Spline) Spline = GetComponent<SplineComputer>();
 
         Data = data;
         Tube.color = data.color;
+
+        Spline.RebuildImmediate();
     }
-    public TubeGenerator Tube { get; private set; }
-    public SplineComputer Spline { get; private set; }
-    [field: SerializeField] public YarnData Data { get; private set; }
-
-    public ReactiveProperty<Vector3> Position { get; private set; }
-}
-
-public interface IConnect
-{
-    public ReactiveProperty<Vector3> Position { get; }
+    [field: SerializeField] public YarnData Data { get; protected set; }
+    public TubeGenerator Tube { get; protected set; }
+    public SplineComputer Spline { get; protected set; }
+    public Vector3 Position { get => connectionPoint.position; }
 }

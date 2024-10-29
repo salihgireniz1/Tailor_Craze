@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
+    [SerializeField] protected bool Persistent = false; // Set to true if you want the singleton to persist across scenes
     private static T _instance;
 
     public static T Instance
@@ -32,7 +33,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
         if (_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject); // Optional: Keep the instance persistent across scenes
+            if (Persistent) DontDestroyOnLoad(gameObject); // Optional: Keep the instance persistent across scenes
         }
         else
         {

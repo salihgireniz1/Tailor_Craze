@@ -4,6 +4,7 @@ using UnityEngine;
 public class YarnDataContainer : ScriptableObject
 {
     public Yarn BaseYarn;
+    public HiddenYarn HiddenYarn;
     public YarnData[] yarnGroups;
 }
 public enum YarnType { red, green, blue, yellow, orange }

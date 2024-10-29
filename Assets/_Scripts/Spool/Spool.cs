@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,7 +10,16 @@ public class Spool : BaseSpool
 
     private void OnMouseDown()
     {
+        if (GameManager.CurrentState.Value != GameState.Playing) return;
+
         SelectionController.Instance.SelectSpool(this);
+        foreach (Yarn yarn in _contents)
+        {
+            if (yarn is HiddenYarn)
+            {
+                ((HiddenYarn)yarn).Reveal().Forget();
+            }
+        }
     }
     [Button]
     public void ClearContents()
@@ -24,9 +32,12 @@ public class Spool : BaseSpool
         _contents.Clear();
     }
     [Button]
-    public void AddContent(YarnType type)
+    public void AddContent(YarnType type, bool isHidden)
     {
-        var requestedYarn = YarnController.Instance.GetYarn(type);
+        YarnData data = YarnController.Instance.GetYarnData(type);
+        Yarn requestedYarn = YarnController.Instance.GetYarn(isHidden);
+        requestedYarn.InitializeYarn(data);
+
         if (requestedYarn != null)
         {
             _contents.Add(requestedYarn);

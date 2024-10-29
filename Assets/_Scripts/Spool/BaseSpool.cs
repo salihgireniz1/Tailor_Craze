@@ -16,6 +16,13 @@ public abstract class BaseSpool : MonoBehaviour
     protected bool _inProgress;
     public float rollDir = 1f;
     private float _rollDuration = 1f;
+    public void Build()
+    {
+        foreach (var item in _contents)
+        {
+            item.Spline.RebuildImmediate();
+        }
+    }
     public void Start()
     {
         // Rotate when in progress.
@@ -43,14 +50,12 @@ public abstract class BaseSpool : MonoBehaviour
         if (_inProgress) return;
         _rollDuration = duration;
         _inProgress = true;
-        Debug.Log("Unrolling will take " + duration + " seconds.");
-        var unroll = YarnController.Instance.Rolling(_contents[_contents.Count - 1], RollType.UnRoll, this, duration);
+        var unroll = YarnController.Instance.Rolling(GetTopYarn(), RollType.UnRoll, this, duration);
         await unroll;
 
         RemoveContent(_contents.Count - 1);
         _inProgress = false;
         transform.rotation = Quaternion.identity;
-        Debug.Log("Unrolled.");
     }
     public bool IsEmpty => _contents == null || _contents.Count == 0;
 }

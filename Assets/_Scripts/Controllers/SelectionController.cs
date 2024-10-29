@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using R3;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class SelectionController : MonoSingleton<SelectionController>
@@ -12,7 +10,7 @@ public class SelectionController : MonoSingleton<SelectionController>
     private void Start()
     {
         SelectedSpool
-        .Where(spool => spool != null)
+        .Where(spool => spool != null && GameManager.CurrentState.Value == GameState.Playing)
         .Subscribe(
             async spool =>
             {
@@ -25,15 +23,23 @@ public class SelectionController : MonoSingleton<SelectionController>
     IFillable latestFillable;
     public async UniTask EmptySpool(BaseSpool spool)
     {
+        if (GameManager.CurrentState.Value == GameState.Victory || GameManager.CurrentState.Value == GameState.GameOver)
+        {
+            await YarnConnection.Instance.BreakConnection();
+            return;
+        }
+
+        GameManager.CurrentState.Value = GameState.InProgress;
         if (spool.IsEmpty)
         {
             await YarnConnection.Instance.BreakConnection();
-            Debug.Log(" There is no available deposit. Destroy leftovers.");
+            await ClothsController.Instance.AddNewClothAndShiftRight();
+            SpoolController.Instance.RemoveSpool((Spool)spool).Forget();
             return;
         }
 
         Yarn topYarn = spool.GetTopYarn();
-        IFillable match = FindYarnMatch(topYarn.Data);
+        IFillable match = await FindYarnMatch(topYarn.Data);
         if (match != null)
         {
             if (match != latestFillable)
@@ -42,24 +48,23 @@ public class SelectionController : MonoSingleton<SelectionController>
                 await YarnConnection.Instance.BreakConnection();
             }
             YarnConnection.Instance.SetConnectionPoints(topYarn, match.Connector);
-            var setConnection = YarnConnection.Instance.ActivateConnection(topYarn.Data);
-            var unrollTop = spool.UnrollTopYarn(match.FillDuration);
-            // await setConnection;
-            var filling = match.Fill(topYarn.Data);
-            // await UniTask.WhenAll(filling, unrollTop);
-            await unrollTop;
-            // await YarnConnection.Instance.BreakConnection();
+            YarnConnection.Instance.ActivateConnection(topYarn.Data).Forget();
+            var duration = match.FillDuration;
+            var fill = match.Fill(topYarn.Data);
+            var unroll = spool.UnrollTopYarn(duration);
+            await UniTask.WhenAll(unroll, fill);
         }
         else
         {
+            // There is no available deposit.
             await YarnConnection.Instance.BreakConnection();
-            // There is no available deposit. destroy this.
+            // GameManager.CurrentState.Value = GameState.Playing;
             return;
         }
 
         await EmptySpool(spool);
     }
-    public IFillable FindYarnMatch(YarnData data)
+    public async UniTask<IFillable> FindYarnMatch(YarnData data)
     {
         // First, we need to check cloths.
         ClothPart clothPart = ClothsController.Instance.GetClothWithData(data);
@@ -68,11 +73,14 @@ public class SelectionController : MonoSingleton<SelectionController>
         // Then check deposits.
         if (DepositSpoolController.Instance.HasEmptyDepositSpool)
         {
-            Debug.Log("There are empty deposits!");
             return DepositSpoolController.Instance.FirstEmptyDepositSpool;
         }
-
-        return null;
+        else
+        {
+            await YarnConnection.Instance.BreakConnection();
+            await DepositSpoolController.Instance.HandleOverloadingAsync();
+            return DepositSpoolController.Instance.FirstEmptyDepositSpool;
+        }
     }
     public void SelectSpool(Spool clicked)
     {

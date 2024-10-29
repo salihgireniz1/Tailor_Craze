@@ -1,6 +1,6 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 public class DepositSpoolController : MonoSingleton<DepositSpoolController>
 {
@@ -9,13 +9,28 @@ public class DepositSpoolController : MonoSingleton<DepositSpoolController>
     public bool HasEmptyDepositSpool => _depositSpools.Any(x => !x.IsFilled);
     public DepositSpool FirstEmptyDepositSpool => _depositSpools.FirstOrDefault(x => !x.IsFilled);
 
-    public async UniTaskVoid FillDeposit(YarnData data)
+    public async UniTask HandleOverloadingAsync()
     {
-        if (!HasEmptyDepositSpool)
+        foreach (var depositSpool in _depositSpools)
         {
-            Debug.LogWarning("There is no deposit. Destroying all deposit yarns.");
-            return;
+            await depositSpool.BurstContentAsync();
         }
-        await FirstEmptyDepositSpool.Fill(data);
+    }
+    public async UniTask CheckNewClothAsync(FactoryCloth cloth)
+    {
+        if (cloth == null) return;
+        foreach (var deposit in _depositSpools)
+        {
+            if (!deposit.IsFilled) continue;
+            var fillablePart = cloth.GetFillablePart(deposit.filledYarnData);
+            if (fillablePart == null) continue;
+
+            YarnConnection.Instance.SetConnectionPoints(deposit.Connector, fillablePart.Connector);
+            YarnConnection.Instance.ActivateConnection(deposit.filledYarnData).Forget();
+            var duration = fillablePart.FillDuration;
+            fillablePart.Fill(deposit.filledYarnData).Forget();
+            await deposit.UnrollTopYarn(duration);
+            await YarnConnection.Instance.BreakConnection();
+        }
     }
 }

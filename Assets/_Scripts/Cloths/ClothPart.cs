@@ -1,10 +1,9 @@
 using R3;
-using System;
 using UnityEngine;
 using System.Linq;
+using Sirenix.OdinInspector;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 
 public class ClothPart : MonoBehaviour, IFillable, IConnect
 {
@@ -12,13 +11,14 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [SerializeField] private int _currentFillness = 0;
     [SerializeField] private Knit[] _knits;
     [SerializeField] private YarnType _type;
-    Dictionary<int, List<Knit>> _knitAparts = new();
+    [ShowInInspector] Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
+    [SerializeField] private FactoryCloth _myCloth;
 
     private void Start()
     {
         DivideKnits();
-        Position.Value = _knits[0].transform.position;
+        currentKnit = _knits[0];
     }
     [Button]
     private void DivideKnits()
@@ -46,30 +46,28 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     {
         while (_filling)
         {
-            Debug.Log("Waiting to fill...");
             await UniTask.Yield();
         }
+        _filling = true;
         var path = _knitAparts[_currentFillness];
         _currentFillness++;
         await TravelPath(path);
-        Debug.Log("Cloth Filled.");
+        _filling = false;
+        if (MyCloth != null && MyCloth.IsCompleted())
+        {
+            currentKnit = null;
+            ClothsController.Instance.CompleteCloth(MyCloth);
+        }
     }
     public async UniTask TravelPath(List<Knit> path)
     {
-        float knitDuration = ClothsController.Instance.knittingDuration;
-        Debug.Log("Estimated duration to fill: " + (knitDuration * path.Count));
-        float current = Time.time;
-        _filling = true;
         foreach (var knit in path)
         {
             // Activate the knit
-            var task = knit.Activate(knitDuration);
+            var oneKnit = knit.Activate(Settings.Instance.KnittingSettings.KnittingDuration);
             currentKnit = knit;
-            Position.Value = knit.transform.position;
-            await task;
+            await oneKnit;
         }
-        _filling = false;
-        Debug.Log("Fill duration: " + (Time.time - current));
     }
     Dictionary<int, List<Knit>> DivideKnitsIntoParts(int n)
     {
@@ -77,7 +75,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
 
         // Calculate the size of each part
         int partSize = Mathf.CeilToInt((float)_knits.Length / n);
-
         for (int i = 0; i < n; i++)
         {
             // Get the subset of the knits for this part
@@ -89,10 +86,11 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
 
         return knitParts;
     }
+    public FactoryCloth MyCloth { get => _myCloth; set => _myCloth = value; }
     public IConnect Connector => this;
     public YarnType Type { get => _type; private set => _type = value; }
-    public ReactiveProperty<Vector3> Position { get; } = new();
+    public Vector3 Position { get => currentKnit?.transform.position ?? Vector3.zero; }
     public bool IsFilled => _currentFillness >= _requiredYarnCount;
     public int YarnCountToFill => _requiredYarnCount;
-    public float FillDuration => ClothsController.Instance.knittingDuration * (_knitAparts[_currentFillness].Count + 1);
+    public float FillDuration => Settings.Instance.KnittingSettings.KnittingDuration * (_knitAparts[_currentFillness].Count + 1);
 }
