@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Spool : BaseSpool
 {
@@ -11,7 +12,7 @@ public class Spool : BaseSpool
     private void OnMouseDown()
     {
         if (GameManager.CurrentState.Value != GameState.Playing) return;
-
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         SelectionController.Instance.SelectSpool(this);
         foreach (Yarn yarn in _contents)
         {

@@ -16,7 +16,14 @@ public class ClothsController : MonoSingleton<ClothsController>
     private FactoryCloth[] _levelCloths;
     [SerializeField] private int _clothCount;
     private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
-
+    public ReactiveProperty<int> ClothCount { get; private set; }
+    public ReactiveProperty<int> LevelClothsCount { get; private set; }
+    protected override void Awake()
+    {
+        base.Awake();
+        ClothCount = new(0);
+        LevelClothsCount = new(0);
+    }
     private void Start()
     {
         GameManager.CurrentState
@@ -37,7 +44,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         }
         // Actually, earn some golds etc.
         Destroy(cloth.gameObject);
-
+        ClothCount.Value++;
         if (_clothCount >= _levelCloths.Length && activeCloths.Count <= 0)
         {
             Debug.Log("WIN!");
@@ -63,6 +70,8 @@ public class ClothsController : MonoSingleton<ClothsController>
     {
         _levelCloths = LevelManager.GetLevelData().LevelCloths;
         _clothCount = 0;
+        ClothCount.Value = 0;
+        LevelClothsCount.Value = _levelCloths.Length;
         AddNewClothAndShiftRight().Forget();
     }
 
@@ -111,6 +120,7 @@ public class ClothsController : MonoSingleton<ClothsController>
             activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
             _clothSpotDict[newCloth] = _spots[0];
             _clothCount++;
+            // ClothCount.Value = _clothCount;
         }
 
         await UniTask.WhenAll(shifts);

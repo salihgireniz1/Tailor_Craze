@@ -30,8 +30,6 @@ public class FactoryCloth : MonoBehaviour
     {
         foreach (var item in myClothParts)
         {
-            Debug.Log(item.part.Type.ToString() + " is " + item.part.IsFilled);
-
             if (!item.part.IsFilled)
             {
                 return false;
