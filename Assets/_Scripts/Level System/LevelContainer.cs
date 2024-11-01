@@ -29,12 +29,12 @@ public struct SpoolInfo
 
     [HorizontalGroup("Spools At This Level")]
     [HideIf("isRandom"), ListDrawerSettings(ShowFoldout = true)]
-    [ValidateInput("ValidateYarnsCount", "You can only have a maximum of 3 yarns.", InfoMessageType.Error)]
+    // [ValidateInput("ValidateYarnsCount", "You can only have a maximum of 3 yarns.", InfoMessageType.Error)]
     public SpoolYarn[] Yarns;
     private bool ValidateYarnsCount()
     {
         if (Yarns == null) return true;
-        if (Yarns.Length > 3)
+        if (Yarns.Length > 4)
         {
             Array.Resize(ref Yarns, 3);
         }

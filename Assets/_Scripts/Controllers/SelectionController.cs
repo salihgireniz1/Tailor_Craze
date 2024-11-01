@@ -14,7 +14,6 @@ public class SelectionController : MonoSingleton<SelectionController>
         .Subscribe(
             async spool =>
             {
-                Debug.Log($"Selected {spool.gameObject.name}");
                 await EmptySpool(spool);
             }
         )

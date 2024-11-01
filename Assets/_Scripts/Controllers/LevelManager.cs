@@ -21,8 +21,12 @@ public class LevelManager : MonoSingleton<LevelManager>
         LevelProperty.Value = Level;
         GameManager.CurrentState
         .Where(state => state == GameState.Victory)
-        .Subscribe(
-            _ => Level++
+        .Subscribe(_ =>
+        {
+            Level++;
+            Debug.Log(GameManager.CurrentState.Value);
+        }
+
         ).AddTo(this);
     }
     public static LevelData GetLevelData()
@@ -55,6 +59,7 @@ public class LevelManager : MonoSingleton<LevelManager>
         {
             Instance._level = value;
             LevelProperty.Value = value;
+            Debug.Log("Level Changed " + value);
             if (Instance.automated) ES3.Save(Consts.LevelKey, Instance._level);
         }
     }
