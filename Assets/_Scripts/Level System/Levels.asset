@@ -30,6 +30,8 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 3
+      - isHidden: 0
+        type: 0
     - isRandom: 0
       Yarns:
       - isHidden: 0
