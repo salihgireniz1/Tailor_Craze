@@ -10,7 +10,6 @@ public class HiddenYarn : Yarn, IReveal
     public UniTask Reveal()
     {
         Tube.color = Data.color;
-        Debug.Log("revealed!");
         return UniTask.CompletedTask;
     }
     public override void InitializeYarn(YarnData data)

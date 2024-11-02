@@ -21,6 +21,7 @@ public class Knit : MonoBehaviour
     }
     public UniTask Activate(float activisionDuration)
     {
+        SoundManager.Instance.PlaySFX(SFXType.Knitted);
         return transform.DOScale(Vector3.one * targetScale, activisionDuration).SetEase(Ease.Linear).ToUniTask();
     }
 }

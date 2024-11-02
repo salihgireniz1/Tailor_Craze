@@ -126,6 +126,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         await UniTask.WhenAll(shifts);
         // Await deposits to control new cloth.
         await DepositSpoolController.Instance.CheckNewClothAsync(newCloth);
-        GameManager.CurrentState.Value = GameState.Playing;
+        if (GameManager.CurrentState.Value == GameState.InProgress)
+            GameManager.CurrentState.Value = GameState.Playing;
     }
 }

@@ -42,7 +42,7 @@ public class YarnController : MonoSingleton<YarnController>
             return null;
         }
     }
-    public UniTask Rolling(Yarn yarn, RollType rollType, BaseSpool yarnSpool, float duration)
+    public UniTask Rolling(Yarn yarn, RollType rollType, BaseSpool yarnSpool, float duration, Action onUpdate = null)
     {
         float rollDir = rollType == RollType.Roll ? -1f : 1f;
         yarnSpool.rollDir = rollDir;
@@ -53,6 +53,9 @@ public class YarnController : MonoSingleton<YarnController>
                 clip => yarn.Tube.clipTo = clip,
                 rollType == RollType.Roll ? 1f : 0f,
                 duration
+            )
+            .OnUpdate(
+                () => onUpdate()
             )
             .SetEase(Ease.Linear)
             .ToUniTask();

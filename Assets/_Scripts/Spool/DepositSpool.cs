@@ -21,9 +21,15 @@ public class DepositSpool : BaseSpool, IFillable
         filledYarnData = data;
         myYarn.Tube.clipTo = 0;
         myYarn.Tube.color = data.color;
+        SoundManager.Instance.PlaySFX(SFXType.DepositFill);
         await YarnController.Instance.Rolling(myYarn, RollType.Roll, this, FillDuration);
+        SoundManager.Instance.ResetPitch();
         _inProgress = false;
         transform.rotation = Quaternion.identity;
+    }
+    void PlayFillSound()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.DepositFill, 0.1f);
     }
     public bool CanBeFilled(YarnData data)
     {
@@ -48,6 +54,9 @@ public class DepositSpool : BaseSpool, IFillable
             -0.15f,
             .2f
         ).ToUniTask();
+
+        // Play the burst sound
+        SoundManager.Instance.PlaySFX(SFXType.DepositPop);
 
         // Remove the yarn content
         RemoveContent(0);
