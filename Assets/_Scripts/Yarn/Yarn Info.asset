@@ -24,7 +24,7 @@ MonoBehaviour:
   - Type: 1
     color:
       serializedVersion: 2
-      rgba: 4278233126
+      rgba: 4291588863
   - Type: 2
     color:
       serializedVersion: 2
@@ -37,3 +37,11 @@ MonoBehaviour:
     color:
       serializedVersion: 2
       rgba: 4281767679
+  - Type: 5
+    color:
+      serializedVersion: 2
+      rgba: 4288758151
+  - Type: 6
+    color:
+      serializedVersion: 2
+      rgba: 4278232607

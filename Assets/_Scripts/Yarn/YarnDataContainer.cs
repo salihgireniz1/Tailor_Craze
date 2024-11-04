@@ -7,4 +7,4 @@ public class YarnDataContainer : ScriptableObject
     public HiddenYarn HiddenYarn;
     public YarnData[] yarnGroups;
 }
-public enum YarnType { red, green, blue, yellow, orange }
+public enum YarnType { K, P, M, S, T, O, Y }
