@@ -16,6 +16,9 @@ public struct LevelData
     [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true)]
     public SpoolInfo[] LevelSpools;
 
+    [FoldoutGroup("Spools At This Level")]
+    public int StartSpoolCount;
+
     [FoldoutGroup("Cloths At This Level")]
     [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true)]
     public FactoryCloth[] LevelCloths;

@@ -46,9 +46,10 @@ public class SpoolController : MonoSingleton<SpoolController>
         _activeSpools.Remove(spool);
         await spool.transform.DOScale(Vector3.zero, .2f).SetEase(Ease.InBack).WithCancellation(cts.Token);
         var newSpool = SpawnSpool(GetNextSpoolOfLevel(), spool.transform.position);
+        var defaultScale = newSpool.transform.localScale;
         newSpool.transform.localScale = Vector3.zero;
         DestroyImmediate(spool.gameObject);
-        await newSpool.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutBack).WithCancellation(cts.Token);
+        await newSpool.transform.DOScale(defaultScale, .5f).SetEase(Ease.OutBack).WithCancellation(cts.Token);
     }
     public SpoolInfo GetNextSpoolOfLevel()
     {
@@ -79,9 +80,10 @@ public class SpoolController : MonoSingleton<SpoolController>
     [Button]
     public void InitLevelSpools()
     {
-        _levelSpools = LevelManager.GetLevelData().LevelSpools;
+        var data = LevelManager.GetLevelData();
+        _levelSpools = data.LevelSpools;
         _spoolCount = 0;
-        for (int i = 0; i < spoolPoints.Length; i++)
+        for (int i = 0; i < data.StartSpoolCount; i++)
         {
             _activeSpools.Add(SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position));
         }

@@ -44,6 +44,8 @@ public class Spool : BaseSpool
             _contents.Add(requestedYarn);
             requestedYarn.transform.SetParent(_yarnHolder);
             requestedYarn.transform.localPosition = GetPosition(requestedYarn);
+            requestedYarn.transform.localScale = Vector3.one;
+            requestedYarn.Spline.RebuildImmediate();
         }
     }
 
