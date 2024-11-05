@@ -48,6 +48,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         {
             await UniTask.Yield();
         }
+        MyCloth.SelectRotate().Forget();
         _filling = true;
         var path = _knitAparts[_currentFillness];
         _currentFillness++;
@@ -56,7 +57,11 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         if (MyCloth != null && MyCloth.IsCompleted())
         {
             currentKnit = null;
-            ClothsController.Instance.CompleteCloth(MyCloth);
+            await ClothsController.Instance.CompleteCloth(MyCloth);
+        }
+        else
+        {
+            MyCloth.DeselectRotate().Forget();
         }
     }
     public async UniTask TravelPath(List<Knit> path)
@@ -92,5 +97,5 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     public Vector3 Position { get => currentKnit?.transform.position ?? Vector3.zero; }
     public bool IsFilled => _currentFillness >= _requiredYarnCount;
     public int YarnCountToFill => _requiredYarnCount;
-    public float FillDuration => Settings.Instance.KnittingSettings.KnittingDuration * (_knitAparts[_currentFillness].Count + 1);
+    public float FillDuration => Settings.Instance.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count /*+ 20 * Time.deltaTime*/;
 }

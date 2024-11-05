@@ -32,7 +32,7 @@ public class ClothsController : MonoSingleton<ClothsController>
             _ => InitLevelCloths()
         ).AddTo(this);
     }
-    public void CompleteCloth(FactoryCloth cloth)
+    public UniTask CompleteCloth(FactoryCloth cloth)
     {
         if (_clothSpotDict.ContainsKey(cloth))
         {
@@ -42,7 +42,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         {
             activeCloths.Remove(cloth);
         }
-        // Actually, earn some golds etc.
+        // Actually, earn some golds, do some animations etc.
         Destroy(cloth.gameObject);
         ClothCount.Value++;
         if (_clothCount >= _levelCloths.Length && activeCloths.Count <= 0)
@@ -50,6 +50,8 @@ public class ClothsController : MonoSingleton<ClothsController>
             Debug.Log("WIN!");
             GameManager.CurrentState.Value = GameState.Victory;
         }
+
+        return UniTask.CompletedTask;
     }
 
     public ClothPart GetClothWithData(YarnData data)
@@ -74,7 +76,34 @@ public class ClothsController : MonoSingleton<ClothsController>
         LevelClothsCount.Value = _levelCloths.Length;
         AddNewClothAndShiftRight().Forget();
     }
+    int GetSpotIndex(Transform spot)
+    {
+        return _spots.ToList().IndexOf(spot);
+    }
+    Transform GetSpot(int index)
+    {
+        return _spots[index];
+    }
+    bool IsSpotFilled(Transform spot)
+    {
+        return _clothSpotDict.ContainsValue(spot);
+    }
+    int GetMostRightSpotIndex(Transform currentSpot)
+    {
+        int currentSpotIndex = GetSpotIndex(currentSpot);
 
+        // Find the first empty spot from the right
+        return GetMostRightSpotIndex(currentSpotIndex);
+    }
+    int GetMostRightSpotIndex(int currentSpotIndex)
+    {
+        // Find the first empty spot from the right
+        while (!IsSpotFilled(GetSpot(currentSpotIndex + 1)))
+        {
+            currentSpotIndex++;
+        }
+        return currentSpotIndex;
+    }
     [Button]
     public async UniTask AddNewClothAndShiftRight()
     {
@@ -93,7 +122,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         {
             var currentCloth = activeCloths[i];
             var currentSpot = _clothSpotDict[currentCloth];
-            int nextSpotIndex = _spots.ToList().IndexOf(currentSpot) + 1;
+            int nextSpotIndex = (i == activeCloths.Count - 1) ? GetSpotIndex(currentSpot) + 1 : GetMostRightSpotIndex(currentSpot);
             if (nextSpotIndex < _spots.Length)
             {
                 _clothSpotDict[currentCloth] = _spots[nextSpotIndex];
@@ -114,18 +143,25 @@ public class ClothsController : MonoSingleton<ClothsController>
         {
             // Spawn the new cloth at the left-most spot
             newCloth = Instantiate(_levelCloths[_clothCount], _spawnPoint.position + _offset, Quaternion.identity, _clothParent);
-            UniTask alignToStart = newCloth.transform.DOMove(_spots[0].position + _offset, .5f).SetEase(Ease.OutBack).ToUniTask();
+            int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
+            UniTask alignToStart = newCloth.transform.DOMove(_spots[spawnAlignmentIndex].position + _offset, .5f).SetEase(Ease.OutBack).ToUniTask();
             shifts.Add(alignToStart);
 
             activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
-            _clothSpotDict[newCloth] = _spots[0];
+            _clothSpotDict[newCloth] = _spots[spawnAlignmentIndex];
             _clothCount++;
-            // ClothCount.Value = _clothCount;
         }
 
         await UniTask.WhenAll(shifts);
         // Await deposits to control new cloth.
         await DepositSpoolController.Instance.CheckNewClothAsync(newCloth);
+
+        // Ensure that there are at least two cloths on the band.
+        if (activeCloths.Count <= 1)
+        {
+            await AddNewClothAndShiftRight();
+        }
+
         if (GameManager.CurrentState.Value == GameState.InProgress)
             GameManager.CurrentState.Value = GameState.Playing;
     }

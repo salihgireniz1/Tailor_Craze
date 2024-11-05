@@ -32,5 +32,13 @@ public class DepositSpoolController : MonoSingleton<DepositSpoolController>
             await deposit.UnrollTopYarn(duration);
             await YarnConnection.Instance.BreakConnection();
         }
+
+        if (!cloth)
+        {
+            // We completed the cloth just spawned LOL
+            // Need to spawn a new one.
+
+            // await ClothsController.Instance.AddNewClothAndShiftRight();
+        }
     }
 }

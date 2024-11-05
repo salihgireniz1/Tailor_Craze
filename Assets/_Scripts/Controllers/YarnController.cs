@@ -55,7 +55,7 @@ public class YarnController : MonoSingleton<YarnController>
                 duration
             )
             .OnUpdate(
-                () => onUpdate()
+                () => onUpdate?.Invoke()
             )
             .SetEase(Ease.Linear)
             .ToUniTask();

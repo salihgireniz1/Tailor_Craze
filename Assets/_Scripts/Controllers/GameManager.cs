@@ -1,4 +1,5 @@
 using R3;
+using UnityEngine;
 public enum GameState
 {
     DEFAULT,
@@ -16,6 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
+        // Application.targetFrameRate = 60;
         CurrentState.Value = GameState.Initializing;
     }
 
