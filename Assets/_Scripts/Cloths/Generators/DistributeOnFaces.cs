@@ -1,18 +1,28 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 public class DistributeOnFaces : MonoBehaviour
 {
     public GameObject objectToDistribute; // Dağıtılacak obje
     public GameObject targetObject; // Hedef obje
     public Vector3 sizeMultiplier = Vector3.one; // Boyut ayarlama için çarpan
-    private List<GameObject> distributedObjects = new List<GameObject>(); // Dağıtılan objeleri tutmak için liste
+    public List<GameObject> distributedObjects = new List<GameObject>(); // Dağıtılan objeleri tutmak için liste
     private List<Vector2> uvCoordinates = new List<Vector2>(); // UV koordinatları tutmak için liste
     void Start()
     {
-        Distribute();
+        // Distribute();
     }
+    [Button]
+    void ClearDistribution()
+    {
+        foreach (GameObject obj in distributedObjects) DestroyImmediate(obj);
+        distributedObjects = new();
+    }
+    [Button]
     void Distribute()
     {
+        ClearDistribution();
+
         Mesh mesh = targetObject.GetComponent<MeshFilter>().mesh;
         Vector3[] vertices = mesh.vertices;
         Vector3[] normals = mesh.normals;
