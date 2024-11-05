@@ -107,6 +107,7 @@ public class ClothsController : MonoSingleton<ClothsController>
     [Button]
     public async UniTask AddNewClothAndShiftRight()
     {
+        if (GameManager.CurrentState.Value == GameState.GameOver || GameManager.CurrentState.Value == GameState.Victory) return;
         GameManager.CurrentState.Value = GameState.InProgress;
         List<UniTask> shifts = new();
         // Check if adding a new cloth would exceed the spot limit
@@ -121,13 +122,14 @@ public class ClothsController : MonoSingleton<ClothsController>
         for (int i = activeCloths.Count - 1; i >= 0; i--)
         {
             var currentCloth = activeCloths[i];
+            if (currentCloth == null) return;
             var currentSpot = _clothSpotDict[currentCloth];
             int nextSpotIndex = (i == activeCloths.Count - 1) ? GetSpotIndex(currentSpot) + 1 : GetMostRightSpotIndex(currentSpot);
             if (nextSpotIndex < _spots.Length)
             {
                 _clothSpotDict[currentCloth] = _spots[nextSpotIndex];
 
-                UniTask task = currentCloth.transform.DOMove(_spots[nextSpotIndex].position + _offset, 0.5f).SetEase(Ease.OutBack).ToUniTask();
+                UniTask task = currentCloth.transform.DOMove(_spots[nextSpotIndex].position + _offset, 0.5f).SetEase(Ease.OutBack).WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth));
                 shifts.Add(task);
             }
             else
@@ -157,7 +159,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         await DepositSpoolController.Instance.CheckNewClothAsync(newCloth);
 
         // Ensure that there are at least two cloths on the band.
-        if (activeCloths.Count <= 1)
+        if (activeCloths.Count == 1 && _clothCount < _levelCloths.Length)
         {
             await AddNewClothAndShiftRight();
         }

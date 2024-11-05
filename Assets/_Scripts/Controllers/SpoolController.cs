@@ -45,6 +45,12 @@ public class SpoolController : MonoSingleton<SpoolController>
         cts = new CancellationTokenSource();
         _activeSpools.Remove(spool);
         await spool.transform.DOScale(Vector3.zero, .2f).SetEase(Ease.InBack).WithCancellation(cts.Token);
+
+        if (_spoolCount >= _levelSpools.Length && !_canRandom)
+        {
+            return;
+        }
+
         var newSpool = SpawnSpool(GetNextSpoolOfLevel(), spool.transform.position);
         var defaultScale = newSpool.transform.localScale;
         newSpool.transform.localScale = Vector3.zero;
@@ -53,7 +59,8 @@ public class SpoolController : MonoSingleton<SpoolController>
     }
     public SpoolInfo GetNextSpoolOfLevel()
     {
-        return _levelSpools[_spoolCount % _levelSpools.Length];
+        int index = _spoolCount < _levelSpools.Length ? _spoolCount : Random.Range(0, _levelSpools.Length - 1);
+        return _levelSpools[index];
     }
     public Spool SpawnSpool(SpoolInfo info, Vector3 point)
     {
@@ -77,15 +84,68 @@ public class SpoolController : MonoSingleton<SpoolController>
         _spoolCount++;
         return instance;
     }
+    bool _canRandom;
+    // [Button]
+    // public void InitLevelSpools()
+    // {
+    //     LevelData data = LevelManager.GetLevelData();
+    //     _canRandom = data.RandomNextSpool;
+    //     _levelSpools = data.LevelSpools;
+    //     _spoolCount = 0;
+    //     for (int i = 0; i < data.StartSpoolCount; i++)
+    //     {
+    //         _activeSpools.Add(SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position));
+    //     }
+    // }
     [Button]
     public void InitLevelSpools()
     {
-        var data = LevelManager.GetLevelData();
+        LevelData data = LevelManager.GetLevelData();
+        _canRandom = data.RandomNextSpool;
         _levelSpools = data.LevelSpools;
         _spoolCount = 0;
-        for (int i = 0; i < data.StartSpoolCount; i++)
+
+        // Define your bounds and minimum offset here (or pass them as parameters)
+        Vector2 spawnBoundsMin = new Vector2(-1.92f, -4.25f); // Example min bounds
+        Vector2 spawnBoundsMax = new Vector2(1.92f, 0);   // Example max bounds
+        float minOffset = 1.5f;  // Minimum distance required between spools
+
+        for (int i = 0; i < _levelSpools.Length; i++)
         {
-            _activeSpools.Add(SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position));
+            Vector3 spawnPosition;
+            bool validPosition;
+
+            // Try finding a valid position
+            do
+            {
+                spawnPosition = GetRandomPositionWithinBounds(spawnBoundsMin, spawnBoundsMax);
+                validPosition = IsPositionValid(spawnPosition, minOffset);
+            }
+            while (!validPosition);
+
+            // Spawn spool at the valid position
+            _activeSpools.Add(SpawnSpool(_levelSpools[i], spawnPosition));
         }
+    }
+
+    private Vector3 GetRandomPositionWithinBounds(Vector2 minBounds, Vector2 maxBounds)
+    {
+        float x = Random.Range(minBounds.x, maxBounds.x);
+        float z = Random.Range(minBounds.y, maxBounds.y); // Assuming you want random positions in the XZ plane
+        return new Vector3(x, 0, z); // Set Y to 0 or any desired height
+    }
+
+    private bool IsPositionValid(Vector3 position, float minOffset)
+    {
+        foreach (var spool in _activeSpools)
+        {
+            float distance = Vector3.Distance(position, spool.transform.position);
+            float requiredOffset = minOffset + spool.transform.localScale.magnitude / 2; // Adjust based on spool size
+            if (distance < requiredOffset)
+            {
+                return false; // Position is too close to an existing spool
+            }
+        }
+        return true; // Position is valid
     }
 }

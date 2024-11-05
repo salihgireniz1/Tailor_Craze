@@ -52,7 +52,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         _filling = true;
         var path = _knitAparts[_currentFillness];
         _currentFillness++;
-        await TravelPath(path);
+        await TravelPath(path).AttachExternalCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(this));
         _filling = false;
         if (MyCloth != null && MyCloth.IsCompleted())
         {

@@ -40,13 +40,8 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    StartSpoolCount: 3
+    RandomNextSpool: 0
+    StartSpoolCount: 4
     LevelCloths:
     - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
     - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
@@ -84,12 +79,7 @@ MonoBehaviour:
         type: 6
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
@@ -131,10 +121,7 @@ MonoBehaviour:
         type: 4
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
@@ -172,10 +159,7 @@ MonoBehaviour:
         type: 5
       - isHidden: 0
         type: 5
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
@@ -223,10 +207,7 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 5
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 23ae2e5f22121694887719934a3c6840, type: 3}
@@ -271,10 +252,7 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
@@ -331,10 +309,7 @@ MonoBehaviour:
         type: 3
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
@@ -394,12 +369,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
@@ -465,14 +435,7 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 3
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
@@ -523,14 +486,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 3
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
@@ -581,14 +537,7 @@ MonoBehaviour:
         type: 4
       - isHidden: 0
         type: 1
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
@@ -657,12 +606,7 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 6
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
@@ -736,12 +680,7 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 6
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
@@ -823,12 +762,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 4
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
@@ -908,12 +842,7 @@ MonoBehaviour:
         type: 4
       - isHidden: 0
         type: 3
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 1fe72942313a5654ba34c277fbd90909, type: 3}
@@ -988,12 +917,7 @@ MonoBehaviour:
         type: 5
       - isHidden: 0
         type: 5
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: b7fd85b71d8293c439eff2b8a7ab0979, type: 3}
@@ -1077,12 +1001,7 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
@@ -1170,12 +1089,7 @@ MonoBehaviour:
         type: 5
       - isHidden: 0
         type: 5
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
@@ -1266,12 +1180,7 @@ MonoBehaviour:
         type: 3
       - isHidden: 0
         type: 3
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 6ab61c32ea375af48856d51e17043ffa, type: 3}
@@ -1341,12 +1250,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 0
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
-    - isRandom: 1
-      Yarns: []
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
