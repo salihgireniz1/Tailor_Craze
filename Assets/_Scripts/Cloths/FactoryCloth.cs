@@ -8,9 +8,14 @@ using System.Threading;
 public class FactoryCloth : MonoBehaviour
 {
     public ClothData[] myClothParts;
-    CancellationTokenSource rotationTokenSource;
+    public float _clothScaleMultiplier = 1.5f;
+    private Vector3 _defaultScale;
+    private float _defaultZPos;
+    CancellationTokenSource selectionAnimTokenSource;
     private void Start()
     {
+        _defaultScale = transform.localScale;
+        _defaultZPos = transform.position.z;
         DeselectRotate().Forget();
     }
     [Button]
@@ -24,15 +29,45 @@ public class FactoryCloth : MonoBehaviour
     }
     public UniTask SelectRotate()
     {
-        rotationTokenSource?.Cancel();
-        rotationTokenSource = new();
-        return transform.DORotate(new Vector3(40f, 0f, 0f), .2f).SetEase(Ease.InBack).ToUniTask(cancellationToken: rotationTokenSource.Token);
+        selectionAnimTokenSource?.Cancel();
+        selectionAnimTokenSource = new();
+        var rotate = transform
+                .DORotate(ClothsController.Instance.bandAnimData._clothSelectionRotate, ClothsController.Instance.bandAnimData._animationDuration)
+                .SetEase(Ease.InBack)
+                .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
+
+        var bringForward = transform
+                .DOMoveZ(_defaultZPos + ClothsController.Instance.bandAnimData._zForwardOffset, ClothsController.Instance.bandAnimData._animationDuration)
+                .SetEase(Ease.InBack)
+                .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
+
+        var scale = transform
+                .DOScale(_defaultScale * _clothScaleMultiplier, ClothsController.Instance.bandAnimData._animationDuration)
+                .SetEase(Ease.InBack)
+                .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
+
+        return UniTask.WhenAll(rotate, scale, bringForward);
     }
     public UniTask DeselectRotate()
     {
-        rotationTokenSource?.Cancel();
-        rotationTokenSource = new();
-        return transform.DORotate(new Vector3(0f, -30f, 0f), .2f).SetEase(Ease.InBack).ToUniTask(cancellationToken: rotationTokenSource.Token);
+        selectionAnimTokenSource?.Cancel();
+        selectionAnimTokenSource = new();
+        var scale = transform
+                .DOScale(_defaultScale, ClothsController.Instance.bandAnimData._animationDuration)
+                .SetEase(Ease.InBack)
+                .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
+
+        var bringBackward = transform
+                .DOMoveZ(_defaultZPos, ClothsController.Instance.bandAnimData._animationDuration)
+                .SetEase(Ease.InBack)
+                .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
+
+        var rotate = transform
+                .DORotate(ClothsController.Instance.bandAnimData._clothDeselectRotate, ClothsController.Instance.bandAnimData._animationDuration)
+                .SetEase(Ease.InBack)
+                .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
+
+        return UniTask.WhenAll(rotate, scale, bringBackward);
     }
     public ClothPart GetFillablePart(YarnData data)
     {

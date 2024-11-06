@@ -12,9 +12,10 @@ public class ClothsController : MonoSingleton<ClothsController>
     [SerializeField] Transform _spawnPoint;
     [SerializeField] Vector3 _offset = new Vector3(0, 1f, -0.5f);
     [SerializeField] Transform _clothParent;
-    public List<FactoryCloth> activeCloths = new();
+    public BandAnimData bandAnimData;
+    private List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
-    [SerializeField] private int _clothCount;
+    private int _clothCount;
     private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
     public ReactiveProperty<int> ClothCount { get; private set; }
     public ReactiveProperty<int> LevelClothsCount { get; private set; }

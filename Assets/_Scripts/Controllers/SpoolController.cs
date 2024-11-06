@@ -92,7 +92,7 @@ public class SpoolController : MonoSingleton<SpoolController>
         _canRandom = data.RandomNextSpool;
         _levelSpools = data.LevelSpools;
         _spoolCount = 0;
-        for (int i = 0; i < data.StartSpoolCount; i++)
+        for (int i = 0; i < _levelSpools.Length; i++)
         {
             _activeSpools.Add(SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position));
         }
