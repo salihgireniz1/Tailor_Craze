@@ -27,13 +27,16 @@ public class FactoryCloth : MonoBehaviour
             clothPart.part._requiredYarnCount = clothPart.RequiredYarnCount;
         }
     }
+    public bool IsRotating;
     public UniTask SelectRotate()
     {
         selectionAnimTokenSource?.Cancel();
         selectionAnimTokenSource = new();
+        IsRotating = true;
         var rotate = transform
                 .DORotate(ClothsController.Instance.bandAnimData._clothSelectionRotate, ClothsController.Instance.bandAnimData._animationDuration)
                 .SetEase(Ease.InBack)
+                .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var bringForward = transform
@@ -52,6 +55,7 @@ public class FactoryCloth : MonoBehaviour
     {
         selectionAnimTokenSource?.Cancel();
         selectionAnimTokenSource = new();
+        IsRotating = true;
         var scale = transform
                 .DOScale(_defaultScale, ClothsController.Instance.bandAnimData._animationDuration)
                 .SetEase(Ease.InBack)
@@ -65,6 +69,7 @@ public class FactoryCloth : MonoBehaviour
         var rotate = transform
                 .DORotate(ClothsController.Instance.bandAnimData._clothDeselectRotate, ClothsController.Instance.bandAnimData._animationDuration)
                 .SetEase(Ease.InBack)
+                .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         return UniTask.WhenAll(rotate, scale, bringBackward);

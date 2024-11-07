@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cc09b864a258448b2e940930d5809f, type: 3}
-  m_Name: Knitting Settings
+  m_Script: {fileID: 11500000, guid: 46d8ba14ff290b2458a1c86b3ec14dde, type: 3}
+  m_Name: Mannequin Band Settings
   m_EditorClassIdentifier: 
-  KnittingDuration: 0.075
-  RollingDuration: 0.5
-  ConnectionDuration: 0.05
-  ConnectionLerpSpeed: 40
+  _animationDuration: 0.25
+  _clothScaleMultiplier: 1.5
+  _zForwardOffset: -0.7
+  _clothSelectionRotate: {x: 0, y: 0, z: 0}
+  _clothDeselectRotate: {x: 0, y: -30, z: 0}

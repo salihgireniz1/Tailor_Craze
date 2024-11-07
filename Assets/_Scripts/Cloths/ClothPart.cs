@@ -4,6 +4,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class ClothPart : MonoBehaviour, IFillable, IConnect
 {
@@ -29,7 +30,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [Button]
     public void InitializePart(YarnType type)
     {
-        _knits = GetComponentsInChildren<Knit>();
+        _knits = GetComponentsInChildren<Knit>(true);
         this.Type = type;
         var data = YarnController.Instance.GetYarnData(type);
         foreach (var knit in _knits)
@@ -37,7 +38,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             knit.InitializeKnit(data.color);
         }
         _renderer = _renderer ?? GetComponent<Renderer>();
-        _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a / 2));
+        _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
     }
     public bool CanBeFilled(YarnData data)
     {
@@ -68,13 +69,23 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     }
     public async UniTask TravelPath(List<Knit> path)
     {
+        float knitDuration = Settings.Instance.KnittingSettings.KnittingDuration;
         foreach (var knit in path)
         {
             // Activate the knit
-            var oneKnit = knit.Activate(Settings.Instance.KnittingSettings.KnittingDuration);
+            var oneKnit = knit.Activate(knitDuration);
+            var vibrateCloth = UniTask.CompletedTask;
+            if (!_myCloth.IsRotating)
+            {
+                vibrateCloth = _myCloth.transform
+                                .DOPunchRotation(Random.onUnitSphere, knitDuration, 3)
+                                .ToUniTask();
+            }
+
             currentKnit = knit;
-            await oneKnit;
+            await UniTask.WhenAll(oneKnit, vibrateCloth);
         }
+        // await _myCloth.transform.DORotate(Vector3.zero, 0f).ToUniTask();
     }
     Dictionary<int, List<Knit>> DivideKnitsIntoParts(int n)
     {
