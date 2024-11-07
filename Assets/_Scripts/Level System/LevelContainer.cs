@@ -25,7 +25,18 @@ public struct LevelData
     [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true)]
     public FactoryCloth[] LevelCloths;
 }
+[Serializable]
+public struct ClothInfo
+{
+    [HorizontalGroup("Cloths At This Level", Width = 0.3f)]
+    public int RequiredYarnCount;
 
+    [HorizontalGroup("Cloths At This Level")]
+    public FactoryCloth ClothPrefab;
+
+    [HorizontalGroup("Cloths At This Level")]
+    public YarnType colorType;
+}
 [Serializable]
 public struct SpoolInfo
 {

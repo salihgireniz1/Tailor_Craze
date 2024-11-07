@@ -7,13 +7,14 @@ using System.Collections.Generic;
 
 public class ClothPart : MonoBehaviour, IFillable, IConnect
 {
-    [SerializeField] private int _requiredYarnCount = 1;
+    public int _requiredYarnCount = 1;
     [SerializeField] private int _currentFillness = 0;
     [SerializeField] private Knit[] _knits;
     [SerializeField] private YarnType _type;
     [ShowInInspector] Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
     [SerializeField] private FactoryCloth _myCloth;
+    [SerializeField] private Renderer _renderer;
 
     private void Start()
     {
@@ -35,7 +36,8 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         {
             knit.InitializeKnit(data.color);
         }
-        GetComponent<SpriteRenderer>().color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a / 4));
+        _renderer = _renderer ?? GetComponent<Renderer>();
+        _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a / 2));
     }
     public bool CanBeFilled(YarnData data)
     {

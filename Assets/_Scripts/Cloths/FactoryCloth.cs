@@ -8,7 +8,6 @@ using System.Threading;
 public class FactoryCloth : MonoBehaviour
 {
     public ClothData[] myClothParts;
-    public float _clothScaleMultiplier = 1.5f;
     private Vector3 _defaultScale;
     private float _defaultZPos;
     CancellationTokenSource selectionAnimTokenSource;
@@ -25,6 +24,7 @@ public class FactoryCloth : MonoBehaviour
         {
             clothPart.part.InitializePart(clothPart.colorType);
             clothPart.part.MyCloth = this;
+            clothPart.part._requiredYarnCount = clothPart.RequiredYarnCount;
         }
     }
     public UniTask SelectRotate()
@@ -42,7 +42,7 @@ public class FactoryCloth : MonoBehaviour
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var scale = transform
-                .DOScale(_defaultScale * _clothScaleMultiplier, ClothsController.Instance.bandAnimData._animationDuration)
+                .DOScale(_defaultScale * ClothsController.Instance.bandAnimData._clothScaleMultiplier, ClothsController.Instance.bandAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
@@ -97,4 +97,5 @@ public struct ClothData
 {
     public ClothPart part;
     public YarnType colorType;
+    public int RequiredYarnCount;
 }

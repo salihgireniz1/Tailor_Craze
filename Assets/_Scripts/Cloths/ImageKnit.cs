@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
+using System;
 
 public class ImageKnit : Knit
 {
@@ -18,6 +19,17 @@ public class ImageKnit : Knit
     public override UniTask Activate(float activisionDuration)
     {
         SoundManager.Instance.PlaySFX(SFXType.Knitted);
-        return transform.DOScale(Vector3.one * targetScale, activisionDuration).SetEase(Ease.Linear).ToUniTask();
+        // transform.DOPunchScale(Vector3.one * targetScale, activisionDuration, 2, 0).ToUniTask();
+        transform
+        .DOScale(Vector3.one * targetScale * 2f, activisionDuration)
+        .SetEase(Ease.OutBounce)
+        .OnComplete(() =>
+        {
+            transform
+                    .DOScale(Vector3.one * targetScale, activisionDuration)
+                    .SetEase(Ease.InBack);
+        })
+        .ToUniTask();
+        return UniTask.Delay(TimeSpan.FromSeconds(activisionDuration));
     }
 }

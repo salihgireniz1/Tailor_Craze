@@ -7,7 +7,7 @@ public class ClothKnit : Knit
     public Material knitMaterial;
     public override void InitializeKnit(Color32 color)
     {
-        if (!knitMaterial) knitMaterial = GetComponent<Renderer>().sharedMaterial;
+        if (!knitMaterial) knitMaterial = GetComponent<Renderer>().material;
         knitMaterial.color = color;
         transform.localScale = Vector3.zero;
         gameObject.SetActive(false);
