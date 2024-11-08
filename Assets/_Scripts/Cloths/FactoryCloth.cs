@@ -34,18 +34,18 @@ public class FactoryCloth : MonoBehaviour
         selectionAnimTokenSource = new();
         IsRotating = true;
         var rotate = transform
-                .DORotate(ClothsController.Instance.bandAnimData._clothSelectionRotate, ClothsController.Instance.bandAnimData._animationDuration)
+                .DORotate(ClothsController.Instance.KnittingAnimData._clothSelectionRotate, ClothsController.Instance.KnittingAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var bringForward = transform
-                .DOMoveZ(_defaultZPos + ClothsController.Instance.bandAnimData._zForwardOffset, ClothsController.Instance.bandAnimData._animationDuration)
+                .DOMoveZ(_defaultZPos + ClothsController.Instance.KnittingAnimData._zForwardOffset, ClothsController.Instance.KnittingAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var scale = transform
-                .DOScale(_defaultScale * ClothsController.Instance.bandAnimData._clothScaleMultiplier, ClothsController.Instance.bandAnimData._animationDuration)
+                .DOScale(_defaultScale * ClothsController.Instance.KnittingAnimData._clothScaleMultiplier, ClothsController.Instance.KnittingAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
@@ -57,17 +57,17 @@ public class FactoryCloth : MonoBehaviour
         selectionAnimTokenSource = new();
         IsRotating = true;
         var scale = transform
-                .DOScale(_defaultScale, ClothsController.Instance.bandAnimData._animationDuration)
+                .DOScale(_defaultScale, ClothsController.Instance.KnittingAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var bringBackward = transform
-                .DOMoveZ(_defaultZPos, ClothsController.Instance.bandAnimData._animationDuration)
+                .DOMoveZ(_defaultZPos, ClothsController.Instance.KnittingAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var rotate = transform
-                .DORotate(ClothsController.Instance.bandAnimData._clothDeselectRotate, ClothsController.Instance.bandAnimData._animationDuration)
+                .DORotate(ClothsController.Instance.KnittingAnimData._clothDeselectRotate, ClothsController.Instance.KnittingAnimData._animationDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);

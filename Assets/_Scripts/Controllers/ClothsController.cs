@@ -12,12 +12,14 @@ public class ClothsController : MonoSingleton<ClothsController>
     [SerializeField] Transform _spawnPoint;
     [SerializeField] Vector3 _offset = new Vector3(0, 1f, -0.5f);
     [SerializeField] Transform _clothParent;
-    public BandAnimData bandAnimData;
-    [SerializeField] private List<FactoryCloth> activeCloths = new();
+    [SerializeField] Animation _anim;
+    [SerializeField] KnittingAnimationData _knittingAnimData;
+    [SerializeField] BandAnimationData _bandAnimData;
+    private List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
     private int _clothCount;
-    public Animation anim;
-    [ShowInInspector] private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
+    private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
+    public KnittingAnimationData KnittingAnimData => _knittingAnimData;
     public ReactiveProperty<int> ClothCount { get; private set; }
     public ReactiveProperty<int> LevelClothsCount { get; private set; }
     protected override void Awake()
@@ -49,28 +51,41 @@ public class ClothsController : MonoSingleton<ClothsController>
         ClothCount.Value++;
         if (_clothCount >= _levelCloths.Length && activeCloths.Count <= 0)
         {
-            Debug.Log("WIN!");
             GameManager.CurrentState.Value = GameState.Victory;
-        }
-        else
-        {
-            // await AddNewClothAndShiftRight();
-            // await UniTask.WhenAll(FillGapsWithCloth());
         }
         await UniTask.CompletedTask;
     }
+
+    /// <summary>
+    /// Clears all completed cloths from the active cloths list and destroys their game objects.
+    /// </summary>
+    /// <returns>A UniTask that completes when all completed cloths have been cleared.</returns>
     public async UniTask ClearCompletedCLoths()
     {
+        // Initialize a list to store completed cloths.
         List<FactoryCloth> completedCloths = new();
+
+        // Iterate through the active cloths list.
         foreach (var cloth in activeCloths)
         {
+            // If the cloth is completed, add it to the completedCloths list.
             if (cloth.IsCompleted()) completedCloths.Add(cloth);
         }
-        foreach (var cloth in completedCloths)
+
+        // Initialize an array to store the completion animations of the completed cloths.
+        UniTask[] completeAnimations = new UniTask[completedCloths.Count];
+
+        // Iterate through the completed cloths list.
+        for (int i = 0; i < completedCloths.Count; i++)
         {
-            await CompleteCloth(cloth);
+            // Start the completion animation for each completed cloth and store the UniTask in the completeAnimations array.
+            completeAnimations[i] = CompleteCloth(completedCloths[i]);
         }
+
+        // Wait for all completion animations to complete.
+        await UniTask.WhenAll(completeAnimations);
     }
+
 
     public ClothPart GetClothWithData(YarnData data)
     {
@@ -148,7 +163,12 @@ public class ClothsController : MonoSingleton<ClothsController>
             if (nextSpotIndex < _spots.Length)
             {
                 _clothSpotDict[currentCloth] = _spots[nextSpotIndex];
-                UniTask task = currentCloth.transform.DOMove(_spots[nextSpotIndex].position + _offset, .75f).WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth));
+
+                UniTask task = currentCloth.transform
+                    .DOMove(_spots[nextSpotIndex].position + _offset, _bandAnimData.shiftingDuration)
+                    .SetEase(_bandAnimData.shiftingEase)
+                    .WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth));
+
                 shifts.Add(task);
             }
             else
@@ -163,26 +183,12 @@ public class ClothsController : MonoSingleton<ClothsController>
         {
             if (GetSpotIndex(pair.Value) == _spots.Length - 1)
             {
-                anim.enabled = true;
+                _anim.enabled = true;
                 break;
             }
 
-            anim.enabled = false;
+            _anim.enabled = false;
         }
-        // FactoryCloth newCloth = null;
-        // // If there are still cloths to spawn for this level,
-        // if (_clothCount < _levelCloths.Length)
-        // {
-        //     // Spawn the new cloth at the left-most spot
-        //     newCloth = Instantiate(_levelCloths[_clothCount], _spawnPoint.position + _offset, Quaternion.identity, _clothParent);
-        //     int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
-        //     UniTask alignToStart = newCloth.transform.DOMove(_spots[spawnAlignmentIndex].position + _offset, .5f).SetEase(Ease.OutBack).ToUniTask();
-        //     shifts.Add(alignToStart);
-
-        //     activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
-        //     _clothSpotDict[newCloth] = _spots[spawnAlignmentIndex];
-        //     _clothCount++;
-        // }
 
         await UniTask.WhenAll(shifts.Concat(FillGapsWithCloth()));
 
@@ -202,23 +208,56 @@ public class ClothsController : MonoSingleton<ClothsController>
         if (GameManager.CurrentState.Value == GameState.InProgress)
             GameManager.CurrentState.Value = GameState.Playing;
     }
+
+    /// <summary>
+    /// Fills any gaps in the cloth band by spawning new cloths and aligning them to the correct spots.
+    /// </summary>
+    /// <returns>A list of UniTasks representing the movement animations of the spawned cloths.</returns>
     List<UniTask> FillGapsWithCloth()
     {
         List<UniTask> spawnTasks = new();
+
         FactoryCloth newCloth;
+
+        // Determine the index of the last occupied spot on the band.
         int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
+
+        // Iterate through the spots from the last occupied spot to the first.
         for (int i = spawnAlignmentIndex; i >= 0; i--)
         {
-            var spawnPos = new Vector3(_spawnPoint.position.x - (2f * (spawnAlignmentIndex - i)), _spawnPoint.position.y, _spawnPoint.position.z);
-            newCloth = Instantiate(_levelCloths[_clothCount], spawnPos + _offset, Quaternion.identity, _clothParent);
+            // Calculate the spawn position for the new cloth.
+            var spawnPos = new Vector3(
+                _spawnPoint.position.x - (2f * (spawnAlignmentIndex - i)),
+                _spawnPoint.position.y,
+                _spawnPoint.position.z);
 
+            // Instantiate a new cloth at the calculated spawn position.
+            newCloth = Instantiate(
+                _levelCloths[_clothCount],
+                spawnPos + _offset,
+                Quaternion.identity,
+                _clothParent);
 
-            activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
+            // Add the new cloth to the beginning of the active cloths list.
+            activeCloths.Insert(0, newCloth);
+
+            // Map the new cloth to its corresponding spot.
             _clothSpotDict[newCloth] = _spots[i];
+
+            // Increment the cloth count.
             _clothCount++;
-            UniTask alignToStart = newCloth.transform.DOMove(_spots[i].position + _offset, .75f).ToUniTask();
+
+            // Animate the new cloth to its correct spot.
+            UniTask alignToStart = newCloth.transform
+                .DOMove(_spots[i].position + _offset, _bandAnimData.shiftingDuration)
+                .SetEase(_bandAnimData.shiftingEase)
+                .WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(newCloth));
+
+            // Add the animation task to the list of spawn tasks.
             spawnTasks.Add(alignToStart);
         }
+
+        // Return the list of spawn tasks.
         return spawnTasks;
     }
 }

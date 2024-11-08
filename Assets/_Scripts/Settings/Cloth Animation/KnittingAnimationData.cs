@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Band Animation", fileName = "Band Animation Data")]
-public class BandAnimData : ScriptableObject
+[CreateAssetMenu(menuName = "Scriptable Objects/Knitting Animation", fileName = "Knitting Animation Data")]
+public class KnittingAnimationData : ScriptableObject
 {
     public float _animationDuration = 0.15f;
     public float _clothScaleMultiplier = 1.5f;
