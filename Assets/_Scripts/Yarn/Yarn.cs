@@ -16,7 +16,8 @@ public class Yarn : MonoBehaviour, IConnect
         if (!Spline) Spline = GetComponent<SplineComputer>();
 
         Data = data;
-        Tube.color = data.color;
+        // Tube.color = data.color;
+        GetComponent<Renderer>().sharedMaterial.color = data.color;
 
         Spline.RebuildImmediate();
     }
