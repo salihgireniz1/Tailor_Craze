@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7207790690535335965}
+  - component: {fileID: 2495242943003568057}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged
@@ -26,12 +27,28 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2413878, y: 1.2413878, z: 1.2413878}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2013876154218405904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &2495242943003568057
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460441684931272345}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 2ea24140cc039a2479c5f683a4cf6493, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 2ea24140cc039a2479c5f683a4cf6493, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &2051390507638851579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,7 +111,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 449854678a613e94694b0cf74219467b, type: 2}
+      objectReference: {fileID: 2100000, guid: 37d9990955e8db24b9bf6d981606f020, type: 2}
     - target: {fileID: -2121834311169451355, guid: 1915093c744320b499ccf70d7eb098e3,
         type: 3}
       propertyPath: m_LocalPosition.z
