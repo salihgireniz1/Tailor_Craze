@@ -23,7 +23,7 @@ public class LevelManager : MonoSingleton<LevelManager>
         .Where(state => state == GameState.Victory)
         .Subscribe(_ =>
         {
-            // Level++;
+            Level++;
             Debug.Log(GameManager.CurrentState.Value);
         }
 
