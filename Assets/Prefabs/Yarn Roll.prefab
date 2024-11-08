@@ -527,3 +527,4 @@ MonoBehaviour:
     color:
       serializedVersion: 2
       rgba: 0
+    material: {fileID: 0}

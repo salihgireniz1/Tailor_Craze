@@ -21,27 +21,34 @@ MonoBehaviour:
     color:
       serializedVersion: 2
       rgba: 4278190263
+    material: {fileID: 2100000, guid: df0826bc126e1174eb35cd594113d16c, type: 2}
   - Type: 1
     color:
       serializedVersion: 2
       rgba: 4291588863
+    material: {fileID: 2100000, guid: 3b8905f7388dbaf4a96d955853fdd9df, type: 2}
   - Type: 2
     color:
       serializedVersion: 2
       rgba: 4290212352
+    material: {fileID: 2100000, guid: 4e5782ea446217b499b70a9600932dc0, type: 2}
   - Type: 3
     color:
       serializedVersion: 2
       rgba: 4278255611
+    material: {fileID: 2100000, guid: e73997923f125c642b389d4526de95e1, type: 2}
   - Type: 4
     color:
       serializedVersion: 2
       rgba: 4281767679
+    material: {fileID: 2100000, guid: e57d423700ce1e94d95f219ec3471a42, type: 2}
   - Type: 5
     color:
       serializedVersion: 2
       rgba: 4288758151
+    material: {fileID: 2100000, guid: 35001683d9e3dd3469b5f62df2de8d14, type: 2}
   - Type: 6
     color:
       serializedVersion: 2
       rgba: 4278232607
+    material: {fileID: 2100000, guid: 4aef0f555a75b194ea44e9c6bcab970a, type: 2}

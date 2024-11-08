@@ -5,6 +5,7 @@ using R3;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
@@ -63,6 +64,15 @@ public class LevelManager : MonoSingleton<LevelManager>
             if (Instance.automated) ES3.Save(Consts.LevelKey, Instance._level);
         }
     }
-
+    public void LevelBackDebugger()
+    {
+        Level--;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void LevelForwardDebugger()
+    {
+        Level++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public int LevelIndex => Math.Max(0, Level - 1);
 }

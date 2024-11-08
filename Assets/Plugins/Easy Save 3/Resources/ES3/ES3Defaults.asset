@@ -34,9 +34,12 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - Dreamteck.Splines
     - Dreamteck.Utilities
+    - KinoBloom.Runtime
     - MK.Toon
     - MK.Toon.URP
     - R3.Unity
+    - ToonyColorsPro.Runtime
+    - ToonyColorsPro2.Demo
     - UniTask
     - UniTask.Addressables
     - UniTask.DOTween

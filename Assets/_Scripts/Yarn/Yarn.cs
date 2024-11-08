@@ -17,7 +17,9 @@ public class Yarn : MonoBehaviour, IConnect
 
         Data = data;
         // Tube.color = data.color;
-        GetComponent<Renderer>().sharedMaterial.color = data.color;
+        var r = GetComponent<Renderer>();
+        r.material = data.material;
+        r.material.color = data.color;
 
         Spline.RebuildImmediate();
     }

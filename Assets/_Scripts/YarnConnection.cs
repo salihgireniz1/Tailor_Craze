@@ -13,9 +13,11 @@ public class YarnConnection : MonoSingleton<YarnConnection>
     private Node endNode;
     bool isActive;
     DisposableBag bag;
+    Material myMat;
     protected override void Awake()
     {
         base.Awake();
+        myMat = GetComponent<Renderer>().sharedMaterial;
         tube = GetComponent<TubeGenerator>();
         GetNodes();
     }
@@ -50,6 +52,7 @@ public class YarnConnection : MonoSingleton<YarnConnection>
         if (isActive) return;
 
         tube.color = data.color;
+        myMat.color = data.color;
         isActive = true;
         Observable.EveryUpdate()
             .Where(_ => isActive && tube != null)
