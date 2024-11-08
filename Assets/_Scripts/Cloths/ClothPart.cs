@@ -15,7 +15,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [ShowInInspector] Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
     [SerializeField] private FactoryCloth _myCloth;
-    [SerializeField] private Renderer _renderer;
 
     private void Start()
     {
@@ -37,8 +36,15 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         {
             knit.InitializeKnit(data.color);
         }
-        _renderer = _renderer ?? GetComponent<Renderer>();
-        _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
+
+        if (TryGetComponent(out SpriteRenderer sr))
+        {
+            sr.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.75f));
+        }
+        else if (TryGetComponent(out Renderer rend))
+        {
+            rend.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
+        }
     }
     public bool CanBeFilled(YarnData data)
     {

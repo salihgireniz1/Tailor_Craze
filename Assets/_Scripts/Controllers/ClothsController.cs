@@ -16,6 +16,7 @@ public class ClothsController : MonoSingleton<ClothsController>
     private List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
     private int _clothCount;
+    public Animation anim;
     private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
     public ReactiveProperty<int> ClothCount { get; private set; }
     public ReactiveProperty<int> LevelClothsCount { get; private set; }
@@ -33,7 +34,7 @@ public class ClothsController : MonoSingleton<ClothsController>
             _ => InitLevelCloths()
         ).AddTo(this);
     }
-    public UniTask CompleteCloth(FactoryCloth cloth)
+    public async UniTask CompleteCloth(FactoryCloth cloth)
     {
         if (_clothSpotDict.ContainsKey(cloth))
         {
@@ -51,8 +52,11 @@ public class ClothsController : MonoSingleton<ClothsController>
             Debug.Log("WIN!");
             GameManager.CurrentState.Value = GameState.Victory;
         }
-
-        return UniTask.CompletedTask;
+        else
+        {
+            // await AddNewClothAndShiftRight();
+        }
+        await UniTask.CompletedTask;
     }
 
     public ClothPart GetClothWithData(YarnData data)
@@ -139,6 +143,18 @@ public class ClothsController : MonoSingleton<ClothsController>
                 GameManager.CurrentState.Value = GameState.GameOver;
                 return;
             }
+        }
+
+        // Check if any cloth came to the last spot.
+        foreach (var pair in _clothSpotDict)
+        {
+            if (GetSpotIndex(pair.Value) == _spots.Length - 1)
+            {
+                anim.enabled = true;
+                break;
+            }
+
+            anim.enabled = false;
         }
         FactoryCloth newCloth = null;
         // If there are still cloths to spawn for this level,

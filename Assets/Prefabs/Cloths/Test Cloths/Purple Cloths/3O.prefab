@@ -4863,7 +4863,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
-  m_Color: {r: 0.5294118, g: 0.25490198, b: 0.6313726, a: 0.24705882}
+  m_Color: {r: 0.5294118, g: 0.25490198, b: 0.6313726, a: 0.7490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5291,7 +5291,8 @@ MonoBehaviour:
   myClothParts:
   - part: {fileID: 1824297631107468784}
     colorType: 5
-  _clothScaleMultiplier: 1.5
+    RequiredYarnCount: 3
+  IsRotating: 0
 --- !u!1 &8798212612266064965
 GameObject:
   m_ObjectHideFlags: 0

@@ -207,7 +207,7 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 5
-    RandomNextSpool: 0
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: 23ae2e5f22121694887719934a3c6840, type: 3}
@@ -258,7 +258,7 @@ MonoBehaviour:
         type: 3
       - isHidden: 0
         type: 4
-    RandomNextSpool: 0
+    RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
     - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}

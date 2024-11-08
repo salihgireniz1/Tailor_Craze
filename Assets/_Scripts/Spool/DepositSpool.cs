@@ -8,9 +8,11 @@ public class DepositSpool : BaseSpool, IFillable
     [SerializeField] private bool _isFilled;
     [SerializeField] private Yarn myYarn;
     public YarnData filledYarnData;
+    public Material depositYarnMaterial;
     private void Awake()
     {
         myYarn = GetComponentInChildren<Yarn>();
+        depositYarnMaterial = myYarn.GetComponent<Renderer>().sharedMaterial;
         _contents = new() { myYarn };
     }
     [Button]
@@ -21,6 +23,7 @@ public class DepositSpool : BaseSpool, IFillable
         filledYarnData = data;
         myYarn.Tube.clipTo = 0;
         myYarn.Tube.color = data.color;
+        depositYarnMaterial.color = data.color;
         SoundManager.Instance.PlaySFX(SFXType.DepositFill);
         await YarnController.Instance.Rolling(myYarn, RollType.Roll, this, FillDuration);
         SoundManager.Instance.ResetPitch();
