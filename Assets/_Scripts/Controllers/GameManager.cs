@@ -19,7 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         // Application.targetFrameRate = 60;
         CurrentState.Value = GameState.Initializing;
-        CurrentState.Subscribe(state => Debug.Log(state)).AddTo(this);
+        // CurrentState.Subscribe(state => Debug.Log(state)).AddTo(this);
     }
 
 }

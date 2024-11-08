@@ -13,11 +13,11 @@ public class ClothsController : MonoSingleton<ClothsController>
     [SerializeField] Vector3 _offset = new Vector3(0, 1f, -0.5f);
     [SerializeField] Transform _clothParent;
     public BandAnimData bandAnimData;
-    private List<FactoryCloth> activeCloths = new();
+    [SerializeField] private List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
     private int _clothCount;
     public Animation anim;
-    private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
+    [ShowInInspector] private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
     public ReactiveProperty<int> ClothCount { get; private set; }
     public ReactiveProperty<int> LevelClothsCount { get; private set; }
     protected override void Awake()
@@ -55,8 +55,21 @@ public class ClothsController : MonoSingleton<ClothsController>
         else
         {
             // await AddNewClothAndShiftRight();
+            // await UniTask.WhenAll(FillGapsWithCloth());
         }
         await UniTask.CompletedTask;
+    }
+    public async UniTask ClearCompletedCLoths()
+    {
+        List<FactoryCloth> completedCloths = new();
+        foreach (var cloth in activeCloths)
+        {
+            if (cloth.IsCompleted()) completedCloths.Add(cloth);
+        }
+        foreach (var cloth in completedCloths)
+        {
+            await CompleteCloth(cloth);
+        }
     }
 
     public ClothPart GetClothWithData(YarnData data)
@@ -118,7 +131,6 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Check if adding a new cloth would exceed the spot limit
         if (activeCloths.Count >= _spots.Length)
         {
-            Debug.Log("Level Failed: No more spots to shift right.");
             GameManager.CurrentState.Value = GameState.GameOver;
             return;
         }
@@ -127,19 +139,20 @@ public class ClothsController : MonoSingleton<ClothsController>
         for (int i = activeCloths.Count - 1; i >= 0; i--)
         {
             var currentCloth = activeCloths[i];
-            if (currentCloth == null) return;
+            if (currentCloth == null)
+            {
+                return;
+            }
             var currentSpot = _clothSpotDict[currentCloth];
             int nextSpotIndex = (i == activeCloths.Count - 1) ? GetSpotIndex(currentSpot) + 1 : GetMostRightSpotIndex(currentSpot);
             if (nextSpotIndex < _spots.Length)
             {
                 _clothSpotDict[currentCloth] = _spots[nextSpotIndex];
-
-                UniTask task = currentCloth.transform.DOMove(_spots[nextSpotIndex].position + _offset, 0.5f).SetEase(Ease.OutBack).WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth));
+                UniTask task = currentCloth.transform.DOMove(_spots[nextSpotIndex].position + _offset, .75f).WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth));
                 shifts.Add(task);
             }
             else
             {
-                Debug.Log("Level Failed: No more spots to shift right.");
                 GameManager.CurrentState.Value = GameState.GameOver;
                 return;
             }
@@ -156,24 +169,24 @@ public class ClothsController : MonoSingleton<ClothsController>
 
             anim.enabled = false;
         }
-        FactoryCloth newCloth = null;
-        // If there are still cloths to spawn for this level,
-        if (_clothCount < _levelCloths.Length)
-        {
-            // Spawn the new cloth at the left-most spot
-            newCloth = Instantiate(_levelCloths[_clothCount], _spawnPoint.position + _offset, Quaternion.identity, _clothParent);
-            int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
-            UniTask alignToStart = newCloth.transform.DOMove(_spots[spawnAlignmentIndex].position + _offset, .5f).SetEase(Ease.OutBack).ToUniTask();
-            shifts.Add(alignToStart);
+        // FactoryCloth newCloth = null;
+        // // If there are still cloths to spawn for this level,
+        // if (_clothCount < _levelCloths.Length)
+        // {
+        //     // Spawn the new cloth at the left-most spot
+        //     newCloth = Instantiate(_levelCloths[_clothCount], _spawnPoint.position + _offset, Quaternion.identity, _clothParent);
+        //     int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
+        //     UniTask alignToStart = newCloth.transform.DOMove(_spots[spawnAlignmentIndex].position + _offset, .5f).SetEase(Ease.OutBack).ToUniTask();
+        //     shifts.Add(alignToStart);
 
-            activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
-            _clothSpotDict[newCloth] = _spots[spawnAlignmentIndex];
-            _clothCount++;
-        }
+        //     activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
+        //     _clothSpotDict[newCloth] = _spots[spawnAlignmentIndex];
+        //     _clothCount++;
+        // }
 
         await UniTask.WhenAll(shifts);
-        // Await deposits to control new cloth.
-        await DepositSpoolController.Instance.CheckNewClothAsync(newCloth);
+        await UniTask.WhenAll(FillGapsWithCloth());
+
 
         // Ensure that there are at least two cloths on the band.
         if (activeCloths.Count == 1 && _clothCount < _levelCloths.Length)
@@ -181,7 +194,33 @@ public class ClothsController : MonoSingleton<ClothsController>
             await AddNewClothAndShiftRight();
         }
 
+        for (int i = activeCloths.Count - 1; i >= 0; i--)
+        {
+            // Await deposits to control new cloth.
+            await DepositSpoolController.Instance.CheckNewClothAsync(activeCloths[i]);
+            await ClearCompletedCLoths();
+        }
+
         if (GameManager.CurrentState.Value == GameState.InProgress)
             GameManager.CurrentState.Value = GameState.Playing;
+    }
+    List<UniTask> FillGapsWithCloth()
+    {
+        List<UniTask> spawnTasks = new();
+        FactoryCloth newCloth;
+        int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
+        for (int i = spawnAlignmentIndex; i >= 0; i--)
+        {
+            var spawnPos = new Vector3(_spawnPoint.position.x - (2f * (spawnAlignmentIndex - i)), _spawnPoint.position.y, _spawnPoint.position.z);
+            newCloth = Instantiate(_levelCloths[_clothCount], spawnPos + _offset, Quaternion.identity, _clothParent);
+
+
+            activeCloths.Insert(0, newCloth); // Add new cloth to the beginning of the list
+            _clothSpotDict[newCloth] = _spots[i];
+            _clothCount++;
+            UniTask alignToStart = newCloth.transform.DOMove(_spots[i].position + _offset, .75f).ToUniTask();
+            spawnTasks.Add(alignToStart);
+        }
+        return spawnTasks;
     }
 }

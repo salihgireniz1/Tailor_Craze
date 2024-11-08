@@ -39,7 +39,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
 
         if (TryGetComponent(out SpriteRenderer sr))
         {
-            sr.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.75f));
+            sr.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.65f));
         }
         else if (TryGetComponent(out Renderer rend))
         {
@@ -63,15 +63,15 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         _currentFillness++;
         await TravelPath(path).AttachExternalCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(this));
         _filling = false;
-        if (MyCloth != null && MyCloth.IsCompleted())
-        {
-            currentKnit = null;
-            await ClothsController.Instance.CompleteCloth(MyCloth);
-        }
-        else
-        {
-            MyCloth.DeselectRotate().Forget();
-        }
+        await MyCloth.DeselectRotate();
+        // if (MyCloth != null && MyCloth.IsCompleted())
+        // {
+        //     currentKnit = null;
+        //     await ClothsController.Instance.CompleteCloth(MyCloth);
+        // }
+        // else
+        // {
+        // }
     }
     public async UniTask TravelPath(List<Knit> path)
     {

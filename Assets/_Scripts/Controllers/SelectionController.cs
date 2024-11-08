@@ -35,6 +35,7 @@ public class SelectionController : MonoSingleton<SelectionController>
             fill = UniTask.CompletedTask;
 
             SpoolController.Instance.RemoveSpool((Spool)spool).Forget();
+            await ClothsController.Instance.ClearCompletedCLoths();
             await ClothsController.Instance.AddNewClothAndShiftRight();
             return;
         }
@@ -124,8 +125,8 @@ public class SelectionController : MonoSingleton<SelectionController>
         await YarnConnection.Instance.BreakConnection();
         await fill;
         fill = UniTask.CompletedTask;
-        await ClothsController.Instance.AddNewClothAndShiftRight();
         SpoolController.Instance.RemoveSpool((Spool)spool).Forget();
+        await ClothsController.Instance.AddNewClothAndShiftRight();
     }
 
     private async UniTask StartNewCloth()

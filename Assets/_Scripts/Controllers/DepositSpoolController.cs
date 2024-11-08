@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class DepositSpoolController : MonoSingleton<DepositSpoolController>
 {
@@ -18,6 +19,7 @@ public class DepositSpoolController : MonoSingleton<DepositSpoolController>
     }
     public async UniTask CheckNewClothAsync(FactoryCloth cloth)
     {
+        Debug.Log("3 start");
         if (cloth == null) return;
         foreach (var deposit in _depositSpools)
         {
@@ -40,5 +42,7 @@ public class DepositSpoolController : MonoSingleton<DepositSpoolController>
 
             // await ClothsController.Instance.AddNewClothAndShiftRight();
         }
+
+        Debug.Log("3 end");
     }
 }
