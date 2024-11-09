@@ -52,8 +52,8 @@ public class SelectionController : MonoSingleton<SelectionController>
         // If we don't continue with same color, break the connection and wait previous cloth part to complete.
         if (!continueKnitting)
         {
-            await fill;
             await YarnConnection.Instance.BreakConnection();
+            await fill;
         }
 
         // If we completed every possible cloth or somehow failed, break the process.

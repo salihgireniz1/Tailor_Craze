@@ -15,13 +15,14 @@ public class ClothsController : MonoSingleton<ClothsController>
     [SerializeField] Animation _anim;
     [SerializeField] KnittingAnimationData _knittingAnimData;
     [SerializeField] BandAnimationData _bandAnimData;
-    private List<FactoryCloth> activeCloths = new();
+    [SerializeField] private List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
     private int _clothCount;
     private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
     public KnittingAnimationData KnittingAnimData => _knittingAnimData;
     public ReactiveProperty<int> ClothCount { get; private set; }
     public ReactiveProperty<int> LevelClothsCount { get; private set; }
+    CancellationDisposable cancellationDisposable = new();
     protected override void Awake()
     {
         base.Awake();
@@ -36,6 +37,14 @@ public class ClothsController : MonoSingleton<ClothsController>
             _ => InitLevelCloths()
         ).AddTo(this);
     }
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        cancellationDisposable.Dispose();
+    }
+
+    #region Cloth Completion
+
     public async UniTask CompleteCloth(FactoryCloth cloth)
     {
         if (_clothSpotDict.ContainsKey(cloth))
@@ -49,10 +58,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Actually, earn some golds, do some animations etc.
         Destroy(cloth.gameObject);
         ClothCount.Value++;
-        if (_clothCount >= _levelCloths.Length && activeCloths.Count <= 0)
-        {
-            GameManager.CurrentState.Value = GameState.Victory;
-        }
+
         await UniTask.CompletedTask;
     }
 
@@ -84,9 +90,16 @@ public class ClothsController : MonoSingleton<ClothsController>
 
         // Wait for all completion animations to complete.
         await UniTask.WhenAll(completeAnimations);
+
+        // Mark game as victory if every cloth in level completed.
+        if (_clothCount >= _levelCloths.Length && activeCloths.Count <= 0)
+        {
+            GameManager.CurrentState.Value = GameState.Victory;
+        }
     }
+    #endregion
 
-
+    #region Cloth Data Management
     public ClothPart GetClothWithData(YarnData data)
     {
         for (int i = activeCloths.Count - 1; i >= 0; i--)
@@ -99,16 +112,18 @@ public class ClothsController : MonoSingleton<ClothsController>
         }
         return null;
     }
-
-    [Button]
     public void InitLevelCloths()
     {
         _levelCloths = LevelManager.GetLevelData().LevelCloths;
+        activeCloths = new();
         _clothCount = 0;
         ClothCount.Value = 0;
         LevelClothsCount.Value = _levelCloths.Length;
-        AddNewClothAndShiftRight().Forget();
+        AddNewClothAndShiftRight().AttachExternalCancellation(cancellationDisposable.Token).Forget();
     }
+    #endregion
+
+    #region Helper Methods
     int GetSpotIndex(Transform spot)
     {
         return _spots.ToList().IndexOf(spot);
@@ -137,7 +152,9 @@ public class ClothsController : MonoSingleton<ClothsController>
         }
         return currentSpotIndex;
     }
-    [Button]
+    #endregion
+
+    #region Core Loop Methods
     public async UniTask AddNewClothAndShiftRight()
     {
         if (GameManager.CurrentState.Value == GameState.GameOver || GameManager.CurrentState.Value == GameState.Victory) return;
@@ -154,6 +171,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         for (int i = activeCloths.Count - 1; i >= 0; i--)
         {
             var currentCloth = activeCloths[i];
+            Debug.Log(currentCloth.gameObject.name, currentCloth.gameObject);
             if (currentCloth == null)
             {
                 return;
@@ -167,7 +185,7 @@ public class ClothsController : MonoSingleton<ClothsController>
                 UniTask task = currentCloth.transform
                     .DOMove(_spots[nextSpotIndex].position + _offset, _bandAnimData.shiftingDuration)
                     .SetEase(_bandAnimData.shiftingEase)
-                    .WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth));
+                    .WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth.gameObject));
 
                 shifts.Add(task);
             }
@@ -195,7 +213,8 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Ensure that there are at least two cloths on the band.
         if (activeCloths.Count == 1 && _clothCount < _levelCloths.Length)
         {
-            await AddNewClothAndShiftRight();
+            Debug.Log($"{activeCloths.Count} == 1 && {_clothCount} < {_levelCloths.Length}");
+            await AddNewClothAndShiftRight().AttachExternalCancellation(cancellationDisposable.Token);
         }
 
         for (int i = activeCloths.Count - 1; i >= 0; i--)
@@ -225,11 +244,13 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Iterate through the spots from the last occupied spot to the first.
         for (int i = spawnAlignmentIndex; i >= 0; i--)
         {
+            if (_clothCount >= _levelCloths.Length) break;
+
             // Calculate the spawn position for the new cloth.
             var spawnPos = new Vector3(
-                _spawnPoint.position.x - (2f * (spawnAlignmentIndex - i)),
-                _spawnPoint.position.y,
-                _spawnPoint.position.z);
+            _spawnPoint.position.x - (2f * (spawnAlignmentIndex - i)),
+            _spawnPoint.position.y,
+            _spawnPoint.position.z);
 
             // Instantiate a new cloth at the calculated spawn position.
             newCloth = Instantiate(
@@ -260,4 +281,5 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Return the list of spawn tasks.
         return spawnTasks;
     }
+    #endregion
 }

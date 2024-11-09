@@ -37,7 +37,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void ReloadScene()
     {
-        GameManager.CurrentState.Value = GameState.Initializing;
+        // GameManager.CurrentState.Value = GameState.Initializing;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

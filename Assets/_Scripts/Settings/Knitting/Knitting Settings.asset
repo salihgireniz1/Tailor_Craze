@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KnittingDuration: 0.075
   RollingDuration: 0.5
-  ConnectionDuration: 0.05
+  ConnectionDuration: 0.2
   ConnectionLerpSpeed: 40
