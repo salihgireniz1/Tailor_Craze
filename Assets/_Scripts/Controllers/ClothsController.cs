@@ -15,7 +15,7 @@ public class ClothsController : MonoSingleton<ClothsController>
     [SerializeField] Animation _anim;
     [SerializeField] KnittingAnimationData _knittingAnimData;
     [SerializeField] BandAnimationData _bandAnimData;
-    [SerializeField] private List<FactoryCloth> activeCloths = new();
+    public List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
     private int _clothCount;
     private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
@@ -171,7 +171,6 @@ public class ClothsController : MonoSingleton<ClothsController>
         for (int i = activeCloths.Count - 1; i >= 0; i--)
         {
             var currentCloth = activeCloths[i];
-            Debug.Log(currentCloth.gameObject.name, currentCloth.gameObject);
             if (currentCloth == null)
             {
                 return;

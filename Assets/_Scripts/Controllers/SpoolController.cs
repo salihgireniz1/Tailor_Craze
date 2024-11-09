@@ -1,25 +1,24 @@
-using System.Collections.Generic;
-using System.Threading;
-using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using R3;
-using Sirenix.OdinInspector;
+using System;
+using DG.Tweening;
 using UnityEngine;
+using System.Threading;
+using Sirenix.OdinInspector;
+using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
 
 public class SpoolController : MonoSingleton<SpoolController>
 {
     [SerializeField] private Transform _spoolsParent;
     [SerializeField] private GameObject[] spoolPoints;
-    [Button]
-    private void FindPoints()
-    {
-        spoolPoints = GameObject.FindGameObjectsWithTag("Spool Point");
-    }
     [SerializeField] private Spool _spoolPrefab;
     [SerializeField] private List<Spool> _activeSpools = new();
-    [SerializeField] SpoolInfo[] _levelSpools;
+
+    public SpoolInfo[] _levelSpools;
+
     private int _spoolCount = 0;
     private CancellationTokenSource cts = new();
+    private IRandomSpool _randomizer = new GetRandomForExistingCloths();
     private void Start()
     {
         GameManager.CurrentState
@@ -27,6 +26,11 @@ public class SpoolController : MonoSingleton<SpoolController>
         .Subscribe(
             _ => InitLevelSpools()
         ).AddTo(this);
+    }
+    [Button]
+    private void FindPoints()
+    {
+        spoolPoints = GameObject.FindGameObjectsWithTag("Spool Point");
     }
 
     [Button]
@@ -59,7 +63,7 @@ public class SpoolController : MonoSingleton<SpoolController>
     }
     public SpoolInfo GetNextSpoolOfLevel()
     {
-        int index = _spoolCount < _levelSpools.Length ? _spoolCount : Random.Range(0, _levelSpools.Length - 1);
+        int index = _spoolCount < _levelSpools.Length ? _spoolCount : Array.IndexOf(_levelSpools, _randomizer.GetRandomSpoolInfo());
         return _levelSpools[index];
     }
     public Spool SpawnSpool(SpoolInfo info, Vector3 point)
@@ -96,56 +100,5 @@ public class SpoolController : MonoSingleton<SpoolController>
         {
             _activeSpools.Add(SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position));
         }
-    }
-    // [Button]
-    // public void InitLevelSpools()
-    // {
-    //     LevelData data = LevelManager.GetLevelData();
-    //     _canRandom = data.RandomNextSpool;
-    //     _levelSpools = data.LevelSpools;
-    //     _spoolCount = 0;
-
-    //     // Define your bounds and minimum offset here (or pass them as parameters)
-    //     Vector2 spawnBoundsMin = new Vector2(-1.92f, -4.25f); // Example min bounds
-    //     Vector2 spawnBoundsMax = new Vector2(1.92f, 0);   // Example max bounds
-    //     float minOffset = 1.5f;  // Minimum distance required between spools
-
-    //     for (int i = 0; i < _levelSpools.Length; i++)
-    //     {
-    //         Vector3 spawnPosition;
-    //         bool validPosition;
-
-    //         // Try finding a valid position
-    //         do
-    //         {
-    //             spawnPosition = GetRandomPositionWithinBounds(spawnBoundsMin, spawnBoundsMax);
-    //             validPosition = IsPositionValid(spawnPosition, minOffset);
-    //         }
-    //         while (!validPosition);
-
-    //         // Spawn spool at the valid position
-    //         _activeSpools.Add(SpawnSpool(_levelSpools[i], spawnPosition));
-    //     }
-    // }
-
-    private Vector3 GetRandomPositionWithinBounds(Vector2 minBounds, Vector2 maxBounds)
-    {
-        float x = Random.Range(minBounds.x, maxBounds.x);
-        float z = Random.Range(minBounds.y, maxBounds.y); // Assuming you want random positions in the XZ plane
-        return new Vector3(x, 0, z); // Set Y to 0 or any desired height
-    }
-
-    private bool IsPositionValid(Vector3 position, float minOffset)
-    {
-        foreach (var spool in _activeSpools)
-        {
-            float distance = Vector3.Distance(position, spool.transform.position);
-            float requiredOffset = minOffset + spool.transform.localScale.magnitude / 2; // Adjust based on spool size
-            if (distance < requiredOffset)
-            {
-                return false; // Position is too close to an existing spool
-            }
-        }
-        return true; // Position is valid
     }
 }

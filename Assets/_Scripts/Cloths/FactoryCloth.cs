@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using System.Collections.Generic;
 
 public class FactoryCloth : MonoBehaviour
 {
@@ -84,6 +85,18 @@ public class FactoryCloth : MonoBehaviour
             }
         }
         return null;
+    }
+    public List<YarnType> GetPartTypes()
+    {
+        List<YarnType> types = new List<YarnType>();
+        foreach (var item in myClothParts)
+        {
+            if (!item.part.IsFilled)
+            {
+                types.Add(item.part.Type);
+            }
+        }
+        return types;
     }
     public bool IsCompleted()
     {
