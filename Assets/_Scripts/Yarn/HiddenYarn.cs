@@ -10,6 +10,11 @@ public class HiddenYarn : Yarn, IReveal
     public UniTask Reveal()
     {
         Tube.color = Data.color;
+        var r = GetComponent<Renderer>();
+        r.material = Data.material;
+        r.material.color = Data.color;
+
+        Spline.RebuildImmediate();
         return UniTask.CompletedTask;
     }
     public override void InitializeYarn(YarnData data)
