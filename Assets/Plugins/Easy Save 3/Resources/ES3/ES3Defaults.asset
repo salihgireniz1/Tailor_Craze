@@ -37,6 +37,7 @@ MonoBehaviour:
     - KinoBloom.Runtime
     - MK.Toon
     - MK.Toon.URP
+    - ParticleImage
     - R3.Unity
     - ToonyColorsPro.Runtime
     - ToonyColorsPro2.Demo
