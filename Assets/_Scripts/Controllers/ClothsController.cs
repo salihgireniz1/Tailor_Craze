@@ -212,7 +212,6 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Ensure that there are at least two cloths on the band.
         if (activeCloths.Count == 1 && _clothCount < _levelCloths.Length)
         {
-            Debug.Log($"{activeCloths.Count} == 1 && {_clothCount} < {_levelCloths.Length}");
             await AddNewClothAndShiftRight().AttachExternalCancellation(cancellationDisposable.Token);
         }
 

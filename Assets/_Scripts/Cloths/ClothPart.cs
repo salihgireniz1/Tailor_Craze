@@ -13,11 +13,13 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [SerializeField] private Knit[] _knits;
     [SerializeField] private YarnType _type;
     [ShowInInspector] Dictionary<int, List<Knit>> _knitAparts = new();
-    private Knit currentKnit;
     [SerializeField] private FactoryCloth _myCloth;
+    [SerializeField] private Renderer _renderer;
+    private Knit currentKnit;
 
     private void Start()
     {
+        // Application.targetFrameRate = 60;
         DivideKnits();
         currentKnit = _knits[0];
     }
@@ -26,14 +28,16 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     {
         _knitAparts = DivideKnitsIntoParts(_requiredYarnCount);
     }
+
     [Button]
-    public void InitializePart(YarnType type)
+    public void InitializePart(YarnType Type)
     {
         _knits = GetComponentsInChildren<Knit>(true);
-        this.Type = type;
-        var data = YarnController.Instance.GetYarnData(type);
+        this.Type = Type;
+        YarnData data = YarnController.Instance.GetYarnData(Type);
         foreach (var knit in _knits)
         {
+            knit.KnitMaterial = data.knitMaterial;
             knit.InitializeKnit(data.color);
         }
 
@@ -41,9 +45,14 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         {
             sr.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.65f));
         }
-        else if (TryGetComponent(out Renderer rend))
+        else if (_renderer == null && TryGetComponent(out _renderer))
         {
-            rend.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
+            _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
+        }
+        else
+        {
+            _renderer.sharedMaterial = data.mannequinMaterial;
+            _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
         }
     }
     public bool CanBeFilled(YarnData data)
@@ -64,34 +73,50 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         await TravelPath(path).AttachExternalCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(this));
         _filling = false;
         await MyCloth.DeselectRotate();
-        // if (MyCloth != null && MyCloth.IsCompleted())
-        // {
-        //     currentKnit = null;
-        //     await ClothsController.Instance.CompleteCloth(MyCloth);
-        // }
-        // else
-        // {
-        // }
     }
     public async UniTask TravelPath(List<Knit> path)
     {
         float knitDuration = Settings.Instance.KnittingSettings.KnittingDuration;
-        foreach (var knit in path)
+        
+        for (int i = 0; i < path.Count; i++)
         {
-            // Activate the knit
-            var oneKnit = knit.Activate(knitDuration);
-            var vibrateCloth = UniTask.CompletedTask;
-            if (!_myCloth.IsRotating)
+            UniTask vibrateCloth = UniTask.CompletedTask;
+            currentKnit = path[i];
+            if(i % Settings.Instance.KnittingSettings.knitJumpAmount == 0)
             {
-                vibrateCloth = _myCloth.transform
-                                .DOPunchRotation(Random.onUnitSphere, knitDuration, 3)
-                                .ToUniTask();
+                Debug.Log("Await for index: " + i);
+                SoundManager.Instance.PlaySFX(SFXType.Knitted);
+                UniTask oneKnit = currentKnit.Activate(knitDuration);
+                
+                if (!_myCloth.IsRotating)
+                {
+                    vibrateCloth = _myCloth.transform
+                                    .DOPunchRotation(Random.onUnitSphere, knitDuration, 1)
+                                    .ToUniTask();
+                }
+                await UniTask.WhenAll(oneKnit, vibrateCloth);
             }
-
-            currentKnit = knit;
-            await UniTask.WhenAll(oneKnit, vibrateCloth);
+            else
+            {
+                currentKnit.Activate(knitDuration).Forget();
+            }
         }
-        // await _myCloth.transform.DORotate(Vector3.zero, 0f).ToUniTask();
+
+        // foreach (var knit in path)
+        // {
+        //     // Activate the knit
+        //     var oneKnit = knit.Activate(knitDuration);
+        //     var vibrateCloth = UniTask.CompletedTask;
+        //     if (!_myCloth.IsRotating)
+        //     {
+        //         vibrateCloth = _myCloth.transform
+        //                         .DOPunchRotation(Random.onUnitSphere, knitDuration, 1)
+        //                         .ToUniTask();
+        //     }
+
+        //     currentKnit = knit;
+        //     await UniTask.WhenAll(oneKnit, vibrateCloth);
+        // }
     }
     Dictionary<int, List<Knit>> DivideKnitsIntoParts(int n)
     {
@@ -116,5 +141,11 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     public Vector3 Position { get => currentKnit?.transform.position ?? Vector3.zero; }
     public bool IsFilled => _currentFillness >= _requiredYarnCount;
     public int YarnCountToFill => _requiredYarnCount;
-    public float FillDuration => Settings.Instance.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count /*+ 20 * Time.deltaTime*/;
+    public float FillDuration {
+        get{
+            var dur = Settings.Instance.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count / Settings.Instance.KnittingSettings.knitJumpAmount;
+            Debug.Log(dur);
+            return dur;
+        }
+    }
 }

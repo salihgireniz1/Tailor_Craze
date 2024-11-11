@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 
 public abstract class Knit : MonoBehaviour
 {
+    public abstract Material KnitMaterial{get; set;}
     // public float _activitionDuration = 0.75f;
     public float targetScale = 0.15f;
     public Ease _activitionEasing = Ease.OutBack;

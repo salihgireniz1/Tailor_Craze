@@ -4,6 +4,7 @@ using UnityEngine;
 public class KnittingSettings : ScriptableObject
 {
     public float KnittingDuration;
+    public int knitJumpAmount;
     public float RollingDuration;
     public float ConnectionDuration;
     public float ConnectionLerpSpeed;

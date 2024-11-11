@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cc09b864a258448b2e940930d5809f, type: 3}
   m_Name: Knitting Settings
   m_EditorClassIdentifier: 
-  KnittingDuration: 0.075
+  KnittingDuration: 0.05
+  knitJumpAmount: 10
   RollingDuration: 0.5
-  ConnectionDuration: 0.2
-  ConnectionLerpSpeed: 40
+  ConnectionDuration: 0.1
+  ConnectionLerpSpeed: 10

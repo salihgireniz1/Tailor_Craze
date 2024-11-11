@@ -6,9 +6,10 @@ using System;
 public class ClothKnit : Knit
 {
     public Material knitMaterial;
+    public override Material KnitMaterial { get => knitMaterial; set => knitMaterial = value; }
     public override void InitializeKnit(Color32 color)
     {
-        knitMaterial = GetComponent<Renderer>().sharedMaterial;
+        GetComponent<Renderer>().sharedMaterial = knitMaterial;
         knitMaterial.color = color;
         transform.localScale = Vector3.zero;
         gameObject.SetActive(false);
@@ -17,19 +18,19 @@ public class ClothKnit : Knit
     {
         gameObject.SetActive(true);
 
-        transform.localScale = new Vector3(1, 0, 1);
-        SoundManager.Instance.PlaySFX(SFXType.Knitted);
+        // transform.localScale = new Vector3(1, 1, 0);
         // transform.DOPunchScale(Vector3.one * targetScale, activisionDuration, 2, 0).ToUniTask();
         transform
-        .DOScaleY(targetScale * 1.1f, activisionDuration * 2.5f)
+        .DOScale(targetScale * 2.5f, activisionDuration * 3f)
         .SetEase(Ease.OutBounce)
         .OnComplete(() =>
         {
             transform
-                    .DOScale(Vector3.one * targetScale, activisionDuration * 2f)
+                    .DOScale(Vector3.one * targetScale, activisionDuration * 1f)
                     .SetEase(Ease.InBack);
         })
         .ToUniTask();
-        return UniTask.Delay(TimeSpan.FromSeconds(activisionDuration));
+        return UniTask.Delay(TimeSpan.FromSeconds((double)activisionDuration));
+        // return UniTask.DelayFrame(1);
     }
 }

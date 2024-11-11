@@ -6,5 +6,7 @@ public struct YarnData
 {
     public YarnType Type;
     public Color32 color;
-    public Material material;
+    public Material yarnMaterial;
+    public Material knitMaterial;
+    public Material mannequinMaterial;
 }

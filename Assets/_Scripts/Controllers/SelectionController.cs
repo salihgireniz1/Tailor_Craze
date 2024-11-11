@@ -29,8 +29,8 @@ public class SelectionController : MonoSingleton<SelectionController>
         // Spool cleared. Break process.
         if (topYarn == null)
         {
-            await YarnConnection.Instance.BreakConnection();
 
+            await YarnConnection.Instance.BreakConnection();
             await fill;
             fill = UniTask.CompletedTask;
 

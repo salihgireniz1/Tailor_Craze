@@ -5,6 +5,7 @@ using System;
 
 public class ImageKnit : Knit
 {
+    public override Material KnitMaterial { get; set;} = null;
     public SpriteRenderer image;
     private void Awake()
     {

@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Tailor Craze.sln"
+    "dotnet.defaultSolution": "Tailor_Craze.sln"
 }
