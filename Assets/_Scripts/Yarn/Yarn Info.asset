@@ -21,48 +21,48 @@ MonoBehaviour:
     color:
       serializedVersion: 2
       rgba: 4278190263
-    yarnMaterial: {fileID: 2100000, guid: df0826bc126e1174eb35cd594113d16c, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: a264086fc77181c45a132bda98e1e98d, type: 2}
     knitMaterial: {fileID: 2100000, guid: 86caebd51480256468046bed56dfc2c5, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: 115c688ada2a34043904022c3908a164, type: 2}
   - Type: 1
     color:
       serializedVersion: 2
       rgba: 4291588863
-    yarnMaterial: {fileID: 2100000, guid: 3b8905f7388dbaf4a96d955853fdd9df, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: 896d5b9cf2a158543957b16017132209, type: 2}
     knitMaterial: {fileID: 2100000, guid: f7e0c8b2c2206004ca280e9ce322b79b, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: 824dfe99cea488f48944fcb6c4390e35, type: 2}
   - Type: 2
     color:
       serializedVersion: 2
       rgba: 4290212352
-    yarnMaterial: {fileID: 2100000, guid: 4e5782ea446217b499b70a9600932dc0, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: 56ed53bbc804d20499a7a12424364cc8, type: 2}
     knitMaterial: {fileID: 2100000, guid: 2c2d5d8a58d4e3d45bee8ecc2118a811, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: f72d5de496954e34fbe852fa811b1961, type: 2}
   - Type: 3
     color:
       serializedVersion: 2
       rgba: 4278255611
-    yarnMaterial: {fileID: 2100000, guid: e73997923f125c642b389d4526de95e1, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: 23701cb26e8c9014e9e52ae518c30352, type: 2}
     knitMaterial: {fileID: 2100000, guid: 9084fa0438d256141b7f6f6544695980, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: dac2295f1bca8b242bbee76e3a663119, type: 2}
   - Type: 4
     color:
       serializedVersion: 2
       rgba: 4281767679
-    yarnMaterial: {fileID: 2100000, guid: e57d423700ce1e94d95f219ec3471a42, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: 8c84e167c93ccbc48a4dfc064e5f9cf6, type: 2}
     knitMaterial: {fileID: 2100000, guid: 2f79ac1609c64ab43b0bc4ed8bdfa535, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: 362b617dcadccaa4ebc89b2a33a3c413, type: 2}
   - Type: 5
     color:
       serializedVersion: 2
       rgba: 4288758151
-    yarnMaterial: {fileID: 2100000, guid: 35001683d9e3dd3469b5f62df2de8d14, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: 1637283238f3d0645b4a4cafc53263b8, type: 2}
     knitMaterial: {fileID: 2100000, guid: ed378b81a4118ef439c74661dc95c43a, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: b84eaf4cb58c0934098b65545b646c0c, type: 2}
   - Type: 6
     color:
       serializedVersion: 2
       rgba: 4278232607
-    yarnMaterial: {fileID: 2100000, guid: 4aef0f555a75b194ea44e9c6bcab970a, type: 2}
+    yarnMaterial: {fileID: 2100000, guid: cb0a12b890cf6ac4ca20e93c2c5d51c7, type: 2}
     knitMaterial: {fileID: 2100000, guid: 8da400b78ff8b154bac9b1a8962348ce, type: 2}
     mannequinMaterial: {fileID: 2100000, guid: fbb065699110e0b429c7a94b485cfd46, type: 2}
