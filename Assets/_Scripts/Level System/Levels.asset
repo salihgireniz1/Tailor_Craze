@@ -450,7 +450,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 3
-      - isHidden: 0
+      - isHidden: 1
         type: 0
       - isHidden: 0
         type: 5
@@ -458,7 +458,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 0
-      - isHidden: 0
+      - isHidden: 1
         type: 5
       - isHidden: 0
         type: 3
@@ -517,9 +517,9 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 2
-      - isHidden: 0
+      - isHidden: 1
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 2
     - isRandom: 0
       Yarns:
@@ -628,7 +628,7 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     - isRandom: 0
       Yarns:
@@ -636,7 +636,7 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 0
-      - isHidden: 0
+      - isHidden: 1
         type: 1
     - isRandom: 0
       Yarns:
@@ -644,7 +644,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     - isRandom: 0
       Yarns:
@@ -652,13 +652,13 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 1
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 0
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     - isRandom: 0
       Yarns:
@@ -666,19 +666,19 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     RandomNextSpool: 1
     StartSpoolCount: 3
@@ -706,25 +706,25 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 4
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     - isRandom: 0
       Yarns:
@@ -738,7 +738,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 0
       - isHidden: 0
         type: 4
@@ -758,7 +758,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 5
-      - isHidden: 0
+      - isHidden: 1
         type: 0
       - isHidden: 0
         type: 4
@@ -943,7 +943,7 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 5
     - isRandom: 0
       Yarns:
@@ -961,7 +961,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 1
     - isRandom: 0
       Yarns:
@@ -973,15 +973,15 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 0
-      - isHidden: 0
+      - isHidden: 1
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     - isRandom: 0
       Yarns:
       - isHidden: 0
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 0
       - isHidden: 0
         type: 6
@@ -991,7 +991,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 0
-      - isHidden: 0
+      - isHidden: 1
         type: 5
     - isRandom: 0
       Yarns:
@@ -999,7 +999,7 @@ MonoBehaviour:
         type: 0
       - isHidden: 0
         type: 1
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     RandomNextSpool: 1
     StartSpoolCount: 3
@@ -1031,7 +1031,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 3
-      - isHidden: 0
+      - isHidden: 1
         type: 3
       - isHidden: 0
         type: 2
@@ -1057,7 +1057,7 @@ MonoBehaviour:
         type: 2
       - isHidden: 0
         type: 2
-      - isHidden: 0
+      - isHidden: 1
         type: 2
     - isRandom: 0
       Yarns:
@@ -1114,7 +1114,7 @@ MonoBehaviour:
         type: 1
       - isHidden: 0
         type: 6
-      - isHidden: 0
+      - isHidden: 1
         type: 6
     - isRandom: 0
       Yarns:
@@ -1164,7 +1164,7 @@ MonoBehaviour:
       Yarns:
       - isHidden: 0
         type: 0
-      - isHidden: 0
+      - isHidden: 1
         type: 0
     - isRandom: 0
       Yarns:
