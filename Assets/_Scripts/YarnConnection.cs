@@ -51,8 +51,9 @@ public class YarnConnection : MonoSingleton<YarnConnection>
     {
         if (isActive) return;
 
-        tube.color = data.color;
-        myMat.color = data.color;
+        // tube.color = data.color;
+        // myMat.color = data.color;
+        GetComponent<Renderer>().sharedMaterial = data.yarnMaterial;
         isActive = true;
         Observable.EveryUpdate()
             .Where(_ => isActive && tube != null)

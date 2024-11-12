@@ -12,7 +12,7 @@ public class HiddenYarn : Yarn, IReveal
         Tube.color = Data.color;
         var r = GetComponent<Renderer>();
         r.material = Data.yarnMaterial;
-        r.material.color = Data.color;
+        // r.material.color = Data.color;
 
         Spline.RebuildImmediate();
         return UniTask.CompletedTask;

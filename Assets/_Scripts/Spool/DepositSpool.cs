@@ -22,13 +22,16 @@ public class DepositSpool : BaseSpool, IFillable
         _isFilled = true;
         filledYarnData = data;
         myYarn.Tube.clipTo = 0;
-        myYarn.Tube.color = data.color;
-        depositYarnMaterial.color = data.color;
+        // myYarn.Tube.color = data.color;
+        // depositYarnMaterial.color = data.color;
+        myYarn.GetComponent<Renderer>().sharedMaterial = data.yarnMaterial;
+
         SoundManager.Instance.PlaySFX(SFXType.DepositFill);
         await YarnController.Instance.Rolling(myYarn, RollType.Roll, this, FillDuration);
         SoundManager.Instance.ResetPitch();
         _inProgress = false;
         transform.rotation = Quaternion.identity;
+        myYarn.Spline.RebuildImmediate();
     }
     void PlayFillSound()
     {
