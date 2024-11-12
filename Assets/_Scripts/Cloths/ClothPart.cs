@@ -11,10 +11,11 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     public int _requiredYarnCount = 1;
     [SerializeField] private int _currentFillness = 0;
     [SerializeField] private Knit[] _knits;
-    [SerializeField] private YarnType _type;
-    [ShowInInspector] Dictionary<int, List<Knit>> _knitAparts = new();
-    [SerializeField] private FactoryCloth _myCloth;
     [SerializeField] private Renderer _renderer;
+    [SerializeField] private GameObject[] _bands;
+    [SerializeField] private FactoryCloth _myCloth;
+    [SerializeField] private YarnType _type;
+    Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
 
     private void Start()
@@ -71,23 +72,26 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         var path = _knitAparts[_currentFillness];
         _currentFillness++;
         await TravelPath(path).AttachExternalCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(this));
+
+        int bandIndex = Mathf.Min(_bands.Length - 1, _currentFillness - 1);
+        _bands[bandIndex].SetActive(false);
         _filling = false;
         await MyCloth.DeselectRotate();
     }
     public async UniTask TravelPath(List<Knit> path)
     {
         float knitDuration = Settings.Instance.KnittingSettings.KnittingDuration;
-        
+
         for (int i = 0; i < path.Count; i++)
         {
             UniTask vibrateCloth = UniTask.CompletedTask;
             currentKnit = path[i];
-            if(i % Settings.Instance.KnittingSettings.knitJumpAmount == 0)
+            if (i % Settings.Instance.KnittingSettings.knitJumpAmount == 0)
             {
                 Debug.Log("Await for index: " + i);
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
                 UniTask oneKnit = currentKnit.Activate(knitDuration);
-                
+
                 if (!_myCloth.IsRotating)
                 {
                     vibrateCloth = _myCloth.transform
@@ -101,22 +105,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
                 currentKnit.Activate(knitDuration).Forget();
             }
         }
-
-        // foreach (var knit in path)
-        // {
-        //     // Activate the knit
-        //     var oneKnit = knit.Activate(knitDuration);
-        //     var vibrateCloth = UniTask.CompletedTask;
-        //     if (!_myCloth.IsRotating)
-        //     {
-        //         vibrateCloth = _myCloth.transform
-        //                         .DOPunchRotation(Random.onUnitSphere, knitDuration, 1)
-        //                         .ToUniTask();
-        //     }
-
-        //     currentKnit = knit;
-        //     await UniTask.WhenAll(oneKnit, vibrateCloth);
-        // }
     }
     Dictionary<int, List<Knit>> DivideKnitsIntoParts(int n)
     {
@@ -141,8 +129,10 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     public Vector3 Position { get => currentKnit?.transform.position ?? Vector3.zero; }
     public bool IsFilled => _currentFillness >= _requiredYarnCount;
     public int YarnCountToFill => _requiredYarnCount;
-    public float FillDuration {
-        get{
+    public float FillDuration
+    {
+        get
+        {
             var dur = Settings.Instance.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count / Settings.Instance.KnittingSettings.knitJumpAmount;
             Debug.Log(dur);
             return dur;

@@ -5565,9 +5565,12 @@ MonoBehaviour:
   - {fileID: 4660694310696511907}
   - {fileID: 4565532275927634995}
   - {fileID: 4874768223955473054}
-  _type: 0
-  _myCloth: {fileID: 4641803588062414580}
   _renderer: {fileID: 1320140924236904870}
+  _bands:
+  - {fileID: 2399186196425396338}
+  - {fileID: 1097388542928602254}
+  _myCloth: {fileID: 4641803588062414580}
+  _type: 0
 --- !u!1 &1292242646860595813
 GameObject:
   m_ObjectHideFlags: 0
@@ -36861,6 +36864,12 @@ PrefabInstance:
 --- !u!23 &1320140924236904870 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5617754582663106290, guid: 19741bd21c2007949b486f3e6e2d2748,
+    type: 3}
+  m_PrefabInstance: {fileID: 6891724770785474388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2399186196425396338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9146753703474718502, guid: 19741bd21c2007949b486f3e6e2d2748,
     type: 3}
   m_PrefabInstance: {fileID: 6891724770785474388}
   m_PrefabAsset: {fileID: 0}
