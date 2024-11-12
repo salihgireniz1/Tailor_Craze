@@ -73,8 +73,11 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         _currentFillness++;
         await TravelPath(path).AttachExternalCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(this));
 
-        int bandIndex = Mathf.Min(_bands.Length - 1, _currentFillness - 1);
-        _bands[bandIndex].SetActive(false);
+        if (_bands.Length > 0)
+        {
+            int bandIndex = Mathf.Min(_bands.Length - 1, _currentFillness - 1);
+            _bands[bandIndex].SetActive(false);
+        }
         _filling = false;
         await MyCloth.DeselectRotate();
     }
