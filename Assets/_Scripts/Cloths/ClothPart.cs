@@ -88,7 +88,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             currentKnit = path[i];
             if (i % Settings.Instance.KnittingSettings.knitJumpAmount == 0)
             {
-                Debug.Log("Await for index: " + i);
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
                 UniTask oneKnit = currentKnit.Activate(knitDuration);
 
@@ -134,7 +133,6 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         get
         {
             var dur = Settings.Instance.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count / Settings.Instance.KnittingSettings.knitJumpAmount;
-            Debug.Log(dur);
             return dur;
         }
     }
