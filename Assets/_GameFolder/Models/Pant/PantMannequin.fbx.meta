@@ -3,7 +3,12 @@ guid: 19741bd21c2007949b486f3e6e2d2748
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Divider
+    second: {fileID: 2100000, guid: 3a450d5eaf622924d8423f6ace0648c5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
