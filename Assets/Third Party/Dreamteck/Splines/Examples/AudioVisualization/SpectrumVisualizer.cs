@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 
 namespace Dreamteck.Splines.Examples
@@ -23,11 +22,11 @@ namespace Dreamteck.Splines.Examples
         private float[] spectrumLerp;
 
 
-        
+
         // Use this for initialization
         void Start()
         {
-            if(source == null) source = GetComponent<AudioSource>();
+            if (source == null) source = GetComponent<AudioSource>();
             computer = GetComponent<SplineComputer>();
             SplinePoint[] points = computer.GetPoints();
             positions = new Vector3[points.Length];
@@ -48,19 +47,19 @@ namespace Dreamteck.Splines.Examples
             float[] spectrum = new float[left.Length];
             for (int i = 0; i < spectrum.Length; i++)
             {
-                spectrum[i] = (left[i] + right[i])/2f;
+                spectrum[i] = (left[i] + right[i]) / 2f;
             }
             SplinePoint[] points = computer.GetPoints();
-            int samplesPerPoint = Mathf.FloorToInt((spectrum.Length / points.Length) * (maxSpectrumRange-minSpectrumRange));
+            int samplesPerPoint = Mathf.FloorToInt((spectrum.Length / points.Length) * (maxSpectrumRange - minSpectrumRange));
             int spectrumIndexStart = Mathf.FloorToInt((spectrum.Length - 1) * minSpectrumRange);
             for (int i = 0; i < points.Length; i++)
             {
                 float avg = 0f;
-                for (int n = 0; n < samplesPerPoint ; n++) avg += spectrum[spectrumIndexStart + samplesPerPoint * i + n];
+                for (int n = 0; n < samplesPerPoint; n++) avg += spectrum[spectrumIndexStart + samplesPerPoint * i + n];
                 avg /= samplesPerPoint;
                 if (avg > spectrumLerp[i]) spectrumLerp[i] = Mathf.Lerp(spectrumLerp[i], avg, Time.deltaTime * increaseSpeed);
                 else spectrumLerp[i] = Mathf.Lerp(spectrumLerp[i], avg, Time.deltaTime * decreaseSpeed);
-               
+
                 float percent = (float)i / (points.Length - 1);
                 points[i].position = positions[i] + Vector3.up * maxOffset * spectrumLerp[i] * spectrumMultiply.Evaluate(percent);
             }

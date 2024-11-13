@@ -1,10 +1,8 @@
 namespace Dreamteck.Splines.Examples
 {
-    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using Dreamteck.Splines;
-    using System;
 
     public class TrainEngine : MonoBehaviour
     {
@@ -103,7 +101,7 @@ namespace Dreamteck.Splines.Examples
         void SwitchSpline(Node.Connection from, Node.Connection to)
         {
             //See how much units we have travelled past that Node in the last frame
-           
+
             float excessDistance = from.spline.CalculateLength(from.spline.GetPointPercent(from.pointIndex), _tracer.UnclipPercent(_lastPercent));
             //Set the spline to the tracer
             _tracer.spline = to.spline;

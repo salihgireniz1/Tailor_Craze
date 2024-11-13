@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Dreamteck.Splines.Examples
@@ -57,7 +56,7 @@ namespace Dreamteck.Splines.Examples
             //Do not select computers that are not connected at the first point so that we don't reverse direction
             for (int i = 0; i < computers.Count; i++)
             {
-                if(connected[i] != 0)
+                if (connected[i] != 0)
                 {
                     computers.RemoveAt(i);
                     connections.RemoveAt(i);
@@ -86,22 +85,24 @@ namespace Dreamteck.Splines.Examples
             }
             else
             {
-                speedAdd = gravityForce * dotPercent * speedLoss.Evaluate(1f-speedPercent) * Time.deltaTime;
+                speedAdd = gravityForce * dotPercent * speedLoss.Evaluate(1f - speedPercent) * Time.deltaTime;
             }
-            speed += speedAdd * (1f-brakeForce);
+            speed += speedAdd * (1f - brakeForce);
             speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
-            if (addForce > 0f) {
+            if (addForce > 0f)
+            {
                 float lastAdd = addForce;
                 addForce = Mathf.MoveTowards(addForce, 0f, Time.deltaTime * 30f);
                 speed += lastAdd - addForce;
-             }
+            }
             follower.followSpeed = speed;
             follower.followSpeed *= (1f - brakeForce);
             if (brakeTime > Time.time) brakeForce = Mathf.MoveTowards(brakeForce, 1f, Time.deltaTime * brakeSpeed);
             else brakeForce = Mathf.MoveTowards(brakeForce, 0f, Time.deltaTime * brakeReleaseSpeed);
 
-            speedPercent = Mathf.Clamp01(speed/maxSpeed)*(1f-brakeForce);
-            for (int i = 0; i < sounds.Length; i++) {
+            speedPercent = Mathf.Clamp01(speed / maxSpeed) * (1f - brakeForce);
+            for (int i = 0; i < sounds.Length; i++)
+            {
                 if (speedPercent < sounds[i].startPercent - soundFadeLength || speedPercent > sounds[i].endPercent + soundFadeLength)
                 {
                     if (sounds[i].source.isPlaying) sounds[i].source.Pause();
@@ -109,7 +110,7 @@ namespace Dreamteck.Splines.Examples
                 }
                 else if (!sounds[i].source.isPlaying) sounds[i].source.UnPause();
                 float volume = 1f;
-                if (speedPercent < sounds[i].startPercent+soundFadeLength) volume = Mathf.InverseLerp(sounds[i].startPercent, sounds[i].startPercent+soundFadeLength, speedPercent);
+                if (speedPercent < sounds[i].startPercent + soundFadeLength) volume = Mathf.InverseLerp(sounds[i].startPercent, sounds[i].startPercent + soundFadeLength, speedPercent);
                 else if (speedPercent > sounds[i].endPercent) volume = Mathf.InverseLerp(sounds[i].endPercent + soundFadeLength, sounds[i].endPercent, speedPercent);
                 float pitchPercent = Mathf.InverseLerp(sounds[i].startPercent, sounds[i].endPercent, speedPercent);
                 sounds[i].source.volume = volume;

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using R3;
 using Sirenix.OdinInspector;
 using UnityEngine;

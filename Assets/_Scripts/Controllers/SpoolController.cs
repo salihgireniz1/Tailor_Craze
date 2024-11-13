@@ -63,8 +63,13 @@ public class SpoolController : MonoSingleton<SpoolController>
     }
     public SpoolInfo GetNextSpoolOfLevel()
     {
-        int index = _spoolCount < _levelSpools.Length ? _spoolCount : Array.IndexOf(_levelSpools, _randomizer.GetRandomSpoolInfo());
+        int index = _spoolCount < _levelSpools.Length ? _spoolCount : -1;
+        if (index == -1) return _randomizer.GetRandomSpoolInfo();
         return _levelSpools[index];
+    }
+    SpoolInfo GetMixed()
+    {
+        return _randomizer.GetRandomSpoolInfo();
     }
     public Spool SpawnSpool(SpoolInfo info, Vector3 point)
     {

@@ -2,7 +2,6 @@ using R3;
 using DG.Tweening;
 using System.Linq;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 

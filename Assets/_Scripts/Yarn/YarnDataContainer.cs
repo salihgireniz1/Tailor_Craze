@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 [CreateAssetMenu(menuName = "Scriptable Objects/Yarn Data", fileName = "Yarn Data Container")]
 public class YarnDataContainer : ScriptableObject
 {

@@ -1,5 +1,5 @@
+
 using UnityEngine;
-using UnityEngine.UI; // UI bileşenlerini kullanabilmek için
 
 public class DistributeOnFaces : MonoBehaviour
 {

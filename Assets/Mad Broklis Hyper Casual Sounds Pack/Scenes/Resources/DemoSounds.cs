@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class DemoSounds : MonoBehaviour {
+public class DemoSounds : MonoBehaviour
+{
 
     public AudioClip[] effects, loops;
     public Text effectsPlay, loopsPlay, effectsCurrent, loopsCurrent;
@@ -16,13 +15,14 @@ public class DemoSounds : MonoBehaviour {
 
     float timestamp;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         timestamp = Time.timeSinceLevelLoad;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (effectsPlaying)
         {
@@ -56,7 +56,7 @@ public class DemoSounds : MonoBehaviour {
         {
 
         }
-	}
+    }
 
     public void EffectsPlay()
     {
