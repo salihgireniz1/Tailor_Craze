@@ -414,7 +414,7 @@ Material:
     - _Color: {r: 0.8167116, g: 0.31147918, b: 0.293884, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 4.867144, g: 0.32141435, b: 0.416612, a: 1}
+    - _EmissionColor: {r: 2.290467, g: 0.054020442, b: 0.10427765, a: 1}
     - _GoochBrightColor: {r: 0.800539, g: 0.800539, b: 0.800539, a: 1}
     - _GoochDarkColor: {r: 0.81568635, g: 0.027450982, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
