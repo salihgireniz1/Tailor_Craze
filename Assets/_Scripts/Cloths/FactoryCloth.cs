@@ -9,14 +9,27 @@ using System.Collections.Generic;
 public class FactoryCloth : MonoBehaviour
 {
     public ClothData[] myClothParts;
+    public bool IsRotating;
     private Vector3 _defaultScale;
     private float _defaultZPos;
+    private Animator _mannequinAnimator;
     CancellationTokenSource selectionAnimTokenSource;
     private void Start()
     {
+        _mannequinAnimator = GetComponentInChildren<Animator>();
         _defaultScale = transform.localScale;
         _defaultZPos = transform.position.z;
-        DeselectRotate().Forget();
+        transform.DORotate(Settings.KnittingAnimationData._clothDeselectRotate, 0f);
+        // DeselectRotate().Forget();
+    }
+    public void AdjustmentShakeAnim(bool isFirst = false)
+    {
+        if (_mannequinAnimator != null && !isFirst)
+        {
+            _mannequinAnimator.ResetTrigger("Shake");
+            _mannequinAnimator.speed = UnityEngine.Random.Range(.9f, 1.1f);
+            _mannequinAnimator.SetTrigger("Shake");
+        }
     }
     [Button]
     public void InitializeCloth()
@@ -28,25 +41,24 @@ public class FactoryCloth : MonoBehaviour
             clothPart.part._requiredYarnCount = clothPart.RequiredYarnCount;
         }
     }
-    public bool IsRotating;
     public UniTask SelectRotate()
     {
         selectionAnimTokenSource?.Cancel();
         selectionAnimTokenSource = new();
         IsRotating = true;
         var rotate = transform
-                .DORotate(ClothsController.Instance.KnittingAnimData._clothSelectionRotate, ClothsController.Instance.KnittingAnimData._animationDuration)
+                .DORotate(Settings.KnittingAnimationData._clothSelectionRotate, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var bringForward = transform
-                .DOMoveZ(_defaultZPos + ClothsController.Instance.KnittingAnimData._zForwardOffset, ClothsController.Instance.KnittingAnimData._animationDuration)
+                .DOMoveZ(_defaultZPos + Settings.KnittingAnimationData._zForwardOffset, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var scale = transform
-                .DOScale(_defaultScale * ClothsController.Instance.KnittingAnimData._clothScaleMultiplier, ClothsController.Instance.KnittingAnimData._animationDuration)
+                .DOScale(_defaultScale * Settings.KnittingAnimationData._clothScaleMultiplier, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
@@ -58,17 +70,17 @@ public class FactoryCloth : MonoBehaviour
         selectionAnimTokenSource = new();
         IsRotating = true;
         var scale = transform
-                .DOScale(_defaultScale, ClothsController.Instance.KnittingAnimData._animationDuration)
+                .DOScale(_defaultScale, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var bringBackward = transform
-                .DOMoveZ(_defaultZPos, ClothsController.Instance.KnittingAnimData._animationDuration)
+                .DOMoveZ(_defaultZPos, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var rotate = transform
-                .DORotate(ClothsController.Instance.KnittingAnimData._clothDeselectRotate, ClothsController.Instance.KnittingAnimData._animationDuration)
+                .DORotate(Settings.KnittingAnimationData._clothDeselectRotate, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);

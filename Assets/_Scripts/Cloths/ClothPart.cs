@@ -17,10 +17,12 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [SerializeField] private YarnType _type;
     Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
+    private Animator _parentAnimator;
 
     private void Start()
     {
         // Application.targetFrameRate = 60;
+        _parentAnimator = GetComponentInParent<Animator>();
         DivideKnits();
         currentKnit = _knits[0];
     }
@@ -53,7 +55,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         else
         {
             _renderer.sharedMaterial = data.mannequinMaterial;
-            _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
+            // _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
         }
     }
     public bool CanBeFilled(YarnData data)
@@ -68,7 +70,10 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             await UniTask.Yield();
         }
         MyCloth.SelectRotate().Forget();
+
         _filling = true;
+        _parentAnimator?.SetBool("Knitting", true);
+
         var path = _knitAparts[_currentFillness];
         _currentFillness++;
         await TravelPath(path).AttachExternalCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(this));
@@ -78,29 +83,34 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             int bandIndex = Mathf.Min(_bands.Length - 1, _currentFillness - 1);
             _bands[bandIndex].SetActive(false);
         }
+
+        _parentAnimator?.SetBool("Knitting", false);
         _filling = false;
+
         await MyCloth.DeselectRotate();
     }
     public async UniTask TravelPath(List<Knit> path)
     {
-        float knitDuration = Settings.Instance.KnittingSettings.KnittingDuration;
+        float knitDuration = Settings.KnittingSettings.KnittingDuration;
 
         for (int i = 0; i < path.Count; i++)
         {
-            UniTask vibrateCloth = UniTask.CompletedTask;
+            // UniTask vibrateCloth = UniTask.CompletedTask;
             currentKnit = path[i];
-            if (i % Settings.Instance.KnittingSettings.knitJumpAmount == 0)
+            if (i % Settings.KnittingSettings.knitJumpAmount == 0)
             {
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
                 UniTask oneKnit = currentKnit.Activate(knitDuration);
 
-                if (!_myCloth.IsRotating)
-                {
-                    vibrateCloth = _myCloth.transform
-                                    .DOPunchRotation(Random.onUnitSphere, knitDuration, 1)
-                                    .ToUniTask();
-                }
-                await UniTask.WhenAll(oneKnit, vibrateCloth);
+                // if (!_myCloth.IsRotating)
+                // {
+                //     vibrateCloth = _myCloth.transform
+                //                     .DOPunchRotation(Random.onUnitSphere, knitDuration, 1)
+                //                     .ToUniTask();
+                // }
+                // await UniTask.WhenAll(oneKnit, vibrateCloth);
+
+                await oneKnit;
             }
             else
             {
@@ -135,7 +145,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     {
         get
         {
-            var dur = Settings.Instance.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count / Settings.Instance.KnittingSettings.knitJumpAmount;
+            var dur = Settings.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count / Settings.KnittingSettings.knitJumpAmount;
             return dur;
         }
     }

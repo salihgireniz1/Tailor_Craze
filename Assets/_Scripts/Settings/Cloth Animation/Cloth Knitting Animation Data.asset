@@ -15,5 +15,5 @@ MonoBehaviour:
   _animationDuration: 0.25
   _clothScaleMultiplier: 1.5
   _zForwardOffset: -0.7
-  _clothSelectionRotate: {x: 0, y: 0, z: 0}
-  _clothDeselectRotate: {x: 0, y: -30, z: 0}
+  _clothSelectionRotate: {x: 0, y: 45, z: 0}
+  _clothDeselectRotate: {x: 20, y: 0, z: 0}

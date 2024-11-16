@@ -65,7 +65,7 @@ public class YarnConnection : MonoSingleton<YarnConnection>
                     endNode.transform.position = Vector3.Lerp(
                                         endNode.transform.position,
                                         EndConnect.Position,
-                                        Time.deltaTime * Settings.Instance.KnittingSettings.ConnectionLerpSpeed);
+                                        Time.deltaTime * Settings.KnittingSettings.ConnectionLerpSpeed);
                 }
             })
             .AddTo(ref bag);
@@ -74,7 +74,7 @@ public class YarnConnection : MonoSingleton<YarnConnection>
             () => tube.clipTo,
             clip => tube.clipTo = clip,
             1f,
-            Settings.Instance.KnittingSettings.ConnectionDuration)
+            Settings.KnittingSettings.ConnectionDuration)
             .SetEase(Ease.Linear)
             .ToUniTask();
 
@@ -87,7 +87,7 @@ public class YarnConnection : MonoSingleton<YarnConnection>
             () => tube.clipFrom,
             clip => tube.clipFrom = clip,
             1f,
-            Settings.Instance.KnittingSettings.ConnectionDuration)
+            Settings.KnittingSettings.ConnectionDuration * 1.5F)
             .SetEase(Ease.Linear)
             .ToUniTask();
         isActive = false;

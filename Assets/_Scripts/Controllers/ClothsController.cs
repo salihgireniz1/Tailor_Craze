@@ -9,16 +9,13 @@ public class ClothsController : MonoSingleton<ClothsController>
 {
     [SerializeField] Transform[] _spots;
     [SerializeField] Transform _spawnPoint;
-    [SerializeField] Vector3 _offset = new Vector3(0, 1f, -0.5f);
+    // [SerializeField] Vector3 _offset = new Vector3(0, 1f, -0.5f);
     [SerializeField] Transform _clothParent;
     [SerializeField] Animation _anim;
-    [SerializeField] KnittingAnimationData _knittingAnimData;
-    [SerializeField] BandAnimationData _bandAnimData;
     public List<FactoryCloth> activeCloths = new();
     private FactoryCloth[] _levelCloths;
     private int _clothCount;
     private Dictionary<FactoryCloth, Transform> _clothSpotDict = new();
-    public KnittingAnimationData KnittingAnimData => _knittingAnimData;
     public ReactiveProperty<int> ClothCount { get; private set; }
     public ReactiveProperty<int> LevelClothsCount { get; private set; }
     CancellationDisposable cancellationDisposable = new();
@@ -169,7 +166,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Shift each cloth one spot to the right, starting from the last
         for (int i = activeCloths.Count - 1; i >= 0; i--)
         {
-            var currentCloth = activeCloths[i];
+            FactoryCloth currentCloth = activeCloths[i];
             if (currentCloth == null)
             {
                 return;
@@ -181,8 +178,9 @@ public class ClothsController : MonoSingleton<ClothsController>
                 _clothSpotDict[currentCloth] = _spots[nextSpotIndex];
 
                 UniTask task = currentCloth.transform
-                    .DOMove(_spots[nextSpotIndex].position + _offset, _bandAnimData.shiftingDuration)
-                    .SetEase(_bandAnimData.shiftingEase)
+                    .DOMove(_spots[nextSpotIndex].position + Settings.BandAnimationData.spotOffset, Settings.BandAnimationData.shiftingDuration)
+                    .SetEase(Settings.BandAnimationData.shiftingEase)
+                    .OnComplete(() => currentCloth.AdjustmentShakeAnim())
                     .WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(currentCloth.gameObject));
 
                 shifts.Add(task);
@@ -207,6 +205,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         }
 
         await UniTask.WhenAll(shifts.Concat(FillGapsWithCloth()));
+
 
         // Ensure that there are at least two cloths on the band.
         if (activeCloths.Count == 1 && _clothCount < _levelCloths.Length)
@@ -234,9 +233,9 @@ public class ClothsController : MonoSingleton<ClothsController>
         List<UniTask> spawnTasks = new();
 
         FactoryCloth newCloth;
-
+        bool isFirst = activeCloths.Count == 0;
         // Determine the index of the last occupied spot on the band.
-        int spawnAlignmentIndex = (activeCloths.Count == 0) ? 0 : GetMostRightSpotIndex(-1);
+        int spawnAlignmentIndex = isFirst ? 0 : GetMostRightSpotIndex(-1);
 
         // Iterate through the spots from the last occupied spot to the first.
         for (int i = spawnAlignmentIndex; i >= 0; i--)
@@ -252,7 +251,7 @@ public class ClothsController : MonoSingleton<ClothsController>
             // Instantiate a new cloth at the calculated spawn position.
             newCloth = Instantiate(
                 _levelCloths[_clothCount],
-                spawnPos + _offset,
+                spawnPos + Settings.BandAnimationData.spotOffset,
                 Quaternion.identity,
                 _clothParent);
 
@@ -267,8 +266,9 @@ public class ClothsController : MonoSingleton<ClothsController>
 
             // Animate the new cloth to its correct spot.
             UniTask alignToStart = newCloth.transform
-                .DOMove(_spots[i].position + _offset, _bandAnimData.shiftingDuration)
-                .SetEase(_bandAnimData.shiftingEase)
+                .DOMove(_spots[i].position + Settings.BandAnimationData.spotOffset, Settings.BandAnimationData.shiftingDuration)
+                .SetEase(Settings.BandAnimationData.shiftingEase)
+                .OnComplete(() => newCloth.AdjustmentShakeAnim(isFirst))
                 .WithCancellation(UniTaskCancellationExtensions.GetCancellationTokenOnDestroy(newCloth));
 
             // Add the animation task to the list of spawn tasks.

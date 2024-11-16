@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553bb44893cd8e043b1ba89616f7a045, type: 3}
   m_Name: Band Movement Animation Data
   m_EditorClassIdentifier: 
-  shiftingDuration: 0.6
-  shiftingEase: 0
+  spotOffset: {x: 0, y: 0, z: -0.5}
+  shiftingDuration: 0.5
+  shiftingEase: 1

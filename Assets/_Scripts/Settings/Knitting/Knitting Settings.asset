@@ -15,5 +15,5 @@ MonoBehaviour:
   KnittingDuration: 0.05
   knitJumpAmount: 10
   RollingDuration: 0.5
-  ConnectionDuration: 0.1
+  ConnectionDuration: 0.12
   ConnectionLerpSpeed: 10

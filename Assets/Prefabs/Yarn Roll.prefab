@@ -527,4 +527,6 @@ MonoBehaviour:
     color:
       serializedVersion: 2
       rgba: 0
-    material: {fileID: 0}
+    yarnMaterial: {fileID: 0}
+    knitMaterial: {fileID: 0}
+    mannequinMaterial: {fileID: 0}

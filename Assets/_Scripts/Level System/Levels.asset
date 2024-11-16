@@ -43,9 +43,9 @@ MonoBehaviour:
     RandomNextSpool: 0
     StartSpoolCount: 4
     LevelCloths:
-    - {fileID: 4641803588062414580, guid: 36eb818b44713ff4bb1147a3de707b9a, type: 3}
-    - {fileID: 6136996103674311811, guid: e630d7dd6a5887448a0decfbb4afcf7f, type: 3}
-    - {fileID: 6356011500870271950, guid: 4ad31393c0b877442b7fb78a52eb018e, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:

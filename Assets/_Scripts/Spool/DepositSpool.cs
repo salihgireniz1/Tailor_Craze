@@ -73,5 +73,5 @@ public class DepositSpool : BaseSpool, IFillable
 
     public bool IsFilled { get => _isFilled; }
     public IConnect Connector => myYarn;
-    public float FillDuration => Settings.Instance.KnittingSettings.RollingDuration;
+    public float FillDuration => Settings.KnittingSettings.RollingDuration;
 }
