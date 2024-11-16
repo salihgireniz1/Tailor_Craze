@@ -51,11 +51,30 @@ public class ClothsController : MonoSingleton<ClothsController>
         {
             activeCloths.Remove(cloth);
         }
+        var complition = cloth.GetComponentInChildren<IClothComplition>();
         // Actually, earn some golds, do some animations etc.
-        Destroy(cloth.gameObject);
-        ClothCount.Value++;
+        if (complition != null)
+        {
+            await complition.Complete();
+        }
+        else
+        {
+            Destroy(cloth.gameObject);
+        }
+        if (cloth.gameObject.activeInHierarchy)
+        {
+            await cloth.transform
+                        .DOMoveZ(cloth.transform.position.z + 1.5f, .1f)
+                        .SetEase(Ease.Linear)
+                        .ToUniTask();
 
-        await UniTask.CompletedTask;
+            await cloth.transform
+                        .DOMoveX(cloth.transform.position.x + 15f, .3f)
+                        .SetEase(Ease.InBack)
+                        .ToUniTask();
+        }
+
+        ClothCount.Value++;
     }
 
     /// <summary>

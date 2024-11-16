@@ -7,6 +7,10 @@ public class UIManager : MonoSingleton<UIManager>
 {
     public GameObject WinPanel;
     public GameObject LosePanel;
+
+    public GameObject likeEmoji;
+    public GameObject sadEmoji;
+
     private void Start()
     {
         HidePanels();
@@ -18,9 +22,11 @@ public class UIManager : MonoSingleton<UIManager>
                 {
                     case GameState.Victory:
                         WinPanel.SetActive(true);
+                        likeEmoji?.SetActive(true);
                         break;
                     case GameState.GameOver:
                         LosePanel.SetActive(true);
+                        sadEmoji?.SetActive(true);
                         break;
                     default:
                         HidePanels();
@@ -33,6 +39,8 @@ public class UIManager : MonoSingleton<UIManager>
     {
         WinPanel?.SetActive(false);
         LosePanel?.SetActive(false);
+        likeEmoji?.SetActive(false);
+        sadEmoji?.SetActive(false);
     }
 
     public void ReloadScene()
