@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8884679802799275187}
   - component: {fileID: 7382676339205773264}
   m_Layer: 0
-  m_Name: NewDress
+  m_Name: Dress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,9 +25,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7487428978506164178}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9902705, z: 0, w: -0.13915585}
+  m_LocalRotation: {x: -0, y: -0.9902681, z: 0, w: -0.13917309}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8064516, y: 0.8064517, z: 0.8064516}
+  m_LocalScale: {x: 0.81, y: 0.81, z: 0.81}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6457579927803211232}
@@ -52,7 +52,7 @@ Transform:
   - {fileID: 7725356857786134921}
   - {fileID: 4905296365030467512}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -195.998, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -196, z: 0}
 --- !u!114 &7382676339205773264
 MonoBehaviour:
   m_ObjectHideFlags: 0
