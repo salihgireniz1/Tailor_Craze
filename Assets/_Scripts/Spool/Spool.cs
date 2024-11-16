@@ -93,7 +93,7 @@ public class Spool : BaseSpool
     {
         if (!_contents.Contains(content)) return default;
         int index = _contents.IndexOf(content);
-        return new Vector3(0, _contentOffset * index * 3f, 0);
+        return new Vector3(0, _contentOffset * index * 4f, 0);
     }
 
 }
