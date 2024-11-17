@@ -72,6 +72,8 @@ public class ClothsController : MonoSingleton<ClothsController>
                         .DOMoveX(cloth.transform.position.x + 15f, .3f)
                         .SetEase(Ease.InBack)
                         .ToUniTask();
+
+            Destroy(cloth.gameObject);
         }
 
         ClothCount.Value++;

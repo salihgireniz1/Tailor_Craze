@@ -14,8 +14,9 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public static ReactiveProperty<GameState> CurrentState { get; set; } = new(GameState.DEFAULT);
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         // Application.targetFrameRate = 60;
         CurrentState.Value = GameState.Initializing;
         // CurrentState.Subscribe(state => Debug.Log(state)).AddTo(this);

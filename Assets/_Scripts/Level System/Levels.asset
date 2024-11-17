@@ -82,10 +82,10 @@ MonoBehaviour:
     RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -124,10 +124,10 @@ MonoBehaviour:
     RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -162,10 +162,10 @@ MonoBehaviour:
     RandomNextSpool: 0
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 6ab61c32ea375af48856d51e17043ffa, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -210,11 +210,11 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: 23ae2e5f22121694887719934a3c6840, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -255,11 +255,11 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -312,12 +312,12 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: 1fe72942313a5654ba34c277fbd90909, type: 3}
-    - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -372,12 +372,12 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
-    - {fileID: 3964048330336356836, guid: a57cfe9b74442ac4f8e55094d03c1267, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -438,13 +438,13 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: fc972468c44c96f4491c89680483aab0, type: 3}
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
-    - {fileID: 3964048330336356836, guid: 6ab61c32ea375af48856d51e17043ffa, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 3524029507682614900, guid: 67331814290b6144c931d820e1c63017, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -489,13 +489,13 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -540,15 +540,15 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: bfb3bec2f9cf5eb43b4b97e2e27603ca, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -609,18 +609,18 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 23ae2e5f22121694887719934a3c6840, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 1fe72942313a5654ba34c277fbd90909, type: 3}
-    - {fileID: 3964048330336356836, guid: a623d0f65f44ae34a91344f2c0ce70f8, type: 3}
-    - {fileID: 3964048330336356836, guid: fc972468c44c96f4491c89680483aab0, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: 1fe72942313a5654ba34c277fbd90909, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: 1fe72942313a5654ba34c277fbd90909, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
   - LevelSpools:
     - isRandom: 0
       Yarns:
@@ -683,21 +683,21 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: a57cfe9b74442ac4f8e55094d03c1267, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: a57cfe9b74442ac4f8e55094d03c1267, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 6ab61c32ea375af48856d51e17043ffa, type: 3}
-    - {fileID: 3964048330336356836, guid: 6ab61c32ea375af48856d51e17043ffa, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 267402e9c94d2214db8221907b9f3619, type: 3}
-    - {fileID: 3964048330336356836, guid: a57cfe9b74442ac4f8e55094d03c1267, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
+    - {fileID: 3524029507682614900, guid: 67331814290b6144c931d820e1c63017, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
     - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
   - LevelSpools:
     - isRandom: 0
@@ -765,21 +765,21 @@ MonoBehaviour:
     RandomNextSpool: 1
     StartSpoolCount: 3
     LevelCloths:
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: 23ae2e5f22121694887719934a3c6840, type: 3}
-    - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
-    - {fileID: 3964048330336356836, guid: a6de74c7968729b4f935befc2e05c1ea, type: 3}
-    - {fileID: 3964048330336356836, guid: fc972468c44c96f4491c89680483aab0, type: 3}
-    - {fileID: 3964048330336356836, guid: e961100cca5099f41906a8e3d223509f, type: 3}
-    - {fileID: 3964048330336356836, guid: 708822b937cb3e845bcc4d47ee095546, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: 66c881769388b1c4286b1c7bcb706b79, type: 3}
-    - {fileID: 3964048330336356836, guid: a57cfe9b74442ac4f8e55094d03c1267, type: 3}
-    - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
-    - {fileID: 3964048330336356836, guid: eb1d961564a942943a42089abdf61a4b, type: 3}
-    - {fileID: 3964048330336356836, guid: a57cfe9b74442ac4f8e55094d03c1267, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 4603602113876039220, guid: 38dd7f4ff2126dd4fbf4945461723cf0, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 8732838121479253035, guid: a13c160c901b73d4c98a93a99dd0730a, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
     - {fileID: 3964048330336356836, guid: f44a70b73d83bb94ca061b5f0b66c769, type: 3}
   - LevelSpools:
     - isRandom: 0
