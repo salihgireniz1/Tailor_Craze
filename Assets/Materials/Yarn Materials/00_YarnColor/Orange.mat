@@ -66,11 +66,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: e94dae293e38e85499de45b5a3e2ce86, type: 3}
-        m_Scale: {x: 3, y: 3}
-        m_Offset: {x: 1, y: 0}
+        m_Texture: {fileID: 2800000, guid: f2d155c98d33eca47b606380ca6ecf3d, type: 3}
+        m_Scale: {x: 1.64, y: 1.64}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 22b53e98ae7a5174eb49d2b4cb7fb827, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -432,7 +432,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AlbedoColor: {r: 0.69272226, g: 0.69272226, b: 0.69272226, a: 1}
-    - _BaseColor: {r: 0.9528302, g: 0.54762703, b: 0.21124065, a: 1}
+    - _BaseColor: {r: 0.9528302, g: 0.56337976, b: 0.23820755, a: 1}
     - _Color: {r: 0.69272226, g: 0.69272226, b: 0.69272226, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
@@ -450,7 +450,7 @@ Material:
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SColor: {r: 0.8274932, g: 0.4661441, b: 0.09702404, a: 1}
+    - _SColor: {r: 0.7075472, g: 0.4186572, b: 0.12348701, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.20312497, g: 0.20312497, b: 0.20312497, a: 1}
     - _VertexAnimationFrequency: {r: 2.5, g: 2.5, b: 2.5, a: 1}
