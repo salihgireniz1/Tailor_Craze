@@ -157,6 +157,7 @@ public class SelectionController : MonoSingleton<SelectionController>
 
     public void SelectSpool(Spool clicked)
     {
+        OnboardingManager.Instance.ShowPanel();
         SelectedSpool.Value = clicked;
     }
 }

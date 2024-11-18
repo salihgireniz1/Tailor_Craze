@@ -17,20 +17,20 @@ public class PopUpController : MonoBehaviour
 
     public async UniTaskVoid RevealPopUpAsync()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(0.75f));
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
 
         _countPart.transform.localScale = Vector3.zero;
         gameObject.SetActive(true);
         _countText.text = ClothsController.Instance.LevelClothsCount.Value + "x";
 
         // Activate popup.
-        await _countPart.transform.DOScale(1f, 0.75f).SetEase(Ease.OutBack).ToUniTask();
+        await _countPart.transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack).ToUniTask();
 
         // Wait for remain duration.
         await UniTask.Delay(TimeSpan.FromSeconds(_remainDuration));
 
         // Deactivate popup.
-        await _countPart.transform.DOScale(0f, 0.5f).SetEase(Ease.InBack).ToUniTask();
+        await _countPart.transform.DOScale(0f, 0.4f).SetEase(Ease.InBack).ToUniTask();
         gameObject.SetActive(false);
     }
 
