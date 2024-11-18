@@ -7,6 +7,12 @@ public class ClothProgressCounter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI counterText;
     private int _current;
     private int _total;
+    private void OnEnable()
+    {
+        _current = ClothsController.Instance.ClothCount.Value;
+        _total = ClothsController.Instance.LevelClothsCount.Value;
+        counterText.text = $"{_current}/{_total}";
+    }
     void Start()
     {
         ClothsController.Instance.ClothCount

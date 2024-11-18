@@ -10,6 +10,8 @@ public class PopUpController : MonoBehaviour
     [SerializeField] private GameObject _countPart;
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private float _remainDuration = 1.5f;
+
+    [SerializeField] private TextMeshProUGUI _levelText;
     void Start()
     {
 
@@ -22,6 +24,7 @@ public class PopUpController : MonoBehaviour
         _countPart.transform.localScale = Vector3.zero;
         gameObject.SetActive(true);
         _countText.text = ClothsController.Instance.LevelClothsCount.Value + "x";
+        _levelText.text = "Level " + LevelManager.Level;
 
         // Activate popup.
         await _countPart.transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack).ToUniTask();

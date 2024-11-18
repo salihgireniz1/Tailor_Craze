@@ -1,4 +1,5 @@
 using R3;
+using UnityEngine;
 public enum GameState
 {
     DEFAULT,
@@ -17,7 +18,7 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        // Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         CurrentState.Value = GameState.Initializing;
         // CurrentState.Subscribe(state => Debug.Log(state)).AddTo(this);
     }

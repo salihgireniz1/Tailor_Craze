@@ -31,7 +31,8 @@ public class ClothKnit : Knit
                     .SetEase(Ease.InBack);
         });
 
-        await UniTask.Delay(TimeSpan.FromSeconds((double)activisionDuration));
+        // await UniTask.Delay(TimeSpan.FromSeconds((double)activisionDuration));
+        await UniTask.DelayFrame(Settings.KnittingSettings.KnittingFrameAmount, PlayerLoopTiming.FixedUpdate);
         // Debug.Log($" Expected: {activisionDuration} --- Reality: {(double)Time.time - t}");
         // return UniTask.DelayFrame(1);
     }

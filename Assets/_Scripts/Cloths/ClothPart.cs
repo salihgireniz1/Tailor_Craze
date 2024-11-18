@@ -172,9 +172,10 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     {
         get
         {
-            float knittingDuration = Settings.KnittingSettings.KnittingDuration;
+            // float knittingDuration = Settings.KnittingSettings.KnittingDuration;
+            float knittingDuration = Settings.KnittingSettings.KnittingFrameAmount * Time.fixedDeltaTime;
             float knitCount = (float)_knitAparts[_currentFillness].Count / Settings.KnittingSettings.knitJumpAmount;
-            return (knittingDuration + 0.01f) * knitCount;
+            return (knittingDuration /*+ 0.01f*/) * knitCount;
         }
     }
 }

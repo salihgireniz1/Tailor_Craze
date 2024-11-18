@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Knitting Settings
   m_EditorClassIdentifier: 
   KnittingDuration: 0.1
+  KnittingFrameAmount: 1
   knitJumpAmount: 18
   RollingDuration: 0.5
   ConnectionDuration: 0.12

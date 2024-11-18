@@ -16,7 +16,11 @@ public class UIManager : MonoSingleton<UIManager>
     private void Start()
     {
         HidePanels();
-        _popupController?.RevealPopUpAsync().Forget();
+        if (OnboardingManager.Instance.IsOnboarded)
+        {
+            _popupController?.RevealPopUpAsync().Forget();
+        }
+
         GameManager.CurrentState.Subscribe(
             state =>
             {
