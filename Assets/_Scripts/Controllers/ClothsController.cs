@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using TailorCraze.Haptic;
 
 public class ClothsController : MonoSingleton<ClothsController>
 {
@@ -63,6 +64,7 @@ public class ClothsController : MonoSingleton<ClothsController>
         }
         if (cloth.gameObject.activeInHierarchy)
         {
+            HapticManager.HapticPlay(HapticType.VibrateNope);
             await cloth.transform
                         .DOMoveZ(cloth.transform.position.z + 1.5f, .1f)
                         .SetEase(Ease.Linear)
@@ -212,6 +214,8 @@ public class ClothsController : MonoSingleton<ClothsController>
                 Vector3 dropPos = currentCloth.transform.position + dropOffset;
                 dropPos.y = 0;
 
+                HapticManager.HapticPlay(HapticType.Vibrate);
+
                 UniTask fallOutBand = currentCloth.transform
                     .DOJump(dropPos, 1.2f, 1, .75f)
                     .SetEase(Ease.Linear)
@@ -237,6 +241,7 @@ public class ClothsController : MonoSingleton<ClothsController>
             _anim.enabled = false;
         }
 
+        HapticManager.HapticPlay(HapticType.VibrateNope);
         await UniTask.WhenAll(shifts.Concat(FillGapsWithCloth()));
 
 

@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using DG.Tweening;
+using TailorCraze.Haptic;
 
 public class ClothPart : MonoBehaviour, IFillable, IConnect
 {
@@ -99,9 +100,9 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             if (i % Settings.KnittingSettings.knitJumpAmount == 0)
             {
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
-                UniTask oneKnit = currentKnit.Activate(knitDuration);
+                HapticManager.HapticPlay(HapticType.VibratePop);
 
-                await oneKnit;
+                await currentKnit.Activate(knitDuration);
             }
             else
             {
