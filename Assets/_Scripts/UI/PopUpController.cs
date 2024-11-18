@@ -1,0 +1,37 @@
+using System;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using TMPro;
+using UnityEngine;
+
+public class PopUpController : MonoBehaviour
+{
+    [SerializeField] private GameObject _countPart;
+    [SerializeField] private TextMeshProUGUI _countText;
+    [SerializeField] private float _remainDuration = 1.5f;
+    void Start()
+    {
+
+    }
+
+    public async UniTaskVoid RevealPopUpAsync()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(0.75f));
+
+        _countPart.transform.localScale = Vector3.zero;
+        gameObject.SetActive(true);
+        _countText.text = ClothsController.Instance.LevelClothsCount.Value + "x";
+
+        // Activate popup.
+        await _countPart.transform.DOScale(1f, 0.75f).SetEase(Ease.OutBack).ToUniTask();
+
+        // Wait for remain duration.
+        await UniTask.Delay(TimeSpan.FromSeconds(_remainDuration));
+
+        // Deactivate popup.
+        await _countPart.transform.DOScale(0f, 0.5f).SetEase(Ease.InBack).ToUniTask();
+        gameObject.SetActive(false);
+    }
+
+}

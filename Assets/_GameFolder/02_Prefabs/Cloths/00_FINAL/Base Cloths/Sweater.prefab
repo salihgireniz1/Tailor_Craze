@@ -102,9 +102,12 @@ MonoBehaviour:
   _currentFillness: 0
   _knits: []
   _renderer: {fileID: 6024802139060197805}
-  _bands: []
+  _bands:
+  - {fileID: 1929253042653611233}
   _myCloth: {fileID: 0}
   _type: 0
+  _checkpoints:
+  - {fileID: 3942627799031434232}
 --- !u!1001 &169967876631027508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19230,6 +19233,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 485d68c66a1784d14ba7f74c24b331ae, type: 3}
+--- !u!1 &1929253042653611233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6411804627563655236, guid: 485d68c66a1784d14ba7f74c24b331ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 4450300535562111837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4199639360231206070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 485d68c66a1784d14ba7f74c24b331ae,

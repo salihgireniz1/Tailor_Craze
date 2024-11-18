@@ -11,11 +11,12 @@ public class UIManager : MonoSingleton<UIManager>
 
     public GameObject likeEmoji;
     public GameObject sadEmoji;
+    public PopUpController _popupController;
 
     private void Start()
     {
         HidePanels();
-
+        _popupController?.RevealPopUpAsync().Forget();
         GameManager.CurrentState.Subscribe(
             state =>
             {

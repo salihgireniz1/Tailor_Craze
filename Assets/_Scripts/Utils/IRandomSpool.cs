@@ -10,11 +10,27 @@ public class GetRandomForExistingCloths : IRandomSpool
 {
     private Dictionary<YarnType, int> yarnCounts;
     private SpoolInfo[] levelSpools;
+    HashSet<YarnType> possibleYarns;
+    public void Generate()
+    {
+        if (possibleYarns != null) return;
+        possibleYarns = new();
+        this.levelSpools = SpoolController.Instance._levelSpools;
+
+        foreach (var spoolInfo in this.levelSpools)
+        {
+            foreach (var yarn in spoolInfo.Yarns)
+            {
+                possibleYarns.Add(yarn.type);
+            }
+        }
+    }
 
     void Initialize()
     {
         yarnCounts = new Dictionary<YarnType, int>();
-        this.levelSpools = SpoolController.Instance._levelSpools;
+
+
         // Collect all yarn types and store their count
         foreach (var item in ClothsController.Instance.activeCloths)
         {
@@ -58,17 +74,20 @@ public class GetRandomForExistingCloths : IRandomSpool
     }
     SpoolInfo GenerateMixed()
     {
+        int rnd = Random.Range(0, 100);
+        bool isRequired = rnd < 70;
+
         SpoolInfo info = new SpoolInfo();
         info.isRandom = false;
         info.Yarns = new SpoolYarn[3];
 
         int rndmIndex = Random.Range(0, 3);
-        info.Yarns[rndmIndex] = new SpoolYarn() { isHidden = false, type = GetMostNeededYarnType() };
+        info.Yarns[rndmIndex] = new SpoolYarn() { isHidden = false, type = isRequired ? GetMostNeededYarnType() : possibleYarns.ToList()[Random.Range(0, possibleYarns.Count)] };
 
         for (int i = 0; i < 3; i++)
         {
             if (i == rndmIndex) continue;
-            info.Yarns[i] = new SpoolYarn() { isHidden = false, type = YarnController.Instance.GetRandomYarnType() };
+            info.Yarns[i] = new SpoolYarn() { isHidden = false, type = possibleYarns.ToList()[Random.Range(0, possibleYarns.Count)] };
         }
 
         return info;
@@ -94,6 +113,7 @@ public class GetRandomForExistingCloths : IRandomSpool
     public SpoolInfo GetRandomSpoolInfo()
     {
         Initialize();
+        Generate();
         return GenerateMixed();
     }
 }

@@ -18,9 +18,10 @@ public class SpoolController : MonoSingleton<SpoolController>
 
     private int _spoolCount = 0;
     private CancellationTokenSource cts = new();
-    private IRandomSpool _randomizer = new GetRandomForExistingCloths();
+    private IRandomSpool _randomizer;
     private void Start()
     {
+        _randomizer = new GetRandomForExistingCloths();
         GameManager.CurrentState
         .Where(state => state == GameState.Initializing)
         .Subscribe(

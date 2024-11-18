@@ -173,6 +173,8 @@ public class ClothsController : MonoSingleton<ClothsController>
     }
     #endregion
 
+
+
     #region Core Loop Methods
     public async UniTask AddNewClothAndShiftRight()
     {
@@ -182,7 +184,8 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Check if adding a new cloth would exceed the spot limit
         if (activeCloths.Count >= _spots.Length)
         {
-            GameManager.CurrentState.Value = GameState.GameOver;
+            await FallFromBand(activeCloths[activeCloths.Count - 1]);
+            // GameManager.CurrentState.Value = GameState.GameOver;
             return;
         }
 
@@ -210,21 +213,8 @@ public class ClothsController : MonoSingleton<ClothsController>
             }
             else
             {
-                Vector3 dropOffset = Vector3.right * 4f;
-                Vector3 dropPos = currentCloth.transform.position + dropOffset;
-                dropPos.y = 0;
 
-                HapticManager.HapticPlay(HapticType.Vibrate);
-
-                UniTask fallOutBand = currentCloth.transform
-                    .DOJump(dropPos, 1.2f, 1, .75f)
-                    .SetEase(Ease.Linear)
-                    // .SetRelative()
-                    .OnUpdate(() => currentCloth.transform.Rotate(Vector3.one * Time.deltaTime * -200f))
-                    .OnComplete(() => GameManager.CurrentState.Value = GameState.GameOver)
-                    .ToUniTask();
-                // GameManager.CurrentState.Value = GameState.GameOver;
-                await fallOutBand;
+                await FallFromBand(currentCloth);
                 return;
             }
         }
@@ -316,5 +306,24 @@ public class ClothsController : MonoSingleton<ClothsController>
         // Return the list of spawn tasks.
         return spawnTasks;
     }
+
+    /// <summary>
+    /// Animates a cloth falling from the band and triggers a game over state.
+    /// </summary>
+    private async UniTask FallFromBand(FactoryCloth fallingcloth)
+    {
+        Vector3 dropOffset = Vector3.right * 4f;
+        Vector3 dropPos = fallingcloth.transform.position + dropOffset;
+        dropPos.y = 0;
+
+        HapticManager.HapticPlay(HapticType.Vibrate);
+        await fallingcloth.transform
+                .DOJump(dropPos, 1.2f, 1, .75f)
+                .SetEase(Ease.Linear)
+                .OnUpdate(() => fallingcloth.transform.Rotate(Vector3.one * Time.deltaTime * -200f))
+                .OnComplete(() => GameManager.CurrentState.Value = GameState.GameOver)
+                .ToUniTask();
+    }
+
     #endregion
 }

@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using DG.Tweening;
 using TailorCraze.Haptic;
+using System;
 
 public class ClothPart : MonoBehaviour, IFillable, IConnect
 {
@@ -16,6 +17,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [SerializeField] private GameObject[] _bands;
     [SerializeField] private FactoryCloth _myCloth;
     [SerializeField] private YarnType _type;
+    [SerializeField] private Knit[] _checkpoints;
     Dictionary<int, List<Knit>> _knitAparts = new();
     private Knit currentKnit;
     private Animator _parentAnimator;
@@ -30,7 +32,8 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     [Button]
     private void DivideKnits()
     {
-        _knitAparts = DivideKnitsIntoParts(_requiredYarnCount);
+        // _knitAparts = DivideKnitsIntoParts(_requiredYarnCount);
+        _knitAparts = DivideKnitsByReferences(_checkpoints);
     }
 
     [Button]
@@ -109,6 +112,38 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
                 currentKnit.Activate(knitDuration).Forget();
             }
         }
+    }
+    Dictionary<int, List<Knit>> DivideKnitsByReferences(Knit[] referenceKnits)
+    {
+        Dictionary<int, List<Knit>> knitParts = new Dictionary<int, List<Knit>>();
+        int startIndex = 0;
+
+        // Iterate through the reference knits to divide into parts
+        for (int i = 0; i < referenceKnits.Length; i++)
+        {
+            // Find the index of the current reference knit
+            int referenceIndex = Array.IndexOf(_knits, referenceKnits[i]);
+
+            // Add the range of knits from the start index to the reference index
+            if (referenceIndex > -1) // Ensure the reference knit exists
+            {
+                List<Knit> part = _knits.Skip(startIndex).Take(referenceIndex - startIndex).ToList();
+                knitParts.Add(i, part);
+
+                // Update the start index for the next segment
+                startIndex = referenceIndex;
+            }
+            else
+            {
+                throw new ArgumentException($"Reference knit {referenceKnits[i]} not found in _knits.");
+            }
+        }
+
+        // Add the final part, which includes everything after the last reference knit
+        List<Knit> lastPart = _knits.Skip(startIndex).ToList();
+        knitParts.Add(referenceKnits.Length, lastPart);
+
+        return knitParts;
     }
     Dictionary<int, List<Knit>> DivideKnitsIntoParts(int n)
     {
