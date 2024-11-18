@@ -26,7 +26,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - TCP2_REFLECTIONS_FRESNEL
-  - TCP2_RIM_LIGHTING
   - TCP2_RIM_LIGHTING_LIGHTMASK
   - TCP2_SHADOW_LIGHT_COLOR
   m_InvalidKeywords:
@@ -329,7 +328,7 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.468
+    - _RampSmoothing: 1
     - _RampThreshold: 0.764
     - _RampType: 0
     - _ReceiveShadows: 1
@@ -385,7 +384,7 @@ Material:
     - _UseOcclusion: 0
     - _UseOutline: 0
     - _UseReflections: 0
-    - _UseRim: 1
+    - _UseRim: 0
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
     - _UseSpecular: 0
@@ -399,7 +398,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AlbedoColor: {r: 0.42857128, g: 0.33173615, b: 0.29283777, a: 1}
-    - _BaseColor: {r: 0.6981132, g: 0.4082651, b: 0.27990386, a: 1}
+    - _BaseColor: {r: 0.6603774, g: 0.42359734, b: 0.32084376, a: 1}
     - _Color: {r: 0.5202156, g: 0.45736414, b: 0.43117598, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
@@ -413,9 +412,9 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    - _RimColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SColor: {r: 0.5566038, g: 0.27516112, b: 0.1496529, a: 1}
+    - _SColor: {r: 0.21698111, g: 0.12622066, b: 0.08290316, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 1}
     - _VertexAnimationFrequency: {r: 2.5, g: 2.5, b: 2.5, a: 1}
