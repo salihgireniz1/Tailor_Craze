@@ -48,18 +48,30 @@ public class SpoolController : MonoSingleton<SpoolController>
         cts?.Cancel();
         cts = new CancellationTokenSource();
         _activeSpools.Remove(spool);
-        await spool.transform.DOScale(Vector3.zero, .2f).SetEase(Ease.InBack).WithCancellation(cts.Token);
+        await spool.transform
+            .DOScale(Vector3.zero, Settings.SpoolAnimationSettings.SpoolUnscaleDuration)
+            .SetEase(Settings.SpoolAnimationSettings.SpoolUnscaleEase)
+            .WithCancellation(cts.Token);
 
         if (_spoolCount >= _levelSpools.Length && !_canRandom)
         {
             return;
         }
+        await UniTask.Delay(TimeSpan.FromSeconds(Settings.SpoolAnimationSettings.DelayBetweenOldAndNewSpool));
+        var targetPos = spool.transform.position;
 
-        var newSpool = SpawnSpool(GetNextSpoolOfLevel(), spool.transform.position);
+        Spool newSpool = SpawnSpool(GetNextSpoolOfLevel(), targetPos);
+
         var defaultScale = newSpool.transform.localScale;
-        newSpool.transform.localScale = Vector3.zero;
+        newSpool.transform.localScale = defaultScale * Settings.SpoolAnimationSettings.NewSpoolStartScale;
         DestroyImmediate(spool.gameObject);
-        await newSpool.transform.DOScale(defaultScale, .5f).SetEase(Ease.OutBack).WithCancellation(cts.Token);
+
+        var scaleSpool = newSpool.transform
+            .DOScale(defaultScale, Settings.SpoolAnimationSettings.SpoolScaleDuration)
+            .SetEase(Settings.SpoolAnimationSettings.SpoolScaleEase)
+            .WithCancellation(cts.Token);
+
+        await scaleSpool;
     }
     public SpoolInfo GetNextSpoolOfLevel()
     {

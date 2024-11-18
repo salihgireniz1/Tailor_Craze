@@ -30,11 +30,8 @@ public abstract class BaseSpool : MonoBehaviour
         .Where(_ => _inProgress)
         .Subscribe(_ =>
         {
-            _body.Rotate(0f, 1080f / _rollDuration * rollDir * Time.deltaTime, 0f);
-            foreach (var item in _contents)
-            {
-                item.Spline.RebuildImmediate();
-            }
+            _body.Rotate(0f, 360f * 4f / _rollDuration * rollDir * Time.deltaTime, 0f);
+            Build();
         }).AddTo(this);
     }
     protected abstract void RemoveContent(int index);

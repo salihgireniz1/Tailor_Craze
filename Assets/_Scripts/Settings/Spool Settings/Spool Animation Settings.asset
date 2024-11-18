@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cc09b864a258448b2e940930d5809f, type: 3}
-  m_Name: Knitting Settings
+  m_Script: {fileID: 11500000, guid: 6caa197cf553db0449c4d8d8883de6d2, type: 3}
+  m_Name: Spool Animation Settings
   m_EditorClassIdentifier: 
-  KnittingDuration: 0.1
-  knitJumpAmount: 18
-  RollingDuration: 0.5
-  ConnectionDuration: 0.12
-  ConnectionLerpSpeed: 15
+  SpoolUnscaleDuration: 0.2
+  SpoolUnscaleEase: 26
+  DelayBetweenOldAndNewSpool: 0.5
+  NewSpoolStartScale: 0.15
+  SpoolScaleDuration: 1.2
+  SpoolScaleEase: 24

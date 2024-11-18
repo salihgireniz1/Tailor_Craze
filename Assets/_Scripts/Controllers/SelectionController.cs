@@ -1,6 +1,7 @@
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using R3;
+using UnityEngine;
 
 public class SelectionController : MonoSingleton<SelectionController>
 {
@@ -87,7 +88,6 @@ public class SelectionController : MonoSingleton<SelectionController>
 
         // Calculate how long it will take to fill the current match.
         var duration = match.FillDuration;
-
         // Start filling the current match.
         fill = match.Fill(topYarn.Data);
 
@@ -154,24 +154,6 @@ public class SelectionController : MonoSingleton<SelectionController>
 
         await unroll;
     }
-
-    // public async UniTask<IFillable> FindYarnMatch(YarnData data)
-    // {
-    //     // First, check for a matching cloth part
-    //     ClothPart clothPart = ClothsController.Instance.GetClothWithData(data);
-    //     if (clothPart != null) return clothPart;
-
-    //     // Then, check for an available deposit spool
-    //     if (DepositSpoolController.Instance.HasEmptyDepositSpool)
-    //     {
-    //         return DepositSpoolController.Instance.FirstEmptyDepositSpool;
-    //     }
-
-    //     // Handle overloading if no deposit spool is available
-    //     await YarnConnection.Instance.BreakConnection();
-    //     await DepositSpoolController.Instance.HandleOverloadingAsync();
-    //     return DepositSpoolController.Instance.FirstEmptyDepositSpool;
-    // }
 
     public void SelectSpool(Spool clicked)
     {

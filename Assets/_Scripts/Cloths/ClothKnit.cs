@@ -14,23 +14,25 @@ public class ClothKnit : Knit
         transform.localScale = Vector3.zero;
         gameObject.SetActive(false);
     }
-    public override UniTask Activate(float activisionDuration)
+    public async override UniTask Activate(float activisionDuration)
     {
+        // double t = (double)Time.time;
         gameObject.SetActive(true);
 
         // transform.localScale = new Vector3(1, 1, 0);
         // transform.DOPunchScale(Vector3.one * targetScale, activisionDuration, 2, 0).ToUniTask();
         transform
-        .DOScale(targetScale * 2.5f, activisionDuration * 3f)
+        .DOScale(targetScale * 2.5f, activisionDuration * 1.5f)
         .SetEase(Ease.OutBounce)
         .OnComplete(() =>
         {
             transform
                     .DOScale(Vector3.one * targetScale, activisionDuration * 1f)
                     .SetEase(Ease.InBack);
-        })
-        .ToUniTask();
-        return UniTask.Delay(TimeSpan.FromSeconds((double)activisionDuration));
+        });
+
+        await UniTask.Delay(TimeSpan.FromSeconds((double)activisionDuration));
+        // Debug.Log($" Expected: {activisionDuration} --- Reality: {(double)Time.time - t}");
         // return UniTask.DelayFrame(1);
     }
 }

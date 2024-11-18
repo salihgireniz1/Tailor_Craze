@@ -34,11 +34,6 @@ public class GetRandomForExistingCloths : IRandomSpool
         yarnCounts = yarnCounts
         .OrderByDescending(pair => pair.Value)
         .ToDictionary(pair => pair.Key, pair => pair.Value);
-
-        foreach (var item in yarnCounts)
-        {
-            Debug.Log($"{item.Value}-{item.Key}");
-        }
     }
     public bool IsUniform()
     {

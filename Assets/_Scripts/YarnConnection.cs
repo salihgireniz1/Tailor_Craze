@@ -87,7 +87,7 @@ public class YarnConnection : MonoSingleton<YarnConnection>
             () => tube.clipFrom,
             clip => tube.clipFrom = clip,
             1f,
-            Settings.KnittingSettings.ConnectionDuration * 1.5F)
+            Settings.KnittingSettings.ConnectionDuration)
             .SetEase(Ease.Linear)
             .ToUniTask();
         isActive = false;

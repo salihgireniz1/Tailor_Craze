@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cloth Knitting Animation Data
   m_EditorClassIdentifier: 
   _animationDuration: 0.25
-  _clothScaleMultiplier: 1.5
-  _zForwardOffset: -0.7
+  _clothScaleMultiplier: 1.15
+  _zForwardOffset: -0.2
   _clothSelectionRotate: {x: 0, y: 45, z: 0}
   _clothDeselectRotate: {x: 20, y: 0, z: 0}

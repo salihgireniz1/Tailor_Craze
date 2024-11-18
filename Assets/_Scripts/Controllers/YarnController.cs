@@ -47,11 +47,13 @@ public class YarnController : MonoSingleton<YarnController>
         float rollDir = rollType == RollType.Roll ? -1f : 1f;
         yarnSpool.rollDir = rollDir;
 
+        // If filling yarn, final clip will be '1', otherwise it will be '0'.
+        float finalYarnClipAmount = rollType == RollType.Roll ? 1f : 0f;
 
         return DOTween.To(
                 () => yarn.Tube.clipTo,
                 clip => yarn.Tube.clipTo = clip,
-                rollType == RollType.Roll ? 1f : 0f,
+                finalYarnClipAmount,
                 duration
             )
             .OnUpdate(

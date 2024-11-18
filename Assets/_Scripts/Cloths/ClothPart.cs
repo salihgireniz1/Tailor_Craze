@@ -95,20 +95,11 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
 
         for (int i = 0; i < path.Count; i++)
         {
-            // UniTask vibrateCloth = UniTask.CompletedTask;
             currentKnit = path[i];
             if (i % Settings.KnittingSettings.knitJumpAmount == 0)
             {
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
                 UniTask oneKnit = currentKnit.Activate(knitDuration);
-
-                // if (!_myCloth.IsRotating)
-                // {
-                //     vibrateCloth = _myCloth.transform
-                //                     .DOPunchRotation(Random.onUnitSphere, knitDuration, 1)
-                //                     .ToUniTask();
-                // }
-                // await UniTask.WhenAll(oneKnit, vibrateCloth);
 
                 await oneKnit;
             }
@@ -145,8 +136,9 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     {
         get
         {
-            var dur = Settings.KnittingSettings.KnittingDuration * _knitAparts[_currentFillness].Count / Settings.KnittingSettings.knitJumpAmount;
-            return dur;
+            float knittingDuration = Settings.KnittingSettings.KnittingDuration;
+            float knitCount = (float)_knitAparts[_currentFillness].Count / Settings.KnittingSettings.knitJumpAmount;
+            return (knittingDuration + 0.01f) * knitCount;
         }
     }
 }
