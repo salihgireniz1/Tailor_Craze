@@ -208,7 +208,19 @@ public class ClothsController : MonoSingleton<ClothsController>
             }
             else
             {
-                GameManager.CurrentState.Value = GameState.GameOver;
+                Vector3 dropOffset = Vector3.right * 4f;
+                Vector3 dropPos = currentCloth.transform.position + dropOffset;
+                dropPos.y = 0;
+
+                UniTask fallOutBand = currentCloth.transform
+                    .DOJump(dropPos, 1.2f, 1, .75f)
+                    .SetEase(Ease.Linear)
+                    // .SetRelative()
+                    .OnUpdate(() => currentCloth.transform.Rotate(Vector3.one * Time.deltaTime * -200f))
+                    .OnComplete(() => GameManager.CurrentState.Value = GameState.GameOver)
+                    .ToUniTask();
+                // GameManager.CurrentState.Value = GameState.GameOver;
+                await fallOutBand;
                 return;
             }
         }
