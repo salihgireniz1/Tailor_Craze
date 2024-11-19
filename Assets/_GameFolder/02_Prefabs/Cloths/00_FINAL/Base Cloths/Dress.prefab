@@ -841,10 +841,10 @@ MonoBehaviour:
   - {fileID: 4490595949196256191}
   - {fileID: 8341055155133256241}
   - {fileID: 3828270481292876280}
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 3672256587739951084}
   _bands:
-  - {fileID: 8051517751690598376}
   - {fileID: 6534762350050670735}
+  - {fileID: 8051517751690598376}
   _myCloth: {fileID: 0}
   _type: 0
   _checkpoints:
@@ -41589,6 +41589,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Division Borders
       objectReference: {fileID: 0}
+    - target: {fileID: -7643989733085726667, guid: 89da24f4f4dd74cb3892ff86b8df1d7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3905181758531942382, guid: 89da24f4f4dd74cb3892ff86b8df1d7d,
         type: 3}
       propertyPath: m_CastShadows
@@ -41655,6 +41660,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89da24f4f4dd74cb3892ff86b8df1d7d, type: 3}
+--- !u!23 &3672256587739951084 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7845602803300541927, guid: 89da24f4f4dd74cb3892ff86b8df1d7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6779984273955506699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6457579927803211232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 89da24f4f4dd74cb3892ff86b8df1d7d,

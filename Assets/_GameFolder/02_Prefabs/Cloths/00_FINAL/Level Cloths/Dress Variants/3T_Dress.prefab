@@ -8687,6 +8687,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3672256587739951084, guid: 5f79e14d2a75748da8278bad81aa8323,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 362b617dcadccaa4ebc89b2a33a3c413, type: 2}
     - target: {fileID: 3673138995732319881, guid: 5f79e14d2a75748da8278bad81aa8323,
         type: 3}
       propertyPath: knitMaterial
