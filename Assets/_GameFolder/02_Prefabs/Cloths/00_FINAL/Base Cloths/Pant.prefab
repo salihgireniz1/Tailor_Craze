@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.19, y: 2.51, z: 0.35}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.4, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3148179593608306163}
@@ -601,7 +601,7 @@ MonoBehaviour:
   - {fileID: 3460842436431649297}
   _renderer: {fileID: 8594171546892476669}
   _bands:
-  - {fileID: 4022486395435945674}
+  - {fileID: 0}
   _myCloth: {fileID: 0}
   _type: 0
   _checkpoints:
@@ -20970,6 +20970,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8097fc242c1a24a66b34a4ef74439ac7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b5c63cdadbea48a9b32e8e8c5d423d1, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 8097fc242c1a24a66b34a4ef74439ac7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3be1881416fd047a18c8485895a9e5b2, type: 2}
     - target: {fileID: 919132149155446097, guid: 8097fc242c1a24a66b34a4ef74439ac7,
         type: 3}
       propertyPath: m_Name
@@ -25629,6 +25639,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPantReferance
       objectReference: {fileID: 0}
+    - target: {fileID: 2034573994925821833, guid: 9335540325a4f4044bbc7c9d143ff91d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9afd4d419aafc4b4784e8db175ed576f, type: 2}
+    - target: {fileID: 2034573994925821833, guid: 9335540325a4f4044bbc7c9d143ff91d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80280f68ca16f4cb7816f89c3ef96248, type: 2}
     - target: {fileID: 2399335713785076951, guid: 9335540325a4f4044bbc7c9d143ff91d,
         type: 3}
       propertyPath: m_CastShadows
@@ -25644,12 +25664,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9335540325a4f4044bbc7c9d143ff91d, type: 3}
---- !u!1 &4022486395435945674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7051010232966181600, guid: 9335540325a4f4044bbc7c9d143ff91d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6199352644593187882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5873326266503371713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9335540325a4f4044bbc7c9d143ff91d,
