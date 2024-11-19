@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1003832849118506493
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_LocalRotation: {x: 0.45033544, y: -0.22126627, z: 0.231616, w: 0.8334226}
   m_LocalPosition: {x: -0.69813526, y: 3.291019, z: 0.37557378}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9163082135626541458}
   m_Father: {fileID: 8884679802799275187}
@@ -46799,6 +46799,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DressFlower
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b28666bb7b73946689a419d5b8d85f8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b28666bb7b73946689a419d5b8d85f8d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Accessory
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46807,6 +46817,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2986354890552934248}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b28666bb7b73946689a419d5b8d85f8d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5245950557288955013}
   m_SourcePrefab: {fileID: 100100000, guid: b28666bb7b73946689a419d5b8d85f8d, type: 3}
 --- !u!1 &8386298492587291432 stripped
 GameObject:
@@ -46830,6 +46844,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &5245950557288955013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8386298492587291432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182927a58a87a0f42bc2399243230002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9163082135626541458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b28666bb7b73946689a419d5b8d85f8d,

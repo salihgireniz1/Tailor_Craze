@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1152498346724500188
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,6 +1250,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SweaterNeckless
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8d4b65baa4ee543218295854e475b854,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1258,6 +1263,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6729517550390371156}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d4b65baa4ee543218295854e475b854,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4385872672991394787}
   m_SourcePrefab: {fileID: 100100000, guid: 8d4b65baa4ee543218295854e475b854, type: 3}
 --- !u!4 &351690935726509134 stripped
 Transform:
@@ -1280,13 +1289,25 @@ Animation:
   m_GameObject: {fileID: 1128896790939326196}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 18f8106020f0c4e4b89fa6e7c1633161, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 18f8106020f0c4e4b89fa6e7c1633161, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &4385872672991394787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128896790939326196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182927a58a87a0f42bc2399243230002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2417455503995777469
 PrefabInstance:
   m_ObjectHideFlags: 0

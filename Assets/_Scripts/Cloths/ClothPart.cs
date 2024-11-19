@@ -24,19 +24,16 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
 
     private void Start()
     {
-        // Application.targetFrameRate = 60;
         _parentAnimator = GetComponentInParent<Animator>();
         DivideKnits();
         currentKnit = _knits[0];
     }
-    [Button]
     private void DivideKnits()
     {
         // _knitAparts = DivideKnitsIntoParts(_requiredYarnCount);
         _knitAparts = DivideKnitsByReferences(_checkpoints);
     }
 
-    [Button]
     public void InitializePart(YarnType Type)
     {
         _knits = GetComponentsInChildren<Knit>(true);
@@ -47,20 +44,8 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             knit.KnitMaterial = data.knitMaterial;
             knit.InitializeKnit(data.color);
         }
-
-        if (TryGetComponent(out SpriteRenderer sr))
-        {
-            sr.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.65f));
-        }
-        else if (_renderer == null && TryGetComponent(out _renderer))
-        {
-            _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
-        }
-        else
-        {
-            _renderer.sharedMaterial = data.mannequinMaterial;
-            // _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
-        }
+        _renderer.sharedMaterial = data.mannequinMaterial;
+        // _renderer.sharedMaterial.color = new Color32(data.color.r, data.color.g, data.color.b, (byte)(data.color.a * 0.95f));
     }
     public bool CanBeFilled(YarnData data)
     {
