@@ -24,7 +24,10 @@ public class OnboardingManager : MonoSingleton<OnboardingManager>
             pointer.SetActive(true);
         }
     }
-
+    public void HidePointer()
+    {
+        if (!IsOnboarded) pointer?.SetActive(false);
+    }
     public void ShowPanel()
     {
         if (!IsOnboarded)

@@ -97,6 +97,8 @@ public class SelectionController : MonoSingleton<SelectionController>
 
         // After unrolling, continue with next yarn from the spool.
         await EmptySpool(spool);
+
+        OnboardingManager.Instance.ShowPanel();
     }
     public async UniTask<IFillable> FindYarnMatch(YarnData data)
     {
@@ -119,45 +121,11 @@ public class SelectionController : MonoSingleton<SelectionController>
             return DepositSpoolController.Instance.FirstEmptyDepositSpool;
         }
     }
-    private async UniTask HandleEmptySpool(BaseSpool spool)
-    {
-        await YarnConnection.Instance.BreakConnection();
-        await fill;
-        fill = UniTask.CompletedTask;
-        SpoolController.Instance.RemoveSpool((Spool)spool).Forget();
-        await ClothsController.Instance.AddNewClothAndShiftRight();
-    }
-
-    private async UniTask StartNewCloth()
-    {
-        await YarnConnection.Instance.BreakConnection();
-        // await fill;
-        // fill = UniTask.CompletedTask;
-    }
-
-    private async UniTask ProcessYarnMatch(BaseSpool spool, Yarn topYarn, IFillable match)
-    {
-        if (match != latestFillable)
-        {
-            latestFillable = match;
-            await YarnConnection.Instance.BreakConnection();
-        }
-
-        // Set up and activate connection
-        YarnConnection.Instance.SetConnectionPoints(topYarn, match.Connector);
-        YarnConnection.Instance.ActivateConnection(topYarn.Data).Forget();
-
-        // Start unrolling and filling processes
-        var duration = match.FillDuration;
-        fill = match.Fill(topYarn.Data);
-        var unroll = spool.UnrollTopYarn(duration);
-
-        await unroll;
-    }
 
     public void SelectSpool(Spool clicked)
     {
-        OnboardingManager.Instance.ShowPanel();
+
+        OnboardingManager.Instance.HidePointer();
         SelectedSpool.Value = clicked;
     }
 }

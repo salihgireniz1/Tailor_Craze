@@ -10,10 +10,17 @@ public class DepositSpoolController : MonoSingleton<DepositSpoolController>
 
     public async UniTask HandleOverloadingAsync()
     {
-        foreach (var depositSpool in _depositSpools)
+        UniTask[] bursts = new UniTask[_depositSpools.Length];
+        for (int i = 0; i < _depositSpools.Length; i++)
         {
-            await depositSpool.BurstContentAsync();
+            bursts[i] = _depositSpools[i].BurstContentAsync();
         }
+        await UniTask.WhenAll(bursts);
+
+        // foreach (var depositSpool in _depositSpools)
+        // {
+        //     await depositSpool.BurstContentAsync();
+        // }
     }
     public async UniTask CheckNewClothAsync(FactoryCloth cloth)
     {
@@ -30,14 +37,6 @@ public class DepositSpoolController : MonoSingleton<DepositSpoolController>
             fillablePart.Fill(deposit.filledYarnData).Forget();
             await deposit.UnrollTopYarn(duration);
             await YarnConnection.Instance.BreakConnection();
-        }
-
-        if (!cloth)
-        {
-            // We completed the cloth just spawned LOL
-            // Need to spawn a new one.
-
-            // await ClothsController.Instance.AddNewClothAndShiftRight();
         }
     }
 }
