@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class UIManager : MonoSingleton<UIManager>
 {
+    public GameObject InGamePanel;
     public GameObject WinPanel;
     public GameObject LosePanel;
 
@@ -16,7 +17,7 @@ public class UIManager : MonoSingleton<UIManager>
     private void Start()
     {
         HidePanels();
-        if (OnboardingManager.Instance.IsOnboarded)
+        if (OnboardingManager.Instance.IsOnboarded && !OnboardingManager.Instance.IsOnboardingHiddenYarn)
         {
             _popupController?.RevealPopUpAsync().Forget();
         }
@@ -27,17 +28,21 @@ public class UIManager : MonoSingleton<UIManager>
                 switch (state)
                 {
                     case GameState.Victory:
+                        InGamePanel.SetActive(false);
                         WinPanel.SetActive(true);
                         likeEmoji?.SetActive(true);
                         sadEmoji.transform.DOScale(1f, .75f).SetEase(Ease.OutBack);
                         break;
                     case GameState.GameOver:
+                        InGamePanel.SetActive(false);
                         LosePanel.SetActive(true);
                         sadEmoji?.SetActive(true);
                         sadEmoji.transform.DOScale(1f, .75f).SetEase(Ease.OutBack);
                         break;
-                    default:
+                    case GameState.Initializing:
                         HidePanels();
+                        break;
+                    default:
                         break;
                 }
             }
@@ -45,6 +50,8 @@ public class UIManager : MonoSingleton<UIManager>
     }
     public void HidePanels()
     {
+        InGamePanel.SetActive(true);
+
         WinPanel?.SetActive(false);
         LosePanel?.SetActive(false);
 

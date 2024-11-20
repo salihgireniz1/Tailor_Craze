@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -12,14 +13,6 @@ public class PopUpController : MonoBehaviour
     [SerializeField] private float _remainDuration = 1.5f;
 
     [SerializeField] private TextMeshProUGUI _levelText;
-    [SerializeField] private GameObject _blocker;
-    // [SerializeField] private GameObject _content;
-
-
-    void Start()
-    {
-
-    }
 
     public async UniTaskVoid RevealPopUpAsync()
     {

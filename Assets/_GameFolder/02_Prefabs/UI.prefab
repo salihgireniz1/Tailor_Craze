@@ -538,7 +538,6 @@ MonoBehaviour:
   _countText: {fileID: 4980323878819077655}
   _remainDuration: 1
   _levelText: {fileID: 4464765347608024415}
-  _blocker: {fileID: 8890570362477147135}
 --- !u!1 &1096683717793766293
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3431072778009393803}
   - component: {fileID: 9101070695738987349}
-  - component: {fileID: 2012737806369354125}
+  - component: {fileID: 3320829829411654889}
   m_Layer: 5
   m_Name: Count Part
   m_TagString: Untagged
@@ -857,7 +856,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155090341638453794}
   m_CullTransparentMesh: 1
---- !u!114 &2012737806369354125
+--- !u!114 &3320829829411654889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -866,7 +865,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1155090341638453794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28369dbde2394f4cb98ab9fed67da90, type: 3}
+  m_Script: {fileID: 11500000, guid: e8548894332c2474589c85fc385250da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counterText: {fileID: 7485795670870920471}
@@ -1448,7 +1447,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 25.8}
-  m_SizeDelta: {x: 512, y: 0}
+  m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4250020150041236153
 CanvasRenderer:
@@ -1719,7 +1718,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -20.081253}
-  m_SizeDelta: {x: 357, y: 0}
+  m_SizeDelta: {x: 357, y: 357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6613927472284971580
 CanvasRenderer:
@@ -2138,7 +2137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5605795055271596110
 RectTransform:
   m_ObjectHideFlags: 0
