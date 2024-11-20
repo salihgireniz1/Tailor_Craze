@@ -28,6 +28,7 @@ Material:
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING_LIGHTMASK
   - TCP2_SHADOW_LIGHT_COLOR
+  - TCP2_SPECULAR
   - TCP2_SPECULAR_STYLIZED
   m_InvalidKeywords:
   - TCP2_DISABLE_WRAPPED_LIGHT
@@ -69,7 +70,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: f2d155c98d33eca47b606380ca6ecf3d, type: 3}
-        m_Scale: {x: 1.64, y: 1.64}
+        m_Scale: {x: 6, y: 6}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -370,8 +371,8 @@ Material:
     - _RampScale: -0.21
     - _RampSmooth: 0.2
     - _RampSmoothAdd: 0.75
-    - _RampSmoothing: 0.5
-    - _RampThreshold: 0.78
+    - _RampSmoothing: 0.267
+    - _RampThreshold: 0.656
     - _RampType: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
@@ -409,7 +410,7 @@ Material:
     - _SpecularRoughness: 0.5
     - _SpecularSmoothness: 0
     - _SpecularThresholdOffset: 0.25
-    - _SpecularToonSize: 0.15
+    - _SpecularToonSize: 0.081
     - _SpecularToonSmoothness: 1
     - _SpecularType: 1
     - _SrcBlend: 1
@@ -444,7 +445,7 @@ Material:
     - _UseRim: 0
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
-    - _UseSpecular: 0
+    - _UseSpecular: 1
     - _VertexAnimation: 0
     - _VertexAnimationIntensity: 0.05
     - _VertexAnimationStutter: 0
@@ -458,7 +459,7 @@ Material:
     - __outline_gui_dummy__: 0
     m_Colors:
     - _AlbedoColor: {r: 0.69272226, g: 0.69272226, b: 0.69272226, a: 1}
-    - _BaseColor: {r: 0.3382748, g: 0.48229736, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0.6440239, b: 1, a: 1}
     - _Color: {r: 0.69272226, g: 0.69272226, b: 0.69272226, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
@@ -476,9 +477,9 @@ Material:
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SColor: {r: 0.2267711, g: 0.31907648, b: 0.5283019, a: 1}
+    - _SColor: {r: 0, g: 0.46605062, b: 1, a: 1}
     - _SketchColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.20312497, g: 0.20312497, b: 0.20312497, a: 1}
+    - _SpecularColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
     - _VertexAnimationFrequency: {r: 2.5, g: 2.5, b: 2.5, a: 1}
   m_BuildTextureStacks: []

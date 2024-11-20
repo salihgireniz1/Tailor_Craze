@@ -43,8 +43,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 0d46ef59b5a9247f3a0daf62c848278c, type: 3}
-        m_Scale: {x: 35, y: 0.1}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 1, y: 1}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 0d46ef59b5a9247f3a0daf62c848278c, type: 3}
@@ -174,7 +174,7 @@ Material:
     - _RampSmooth: 0.2
     - _RampSmoothAdd: 0.75
     - _RampSmoothing: 1
-    - _RampThreshold: 0.83
+    - _RampThreshold: 0.48
     - _RampType: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
@@ -221,7 +221,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.882353, g: 0.65882355, b: 0.49803925, a: 1}
+    - _BaseColor: {r: 0.6399964, g: 0.77969223, b: 0.8867924, a: 1}
     - _Color: {r: 0.48329705, g: 0.62803227, b: 0.5834984, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
@@ -229,7 +229,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.754717, g: 0.42134976, b: 0.18155926, a: 1}
+    - _SColor: {r: 0, g: 0.38125482, b: 0.5660378, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_BuildTextureStacks: []
