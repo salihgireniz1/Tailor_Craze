@@ -12,8 +12,6 @@ public class Spool : BaseSpool
     private GameObject[] _bodies;
     private void OnMouseDown()
     {
-        if (SpoolController.Instance.waitingPopUp && OnboardingManager.Instance.IsOnboarded) return;
-
         if (GameManager.CurrentState.Value != GameState.Playing) return;
         if (EventSystem.current.IsPointerOverGameObject()) return;
         SelectionController.Instance.SelectSpool(this);
@@ -24,6 +22,14 @@ public class Spool : BaseSpool
                 ((HiddenYarn)yarn).Reveal().Forget();
             }
         }
+    }
+    public async UniTaskVoid WaitForPopup()
+    {
+        if (!OnboardingManager.Instance.IsOnboarded || OnboardingManager.Instance.IsOnboardingHiddenYarn) return;
+        Debug.Log("Awaiting popup...");
+        GetComponent<BoxCollider>().enabled = false;
+        await UniTask.Delay(3000);
+        GetComponent<BoxCollider>().enabled = true;
     }
     [Button]
     public void ClearContents()

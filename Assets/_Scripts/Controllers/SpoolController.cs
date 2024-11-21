@@ -19,35 +19,19 @@ public class SpoolController : MonoSingleton<SpoolController>
     private int _spoolCount = 0;
     private CancellationTokenSource cts = new();
     private IRandomSpool _randomizer;
-    public bool waitingPopUp = true;
     private async void Start()
     {
-        waitingPopUp = true;
         _randomizer = new GetRandomForExistingCloths();
         GameManager.CurrentState
         .Where(state => state == GameState.Initializing)
         .Subscribe(
             _ => InitLevelSpools()
         ).AddTo(this);
-
-        await UniTask.Delay(3000);
-        waitingPopUp = false;
     }
     [Button]
     private void FindPoints()
     {
         spoolPoints = GameObject.FindGameObjectsWithTag("Spool Point");
-    }
-
-    [Button]
-    private void ClearActives()
-    {
-        foreach (var spool in _activeSpools)
-        {
-            DestroyImmediate(spool.gameObject);
-        }
-        _activeSpools = new();
-        _levelSpools = default;
     }
     public async UniTask RemoveSpool(Spool spool)
     {
@@ -121,7 +105,9 @@ public class SpoolController : MonoSingleton<SpoolController>
         _spoolCount = 0;
         for (int i = 0; i < _levelSpools.Length; i++)
         {
-            _activeSpools.Add(SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position));
+            Spool spool = SpawnSpool(_levelSpools[i], spoolPoints[i].transform.position);
+            spool.WaitForPopup().Forget();
+            _activeSpools.Add(spool);
         }
     }
 }

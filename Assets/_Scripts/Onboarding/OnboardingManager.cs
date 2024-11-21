@@ -57,7 +57,7 @@ public class OnboardingManager : MonoSingleton<OnboardingManager>
 
         _hiddenOnboardingContent.transform.localScale = Vector3.zero;
         _hiddenOnboardingPanel?.SetActive(true);
-        await UniTask.Delay(TimeSpan.FromSeconds(1.2f));
+        await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
         _hiddenOnboardingContent.transform.DOScale(Vector3.one, .3f).SetEase(Ease.OutBack);
 
         IsOnboardedHidden = true;
