@@ -89,7 +89,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             {
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
 
-                if (i % 2 == 0) HapticManager.HapticPlay(HapticType.VibratePop);
+                if (i % 3 == 0) HapticManager.HapticPlay(HapticType.VibratePop);
 
                 await currentKnit.Activate(knitDuration);
             }
