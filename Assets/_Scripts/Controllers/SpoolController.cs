@@ -30,7 +30,7 @@ public class SpoolController : MonoSingleton<SpoolController>
             _ => InitLevelSpools()
         ).AddTo(this);
 
-        await UniTask.Delay(1500);
+        await UniTask.Delay(3000);
         isOnboarding = false;
     }
     [Button]
