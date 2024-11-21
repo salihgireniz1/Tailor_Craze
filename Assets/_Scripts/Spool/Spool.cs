@@ -12,7 +12,7 @@ public class Spool : BaseSpool
     private GameObject[] _bodies;
     private void OnMouseDown()
     {
-        if (SpoolController.Instance.isOnboarding) return;
+        if (SpoolController.Instance.waitingPopUp && OnboardingManager.Instance.IsOnboarded) return;
 
         if (GameManager.CurrentState.Value != GameState.Playing) return;
         if (EventSystem.current.IsPointerOverGameObject()) return;

@@ -19,10 +19,10 @@ public class SpoolController : MonoSingleton<SpoolController>
     private int _spoolCount = 0;
     private CancellationTokenSource cts = new();
     private IRandomSpool _randomizer;
-    public bool isOnboarding = true;
+    public bool waitingPopUp = true;
     private async void Start()
     {
-        isOnboarding = true;
+        waitingPopUp = true;
         _randomizer = new GetRandomForExistingCloths();
         GameManager.CurrentState
         .Where(state => state == GameState.Initializing)
@@ -31,7 +31,7 @@ public class SpoolController : MonoSingleton<SpoolController>
         ).AddTo(this);
 
         await UniTask.Delay(3000);
-        isOnboarding = false;
+        waitingPopUp = false;
     }
     [Button]
     private void FindPoints()
