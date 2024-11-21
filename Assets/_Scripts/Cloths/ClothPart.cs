@@ -78,10 +78,12 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
 
         await MyCloth.DeselectRotate();
     }
+    int hapticCounter = 0;
     public async UniTask TravelPath(List<Knit> path)
     {
         float knitDuration = Settings.KnittingSettings.KnittingDuration;
-        HapticManager.HapticPlay(HapticType.Vibrate);
+        // HapticManager.HapticPlay(HapticType.Vibrate);
+        hapticCounter = 0;
 
         for (int i = 0; i < path.Count; i++)
         {
@@ -89,8 +91,8 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             if (i % Settings.KnittingSettings.knitJumpAmount == 0)
             {
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
-
-                // if (i % 3 == 0) HapticManager.HapticPlay(HapticType.VibratePop);
+                hapticCounter++;
+                if (hapticCounter % 3 == 0) HapticManager.HapticPlay(HapticType.VibratePop);
 
                 await currentKnit.Activate(knitDuration);
             }
