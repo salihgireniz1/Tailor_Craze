@@ -12,6 +12,8 @@ public class Spool : BaseSpool
     private GameObject[] _bodies;
     private void OnMouseDown()
     {
+        if (SpoolController.Instance.isOnboarding) return;
+
         if (GameManager.CurrentState.Value != GameState.Playing) return;
         if (EventSystem.current.IsPointerOverGameObject()) return;
         SelectionController.Instance.SelectSpool(this);
