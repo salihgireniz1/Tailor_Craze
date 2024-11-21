@@ -81,6 +81,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
     public async UniTask TravelPath(List<Knit> path)
     {
         float knitDuration = Settings.KnittingSettings.KnittingDuration;
+        HapticManager.HapticPlay(HapticType.Vibrate);
 
         for (int i = 0; i < path.Count; i++)
         {
@@ -89,7 +90,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
             {
                 SoundManager.Instance.PlaySFX(SFXType.Knitted);
 
-                if (i % 3 == 0) HapticManager.HapticPlay(HapticType.VibratePop);
+                // if (i % 3 == 0) HapticManager.HapticPlay(HapticType.VibratePop);
 
                 await currentKnit.Activate(knitDuration);
             }
