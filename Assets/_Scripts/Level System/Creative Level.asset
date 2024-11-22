@@ -33,4 +33,4 @@ MonoBehaviour:
     RandomNextSpool: 0
     LevelCloths:
     - {fileID: 8764353757150508990, guid: ec6d465a8c2962a47947b2db4a323361, type: 3}
-    - {fileID: 8764353757150508990, guid: ec6d465a8c2962a47947b2db4a323361, type: 3}
+    - {fileID: 7407529165962749195, guid: c1d2fbadda4224f4291b0b0b3f27bf9c, type: 3}
