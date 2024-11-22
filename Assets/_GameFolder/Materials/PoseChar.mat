@@ -267,7 +267,7 @@ Material:
     - _DetailNormalMapIntensity: 1
     - _DetailNormalMapScale: 1
     - _Diffuse: 0
-    - _DiffuseSmoothness: 0
+    - _DiffuseSmoothness: 0.371
     - _DiffuseThresholdOffset: 0.25
     - _DirectIntensityOutline: 1
     - _Dissolve: 0
@@ -360,7 +360,7 @@ Material:
     - _ShadowColorLightAtten: 1
     - _SingleIndirectColor: 0
     - _SketchMapScale: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0.393
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
