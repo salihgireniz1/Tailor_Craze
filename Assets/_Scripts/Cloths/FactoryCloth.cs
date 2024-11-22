@@ -12,7 +12,7 @@ public class FactoryCloth : MonoBehaviour
     public bool IsRotating;
     private Vector3 _defaultScale;
     private float _defaultZPos;
-    private Animator _mannequinAnimator;
+    [SerializeField] private Animator _mannequinAnimator;
     CancellationTokenSource selectionAnimTokenSource;
     private void Start()
     {

@@ -18,9 +18,6 @@ public struct LevelData
     [FoldoutGroup("Spools At This Level")]
     public bool RandomNextSpool;
 
-    [FoldoutGroup("Spools At This Level")]
-    public int StartSpoolCount;
-
     [FoldoutGroup("Cloths At This Level")]
     [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true)]
     public FactoryCloth[] LevelCloths;
