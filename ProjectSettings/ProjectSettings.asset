@@ -160,14 +160,14 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.falan.tailorcraze
     Standalone: com.Unity-Technologies.com.unity.template.urp-blank
-    iPhone: com.Unity-Technologies.com.unity.template.urp-blank
+    iPhone: com.falan.tailorcraze
   buildNumber:
     Standalone: 0
     VisionOS: 0
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 28
   AndroidTargetSdkVersion: 34
   AndroidPreferredInstallLocation: 1
@@ -249,12 +249,12 @@ PlayerSettings:
   clonedFromGUID: 3c72c65a16f0acb438eed22b8b16c24a
   templatePackageId: com.unity.template.urp-blank@14.0.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 0
+  useCustomMainManifest: 1
   useCustomLauncherManifest: 0
-  useCustomMainGradleTemplate: 0
+  useCustomMainGradleTemplate: 1
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 0
+  useCustomGradlePropertiesTemplate: 1
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
@@ -810,7 +810,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: DOTWEEN;UNITASK_DOTWEEN_SUPPORT;DREAMTECK_SPLINES;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;UNITY_VISUAL_SCRIPTING
+    Android: DOTWEEN;UNITASK_DOTWEEN_SUPPORT;DREAMTECK_SPLINES;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;UNITY_VISUAL_SCRIPTING;HOMA_BELLY;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED
     EmbeddedLinux: DOTWEEN;UNITY_VISUAL_SCRIPTING
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN
@@ -826,7 +826,7 @@ PlayerSettings:
     WebGL: DOTWEEN;UNITY_VISUAL_SCRIPTING
     Windows Store Apps: DOTWEEN;UNITY_VISUAL_SCRIPTING
     XboxOne: DOTWEEN;UNITY_VISUAL_SCRIPTING
-    iPhone: DOTWEEN;UNITY_VISUAL_SCRIPTING
+    iPhone: DOTWEEN;UNITY_VISUAL_SCRIPTING;HOMA_BELLY;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED
     tvOS: DOTWEEN;UNITY_VISUAL_SCRIPTING
   additionalCompilerArguments: {}
   platformArchitecture: {}
@@ -835,6 +835,7 @@ PlayerSettings:
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
+    Android: 1
     EmbeddedLinux: 1
     GameCoreScarlett: 1
     GameCoreXboxOne: 1

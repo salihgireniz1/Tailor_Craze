@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.adjust.sdk": {
+      "version": "4.38.1-homa.1",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
     "com.cysharp.r3": {
       "version": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
       "depth": 0,
@@ -8,6 +15,139 @@
         "com.unity.modules.imgui": "1.0.0"
       },
       "hash": "9b18209448c5e1f4572a4191b1f4f530a1d26c01"
+    },
+    "com.gameanalytics.sdk": {
+      "version": "7.9.0",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.168"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.google.external-dependency-manager": {
+      "version": "1.2.183",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.analytics.facebook": {
+      "version": "17.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.sdk-core": "1.13.2"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.analytics.gameanalytics": {
+      "version": "8.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.sdk-core": "1.13.2",
+        "com.homagames.homa-lab-bridge": "2.1.7",
+        "com.gameanalytics.sdk": "7.9.0"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.analytics.homa-analytics": {
+      "version": "1.6.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.sdk-core": "2.4.0"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.attribution.adjust": {
+      "version": "5.2.4",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.homa-lab-bridge": "2.1.7",
+        "com.homagames.sdk-core": "2.4.0",
+        "com.adjust.sdk": "4.38.1-homa.1"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.debug-console": {
+      "version": "3.0.6",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.quickeye.one-asset": "4.0.2"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.homa-lab-bridge": {
+      "version": "6.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.homagames.jeffcampbellmakesgames.semver": "1.0.4",
+        "com.homagames.package-manager-extensions": "2.1.0"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.homa-lab-dependencies": {
+      "version": "file:com.homagames.homa-lab-dependencies",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.homagames.sdk-core": "2.5.4",
+        "com.homagames.attribution.adjust": "5.2.4",
+        "com.homagames.analytics.gameanalytics": "8.0.0",
+        "com.homagames.analytics.facebook": "17.0.0",
+        "com.homagames.analytics.homa-analytics": "1.6.2",
+        "com.homagames.debug-console": "3.0.6"
+      }
+    },
+    "com.homagames.jeffcampbellmakesgames.semver": {
+      "version": "1.0.4",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.package-manager-extensions": {
+      "version": "2.1.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.0"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.quickeye.one-asset": {
+      "version": "4.0.2",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.sdk-core": {
+      "version": "2.5.4",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.package-manager-extensions": "1.0.1",
+        "com.homagames.homa-lab-bridge": "6.0.0"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
+    },
+    "com.homagames.sdk-installer-bundle": {
+      "version": "2.1.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.homagames.package-manager-extensions": "2.1.0",
+        "com.homagames.homa-lab-bridge": "6.2.1",
+        "com.google.external-dependency-manager": "1.2.183"
+      },
+      "url": "https://homagames.jfrog.io/artifactory/api/npm/unity-public-sdk"
     },
     "com.unity.2d.animation": {
       "version": "9.0.4",
@@ -179,6 +319,13 @@
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
