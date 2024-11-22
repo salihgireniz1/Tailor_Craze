@@ -26,7 +26,7 @@ public class Spool : BaseSpool
     public async UniTaskVoid WaitForPopup()
     {
         if (!OnboardingManager.Instance.IsOnboarded || OnboardingManager.Instance.IsOnboardingHiddenYarn) return;
-        Debug.Log("Awaiting popup...");
+
         GetComponent<BoxCollider>().enabled = false;
         await UniTask.Delay(3000);
         GetComponent<BoxCollider>().enabled = true;
