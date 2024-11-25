@@ -1,0 +1,1249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5338bec38170141a52725bb4aa7b94, type: 3}
+  m_Name: Creative Variant 2
+  m_EditorClassIdentifier: 
+  Levels:
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 0
+    LevelCloths:
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 0
+    LevelCloths:
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 0
+    LevelCloths:
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+    RandomNextSpool: 0
+    LevelCloths:
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 5
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 3
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 3524029507682614900, guid: 67331814290b6144c931d820e1c63017, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 1
+        type: 0
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 5
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 1
+        type: 1
+      - isHidden: 1
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 4
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 8764353757150508990, guid: 7d5a114d1700b9944a4a8c2e35c7e890, type: 3}
+    - {fileID: 8764353757150508990, guid: 85c2f668677140743977d13e8b3784b6, type: 3}
+    - {fileID: 7407529165962749195, guid: b6cfee06419d5314e860071bd21a8e90, type: 3}
+    - {fileID: 7407529165962749195, guid: 55d890b788f8f3544bcc37012fbf0ea0, type: 3}
+    - {fileID: 8764353757150508990, guid: 7d5a114d1700b9944a4a8c2e35c7e890, type: 3}
+    - {fileID: 7407529165962749195, guid: b6cfee06419d5314e860071bd21a8e90, type: 3}
+    - {fileID: 8764353757150508990, guid: 85c2f668677140743977d13e8b3784b6, type: 3}
+    - {fileID: 7407529165962749195, guid: 17425daa5e65b46419b089ee3a8d09c6, type: 3}
+    - {fileID: 8764353757150508990, guid: f992b5d47b636cc40aac5620269f5ba2, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 6
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 1
+      - isHidden: 1
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 1
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 1
+        type: 6
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
+    - {fileID: 3524029507682614900, guid: 67331814290b6144c931d820e1c63017, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 1
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 0
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 1
+        type: 0
+      - isHidden: 0
+        type: 4
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 4603602113876039220, guid: 38dd7f4ff2126dd4fbf4945461723cf0, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 8732838121479253035, guid: a13c160c901b73d4c98a93a99dd0730a, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
+    - {fileID: 7660605710150175128, guid: c0c81ee0001b3894ebd0ea7a28403df9, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 9012013240824447787, guid: f9101783bd28a2a43a6e60e56986917a, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 4603602113876039220, guid: 38dd7f4ff2126dd4fbf4945461723cf0, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 1
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 1
+      - isHidden: 1
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 1
+        type: 0
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 1
+      - isHidden: 1
+        type: 0
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
+    - {fileID: 3099423780062762919, guid: 3e4817e9b26d0104588db426686f64aa, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 4603602113876039220, guid: 38dd7f4ff2126dd4fbf4945461723cf0, type: 3}
+    - {fileID: 3524029507682614900, guid: 67331814290b6144c931d820e1c63017, type: 3}
+    - {fileID: 444162948598450594, guid: c671432d77ffad940a436d8105b639ec, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 1674906590388320547, guid: 3b4a67dd86f1b0947b454a1bf6a1d1d5, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 3932630536202531684, guid: 93b54878dd5402046bb6f562ccf5b792, type: 3}
+    - {fileID: 4991503401242046542, guid: 819fdb5ed7238cf4299071c1da72d570, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 1
+        type: 3
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 2
+      - isHidden: 1
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 4
+      - isHidden: 0
+        type: 4
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 2
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 5
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 2080096944050995441, guid: c1876e104ad60c1459ae2badef51a544, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 8732838121479253035, guid: a13c160c901b73d4c98a93a99dd0730a, type: 3}
+    - {fileID: 4603602113876039220, guid: 38dd7f4ff2126dd4fbf4945461723cf0, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 9016675605355465627, guid: 213eadb46ad7e97409651971382ea297, type: 3}
+    - {fileID: 2731782595762146871, guid: 4fd23167a49967b49ac3b4ec3b6d79f2, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 6
+      - isHidden: 1
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 6
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 1
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 1
+      - isHidden: 0
+        type: 6
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 3
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 7407529165962749195, guid: b6cfee06419d5314e860071bd21a8e90, type: 3}
+    - {fileID: 7407529165962749195, guid: aea815203c88edc41a9fa2f285889f69, type: 3}
+    - {fileID: 8764353757150508990, guid: 95b22f36d9dc89747aaae26a6d0d04e7, type: 3}
+    - {fileID: 7407529165962749195, guid: b6cfee06419d5314e860071bd21a8e90, type: 3}
+    - {fileID: 8764353757150508990, guid: ec6d465a8c2962a47947b2db4a323361, type: 3}
+    - {fileID: 7407529165962749195, guid: eb23511153be28441b0fa06e5d6cd6e0, type: 3}
+    - {fileID: 8764353757150508990, guid: 43220d0706fbaed4abc7422ed56f933f, type: 3}
+    - {fileID: 7407529165962749195, guid: c1d2fbadda4224f4291b0b0b3f27bf9c, type: 3}
+    - {fileID: 7407529165962749195, guid: b6cfee06419d5314e860071bd21a8e90, type: 3}
+    - {fileID: 8764353757150508990, guid: f992b5d47b636cc40aac5620269f5ba2, type: 3}
+    - {fileID: 7407529165962749195, guid: c1d2fbadda4224f4291b0b0b3f27bf9c, type: 3}
+    - {fileID: 7407529165962749195, guid: aea815203c88edc41a9fa2f285889f69, type: 3}
+    - {fileID: 8764353757150508990, guid: 95b22f36d9dc89747aaae26a6d0d04e7, type: 3}
+    - {fileID: 7407529165962749195, guid: b6cfee06419d5314e860071bd21a8e90, type: 3}
+    - {fileID: 7407529165962749195, guid: c1d2fbadda4224f4291b0b0b3f27bf9c, type: 3}
+    - {fileID: 7407529165962749195, guid: aea815203c88edc41a9fa2f285889f69, type: 3}
+  - LevelSpools:
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 0
+      - isHidden: 1
+        type: 5
+      - isHidden: 0
+        type: 3
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 3
+      - isHidden: 0
+        type: 0
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 2
+      - isHidden: 0
+        type: 2
+      - isHidden: 1
+        type: 5
+    - isRandom: 0
+      Yarns:
+      - isHidden: 0
+        type: 5
+      - isHidden: 0
+        type: 0
+      - isHidden: 0
+        type: 0
+    RandomNextSpool: 1
+    LevelCloths:
+    - {fileID: 7787652488714254274, guid: feac17e4d7d8bc44ca53acad8f8a5e88, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 1318957377121024924, guid: cbaebceab8899dd4aaa21b1478921185, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 8732838121479253035, guid: a13c160c901b73d4c98a93a99dd0730a, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 3333546433336889689, guid: 65260e935df2b7b43beafcba536db038, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 8732838121479253035, guid: a13c160c901b73d4c98a93a99dd0730a, type: 3}
+    - {fileID: 2201606556175097815, guid: b0e07898ae9cd2646bc0f7c25e7ca467, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}
+    - {fileID: 2498556742935755899, guid: 875efd88c4fca194eaba7cb405b63018, type: 3}
+    - {fileID: 511804060923741377, guid: a40694eb34fd95e4baff8690d1df4672, type: 3}
+    - {fileID: 5638215853177726607, guid: e6745365f0791194d8360fbda7a031dd, type: 3}
+    - {fileID: 2458582484574581162, guid: 944a9cfa2bd5e3d468485c52ce43ec6c, type: 3}

@@ -15407,6 +15407,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5475321685167796798, guid: 5f79e14d2a75748da8278bad81aa8323,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5477215253668172292, guid: 5f79e14d2a75748da8278bad81aa8323,
         type: 3}
       propertyPath: knitMaterial
@@ -26158,6 +26163,11 @@ PrefabInstance:
     - target: {fileID: 2850778953852729193, guid: 299b6df82e1aa7f4eb09ae04a481eb16,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913904711538314524, guid: 299b6df82e1aa7f4eb09ae04a481eb16,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8547797607283088785, guid: 299b6df82e1aa7f4eb09ae04a481eb16,

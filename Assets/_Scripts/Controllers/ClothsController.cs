@@ -312,15 +312,15 @@ public class ClothsController : MonoSingleton<ClothsController>
     /// </summary>
     private async UniTask FallFromBand(FactoryCloth fallingcloth)
     {
-        Vector3 dropOffset = Vector3.right * 4f;
+        Vector3 dropOffset = Vector3.right * 5f;
         Vector3 dropPos = fallingcloth.transform.position + dropOffset;
         dropPos.y = 0;
 
         HapticManager.HapticPlay(HapticType.Vibrate);
         await fallingcloth.transform
-                .DOJump(dropPos, 1.2f, 1, .75f)
+                .DOJump(dropPos, 1.4f, 1, .75f)
                 .SetEase(Ease.Linear)
-                .OnUpdate(() => fallingcloth.transform.Rotate(Vector3.one * Time.deltaTime * -200f))
+                .OnUpdate(() => fallingcloth.transform.Rotate(Vector3.one * Time.deltaTime * 100f))
                 .OnComplete(() => GameManager.CurrentState.Value = GameState.GameOver)
                 .ToUniTask();
     }
