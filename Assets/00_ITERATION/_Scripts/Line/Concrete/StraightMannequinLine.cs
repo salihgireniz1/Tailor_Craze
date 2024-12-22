@@ -44,7 +44,7 @@ public class StraightMannequinLine : StraightLine<Mannequin>
             return;
         }
         // _mannequins = Content.ToArray();
-        LineManager.Instance.RandomizeArray(ref _mannequins);
+        // LineManager.Instance.RandomizeArray(ref _mannequins);
         await base.Initialize(_mannequins);
 
         GameManager.CurrentState.Value = GameState.Playing;

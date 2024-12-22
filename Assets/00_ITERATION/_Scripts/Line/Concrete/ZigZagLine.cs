@@ -19,7 +19,7 @@ public class ZigZagLine : BaseLine<Mannequin>
     {
         _mannequins = new Mannequin[Content.Count];
 
-        for (int i = 0; i < Content.Count; i++)
+        for (int i = 0; i < LevelManager.CurrentLevel.MannequinLineInfos.Count; i++)
         {
             var instance = Instantiate(Content[i], transform);
             _mannequins[i] = instance;
@@ -33,7 +33,7 @@ public class ZigZagLine : BaseLine<Mannequin>
             return;
         }
 
-        LineManager.Instance.RandomizeArray(ref _mannequins);
+        // LineManager.Instance.RandomizeArray(ref _mannequins);
 
         LineQueue = new();
 

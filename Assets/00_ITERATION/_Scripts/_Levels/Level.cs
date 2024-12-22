@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Dreamteck.Splines.Primitives;
+using Dreamteck.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -65,9 +66,6 @@ public class Level : MonoBehaviour
                 var newMannequin = Data.GetMannequinPrefab(currentType);
                 BaseLine<Mannequin> baseLine = MannequinLines[manIndex % MannequinLines.Length];
 
-                // Mannequin instance = Instantiate(newMannequin);
-                // baseLine.Content.Add(instance);
-
                 foreach (var line in MannequinLineInfos)
                 {
                     if (line.Line == baseLine)
@@ -75,22 +73,14 @@ public class Level : MonoBehaviour
                         line.Content.Add(newMannequin);
                     }
                 }
-                baseLine.Content.Add(newMannequin);
 
                 manIndex++;
             }
         }
-
-        // Since we distributed content evenly, we can initialize spool plane lines.
-        // foreach (var item in SpoolLines)
-        // {
-        //     item.Initialize(null);
-        // }
-
-        // foreach (var item in MannequinLines)
-        // {
-        //     item.Initialize(null);
-        // }
+        foreach (var line in MannequinLineInfos)
+        {
+            line.Content.Shuffle();
+        }
     }
 
     public bool AllMannequinsCleared()
