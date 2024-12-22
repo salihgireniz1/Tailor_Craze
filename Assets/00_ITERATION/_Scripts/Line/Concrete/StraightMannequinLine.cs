@@ -30,7 +30,9 @@ public class StraightMannequinLine : StraightLine<Mannequin>
 
                 for (int i = 0; i < info.Content.Count; i++)
                 {
-                    _mannequins[i] = Instantiate(info.Content[i], transform);
+                    var instance = Instantiate(info.Content[i], transform);
+                    _mannequins[i] = instance;
+
                     await UniTask.DelayFrame(1);
                 }
                 break;

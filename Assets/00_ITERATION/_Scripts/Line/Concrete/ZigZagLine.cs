@@ -21,7 +21,9 @@ public class ZigZagLine : BaseLine<Mannequin>
 
         for (int i = 0; i < Content.Count; i++)
         {
-            _mannequins[i] = Instantiate(Content[i], transform);
+            var instance = Instantiate(Content[i], transform);
+            _mannequins[i] = instance;
+
             await UniTask.DelayFrame(1);
         }
 

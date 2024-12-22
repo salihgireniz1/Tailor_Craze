@@ -24,10 +24,11 @@ public class SpoolPlane : MonoBehaviour, IQueueable<SpoolPlane>, ISelectable
         set
         {
             _canBeSelected = value;
-            GetComponentInChildren<Outline>().enabled = value;
+            _outline.enabled = value;
+            _animator.enabled = value;
             if (value)
             {
-                transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InOutSine);
+                transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
             }
         }
     }
@@ -54,6 +55,12 @@ public class SpoolPlane : MonoBehaviour, IQueueable<SpoolPlane>, ISelectable
     private bool _canBeSelected;
     [SerializeField]
     private float[] spoolAngles;
+
+    [SerializeField]
+    private SpriteRenderer _outline;
+
+    [SerializeField]
+    private Animator _animator;
 
     private void OnMouseDown()
     {

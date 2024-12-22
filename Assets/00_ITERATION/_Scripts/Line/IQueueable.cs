@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public interface IQueueable<T> where T : IQueueable<T>
+public interface IQueueable<T> where T : MonoBehaviour, IQueueable<T>
 {
     public BaseLine<T> CurrentLine { get; set; }
     public Transform CurrentStandPoint { get; set; }

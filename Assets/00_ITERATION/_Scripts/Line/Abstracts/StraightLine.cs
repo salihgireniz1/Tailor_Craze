@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
 
-public class StraightLine<T> : BaseLine<T> where T : IQueueable<T>
+public class StraightLine<T> : BaseLine<T> where T : MonoBehaviour, IQueueable<T>
 {
     [Title("Initialize Settings")]
     [SerializeField] protected float _lineOffset;
@@ -30,6 +30,9 @@ public class StraightLine<T> : BaseLine<T> where T : IQueueable<T>
             linePointObject.transform.localPosition = new Vector3(0, 0, i * _lineOffset);
             LinePoints[i] = linePointObject.transform;
             AddToLine(values[i]);
+
+            if (i >= LineVisibleMemberCount) values[i].gameObject.SetActive(false);
+
             await values[i].AlignToPoint(linePointObject.transform, 0F);
         }
     }

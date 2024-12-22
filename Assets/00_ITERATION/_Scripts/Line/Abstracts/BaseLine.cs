@@ -6,8 +6,9 @@ using Cysharp.Threading.Tasks;
 
 using Sirenix.OdinInspector;
 
-public abstract class BaseLine<T> : MonoBehaviour where T : IQueueable<T>
+public abstract class BaseLine<T> : MonoBehaviour where T : MonoBehaviour, IQueueable<T>
 {
+    public int LineVisibleMemberCount;
     public abstract Queue<T> LineQueue { get; set; }
 
     public abstract Transform[] LinePoints { get; set; }
@@ -62,6 +63,8 @@ public abstract class BaseLine<T> : MonoBehaviour where T : IQueueable<T>
         List<UniTask> orderingProcesses = new();
         foreach (T member in LineQueue)
         {
+            if (FindMemberIndex(member) < LineVisibleMemberCount) member.gameObject.SetActive(true);
+
             var newMemberStandPoint = LinePoints[FindMemberIndex(member)];
             member.CurrentStandPoint = newMemberStandPoint;
             orderingProcesses.Add(member.Move(newMemberStandPoint.position, 0.5F));
