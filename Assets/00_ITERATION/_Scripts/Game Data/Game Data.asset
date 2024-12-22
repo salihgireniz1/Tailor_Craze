@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8990844f4bfcb4fa533b56025bac70, type: 3}
+  m_Name: Game Data
+  m_EditorClassIdentifier: 
+  MannequinPrefabs:
+  - {fileID: -2241826038698521492, guid: 8a528080281877f4ca2d8d4e1a2f2e3a, type: 3}
+  - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
+  - {fileID: -9132014496829055321, guid: 324616d95aace1c48ab0f602910d997a, type: 3}
+  - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
+  - {fileID: 2147803174421049653, guid: ebe5df014754dbf4c9385043c456d110, type: 3}
+  - {fileID: 7819774767481875739, guid: 6ad3604ca7bb85d4da423ad1bf2e50fe, type: 3}
+  - {fileID: -4489558052027886820, guid: 69f1a6e2b9e5dea4fac6cbb91bf2568e, type: 3}
+  PlanePrefab: {fileID: 6998201578788837665, guid: da87f8c0eb2987e43b6f4df8ef80f3f3,
+    type: 3}
+  GameLevelData:
+  - PlaneData:
+    - type: 1
+      PlaneSpools:
+        SpoolTypes: 020000000200000002000000
+    - type: 1
+      PlaneSpools:
+        SpoolTypes: 020000000200000002000000
+    - type: 1
+      PlaneSpools:
+        SpoolTypes: 010000000100000001000000
+    - type: 1
+      PlaneSpools:
+        SpoolTypes: 010000000100000001000000
+    - type: 1
+      PlaneSpools:
+        SpoolTypes: 000000000000000000000000

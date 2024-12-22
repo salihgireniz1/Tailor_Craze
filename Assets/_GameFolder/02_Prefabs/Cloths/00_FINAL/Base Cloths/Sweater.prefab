@@ -106,8 +106,7 @@ MonoBehaviour:
   - {fileID: 3430025078107840967}
   _myCloth: {fileID: 0}
   _type: 0
-  _checkpoints:
-  - {fileID: 3942627799031434232}
+  _checkpoints: []
 --- !u!1001 &169967876631027508
 PrefabInstance:
   m_ObjectHideFlags: 0
