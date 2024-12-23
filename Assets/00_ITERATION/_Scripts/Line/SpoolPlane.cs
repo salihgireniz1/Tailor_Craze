@@ -62,6 +62,9 @@ public class SpoolPlane : MonoBehaviour, IQueueable<SpoolPlane>, ISelectable
     [SerializeField]
     private Animator _animator;
 
+    [SerializeField]
+    private GameObject _disableObject;
+
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject() || !CanBeSelected) return;

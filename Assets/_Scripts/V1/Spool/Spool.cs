@@ -8,8 +8,8 @@ public class Spool : BaseSpool
 {
     [SerializeField]
     private float _contentOffset = .15f;
-    [SerializeField]
-    private GameObject[] _bodies;
+
+    public Transform RemainBase;
     private SpoolPlane _spoolPlane;
     private void Awake()
     {
@@ -65,16 +65,6 @@ public class Spool : BaseSpool
             requestedYarn.transform.localPosition = GetPosition(requestedYarn);
             requestedYarn.transform.localScale = Vector3.one;
             requestedYarn.Spline.RebuildImmediate();
-        }
-        if (_contents.Count > 3)
-        {
-            _bodies[1].SetActive(true);
-            _bodies[0].SetActive(false);
-        }
-        else
-        {
-            _bodies[0].SetActive(true);
-            _bodies[1].SetActive(false);
         }
     }
 

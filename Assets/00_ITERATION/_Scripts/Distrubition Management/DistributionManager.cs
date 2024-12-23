@@ -45,6 +45,8 @@ public class DistributionManager : MonoSingleton<DistributionManager>
             await fill;
             fill = UniTask.CompletedTask;
 
+            spool.RemainBase.SetParent(spool.transform.parent);
+
             spool.transform
                 .DOScale(Vector3.zero, Settings.SpoolAnimationSettings.SpoolUnscaleDuration)
                 .SetEase(Settings.SpoolAnimationSettings.SpoolUnscaleEase)

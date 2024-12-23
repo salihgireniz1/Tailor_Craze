@@ -58,7 +58,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         {
             await UniTask.Yield();
         }
-        MyCloth.SelectRotate().Forget();
+        // MyCloth.SelectRotate().Forget();
 
         _filling = true;
         _parentAnimator?.SetBool("Knitting", true);
@@ -76,7 +76,7 @@ public class ClothPart : MonoBehaviour, IFillable, IConnect
         _parentAnimator?.SetBool("Knitting", false);
         _filling = false;
 
-        await MyCloth.DeselectRotate();
+        // await MyCloth.DeselectRotate();
     }
     int hapticCounter = 0;
     public async UniTask TravelPath(List<Knit> path)

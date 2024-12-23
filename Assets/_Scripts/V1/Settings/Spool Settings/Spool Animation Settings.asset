@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6caa197cf553db0449c4d8d8883de6d2, type: 3}
   m_Name: Spool Animation Settings
   m_EditorClassIdentifier: 
-  SpoolUnscaleDuration: 0.2
+  SpoolUnscaleDuration: 0.3
   SpoolUnscaleEase: 26
   DelayBetweenOldAndNewSpool: 0.5
   NewSpoolStartScale: 0.15
