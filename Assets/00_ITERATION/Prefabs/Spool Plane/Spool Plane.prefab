@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triple Spool Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 2983049876620231923, guid: 119568b2def77294aa5414366e7e99fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4106841324979686120, guid: 119568b2def77294aa5414366e7e99fe,
         type: 3}
       propertyPath: m_LocalPosition.x
