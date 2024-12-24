@@ -41,6 +41,14 @@ public class SpoolPlane : MonoBehaviour, IQueueable<SpoolPlane>, ISelectable
     public Spool[] Spools => _spools;
 
     public bool IsEmpty => _spools.All(s => s.IsEmpty);
+    public int Fillness
+    {
+        get
+        {
+            if (IsEmpty) return 0;
+            return _spools.Count(s => !s.IsEmpty);
+        }
+    }
 
     [SerializeField]
     BaseLine<SpoolPlane> _currentLine;

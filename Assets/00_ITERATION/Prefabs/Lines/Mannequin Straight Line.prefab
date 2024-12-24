@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8987a6b79388f44925c60e10e6c746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineVisibleMemberCount: 7
+  LineVisibleMemberCount: 5
   Content: []
   _lineOffset: 4
   _lineStartZ: 5

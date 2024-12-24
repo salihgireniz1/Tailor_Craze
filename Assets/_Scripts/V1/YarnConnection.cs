@@ -44,6 +44,8 @@ public class YarnConnection : MonoSingleton<YarnConnection>
             endNode.transform.position = EndConnect.Position;
             startNode.transform.position = StartConnect.Position;
         }
+        endNode.transform.DOShakeRotation(.5f, 100f, 10, 90, true, ShakeRandomnessMode.Harmonic);
+        startNode.transform.DOShakeRotation(.5f, 100f, 10, 90, true, ShakeRandomnessMode.Harmonic);
     }
     public async UniTask ActivateConnection(YarnData data)
     {

@@ -81,6 +81,10 @@ public class Level : MonoBehaviour
         {
             line.Content.Shuffle();
         }
+        foreach (var line in SpoolLineInfos)
+        {
+            line.Content.Shuffle();
+        }
     }
 
     public bool AllMannequinsCleared()

@@ -17,14 +17,21 @@ public class ZigZagLine : BaseLine<Mannequin>
     }
     public override async UniTask Initialize(Mannequin[] values = null)
     {
-        _mannequins = new Mannequin[Content.Count];
-
-        for (int i = 0; i < LevelManager.CurrentLevel.MannequinLineInfos.Count; i++)
+        foreach (var info in LevelManager.CurrentLevel.MannequinLineInfos)
         {
-            var instance = Instantiate(Content[i], transform);
-            _mannequins[i] = instance;
+            if (info.Line == this)
+            {
+                _mannequins = new Mannequin[info.Content.Count];
 
-            await UniTask.DelayFrame(1);
+                for (int i = 0; i < info.Content.Count; i++)
+                {
+                    var instance = Instantiate(info.Content[i], transform);
+                    _mannequins[i] = instance;
+
+                    await UniTask.DelayFrame(1);
+                }
+                break;
+            }
         }
 
         if (_mannequins == null || _mannequins.Length == 0)

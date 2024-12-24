@@ -387,28 +387,28 @@ MonoBehaviour:
   - {fileID: 327862009}
   MannequinLineInfos:
   - Content:
-    - {fileID: -2241826038698521492, guid: 8a528080281877f4ca2d8d4e1a2f2e3a, type: 3}
     - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
     - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
     - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
     - {fileID: 2147803174421049653, guid: ebe5df014754dbf4c9385043c456d110, type: 3}
+    - {fileID: -2241826038698521492, guid: 8a528080281877f4ca2d8d4e1a2f2e3a, type: 3}
     - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
     Line: {fileID: 327862012}
   - Content:
-    - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
     - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
     - {fileID: -2241826038698521492, guid: 8a528080281877f4ca2d8d4e1a2f2e3a, type: 3}
+    - {fileID: 2147803174421049653, guid: ebe5df014754dbf4c9385043c456d110, type: 3}
     - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
     - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
-    - {fileID: 2147803174421049653, guid: ebe5df014754dbf4c9385043c456d110, type: 3}
+    - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
     Line: {fileID: 327862011}
   - Content:
     - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
-    - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
+    - {fileID: 2147803174421049653, guid: ebe5df014754dbf4c9385043c456d110, type: 3}
     - {fileID: -2241826038698521492, guid: 8a528080281877f4ca2d8d4e1a2f2e3a, type: 3}
     - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
-    - {fileID: 2147803174421049653, guid: ebe5df014754dbf4c9385043c456d110, type: 3}
     - {fileID: -2754812344505795476, guid: 9c348b57ce6c79841bdd6470286dbecb, type: 3}
+    - {fileID: -6901577779967712965, guid: 7c53bf9eb6067c5428ba6db833db4781, type: 3}
     Line: {fileID: 327862009}
   SpoolLineInfos:
   - Content:
@@ -420,8 +420,8 @@ MonoBehaviour:
     - SpoolTypes: 010000000100000001000000
     Line: {fileID: 771612278}
   - Content:
-    - SpoolTypes: 010000000100000001000000
     - SpoolTypes: 000000000000000000000000
+    - SpoolTypes: 010000000100000001000000
     Line: {fileID: 771612276}
 --- !u!1 &3265700847356313304
 GameObject:

@@ -11,7 +11,6 @@ public class FactoryCloth : MonoBehaviour
     public ClothData[] myClothParts;
     public bool IsRotating;
     private Vector3 _defaultScale;
-    private float _defaultZPos;
     [SerializeField] private YarnType _type;
     [SerializeField] private Animator _mannequinAnimator;
     CancellationTokenSource selectionAnimTokenSource;
@@ -20,7 +19,6 @@ public class FactoryCloth : MonoBehaviour
     {
         _mannequinAnimator = GetComponentInChildren<Animator>();
         _defaultScale = transform.localScale;
-        _defaultZPos = transform.position.z;
         // transform.DORotate(Settings.KnittingAnimationData._clothDeselectRotate, 0f);
         // DeselectRotate().Forget();
     }
@@ -49,16 +47,12 @@ public class FactoryCloth : MonoBehaviour
         selectionAnimTokenSource?.Cancel();
         selectionAnimTokenSource = new();
         IsRotating = true;
+
         var rotate = transform
                 .DORotate(Settings.KnittingAnimationData._clothSelectionRotate, Settings.KnittingAnimationData._animationDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => IsRotating = false)
                 .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
-
-        // var bringForward = transform
-        //         .DOMoveZ(_defaultZPos + Settings.KnittingAnimationData._zForwardOffset, Settings.KnittingAnimationData._animationDuration)
-        //         .SetEase(Ease.InBack)
-        //         .ToUniTask(cancellationToken: selectionAnimTokenSource.Token);
 
         var scale = transform
                 .DOScale(_defaultScale * Settings.KnittingAnimationData._clothScaleMultiplier, Settings.KnittingAnimationData._animationDuration)

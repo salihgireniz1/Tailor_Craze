@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -17,6 +18,7 @@ public class DeskManager : MonoSingleton<DeskManager>
     private float _positionYOffset = 0.1f;
 
     [Title("Desk Spots")]
+
     [SerializeField]
     private DeskSpot[] _spots;
     CancellationTokenSource cts;
@@ -25,13 +27,14 @@ public class DeskManager : MonoSingleton<DeskManager>
     {
         cts?.Cancel();
         cts = new();
+        var sortedSpots = _spots.OrderBy(spot => spot.ActivePlane?.Fillness ?? 0).ToArray();
 
-        for (int i = 0; i < _spots.Length; i++)
+        for (int i = 0; i < sortedSpots.Length; i++)
         {
-            if (_spots[i].ActivePlane != null)
+            if (sortedSpots[i].ActivePlane != null)
             {
                 if (cts.IsCancellationRequested) return;
-                await DistributionManager.Instance.Distribute(_spots[i].ActivePlane).AttachExternalCancellation(cts.Token);
+                await DistributionManager.Instance.Distribute(sortedSpots[i].ActivePlane).AttachExternalCancellation(cts.Token);
             }
         }
 
