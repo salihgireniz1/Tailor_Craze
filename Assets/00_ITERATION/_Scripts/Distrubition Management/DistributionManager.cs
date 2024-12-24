@@ -163,7 +163,6 @@ public class DistributionManager : MonoSingleton<DistributionManager>
 
         mannequin.CurrentLine.ReturnFirst();
         mannequin.CurrentLine.OrderQueue().Forget();
-        DeskManager.Instance.CheckSpotPlanes().Forget();
 
         await mannequin.transform
             .DOMoveX(mannequin.transform.position.x + 15f, .4f)
@@ -171,6 +170,7 @@ public class DistributionManager : MonoSingleton<DistributionManager>
             .ToUniTask();
 
 
+        DeskManager.Instance.CheckSpotPlanes().Forget();
         Destroy(mannequin.gameObject);
     }
 }

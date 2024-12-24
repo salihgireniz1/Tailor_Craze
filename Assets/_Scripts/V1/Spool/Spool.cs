@@ -76,7 +76,6 @@ public class Spool : BaseSpool
             return;
         }
         var content = _contents[index];
-        // RemoveContent(_contents[index]);
 
         try
         {
