@@ -77,13 +77,24 @@ public class Level : MonoBehaviour
                 manIndex++;
             }
         }
+
+        int groupSize = 5;
         foreach (var line in MannequinLineInfos)
         {
-            line.Content.Shuffle();
-        }
-        foreach (var line in SpoolLineInfos)
-        {
-            line.Content.Shuffle();
+            for (int i = 0; i < line.Content.Count; i += groupSize)
+            {
+                // Get the range of the current group
+                var group = line.Content.Skip(i).Take(groupSize).ToList();
+
+                // Shuffle the group
+                group.Shuffle();
+
+                // Assign shuffled elements back to the original list
+                for (int j = 0; j < group.Count; j++)
+                {
+                    line.Content[i + j] = group[j];
+                }
+            }
         }
     }
 

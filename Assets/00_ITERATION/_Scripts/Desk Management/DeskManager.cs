@@ -75,11 +75,11 @@ public class DeskManager : MonoSingleton<DeskManager>
         var availableSpot = FirstAvailableSpot();
         if (availableSpot != default)
         {
+            availableSpot.ActivePlane = plane;
             var spotPosition = availableSpot.Position + Vector3.up * _positionYOffset;
             plane.ControlTubeActivition(false);
             await plane.transform.DOJump(spotPosition, _jumpPower, 1, _jumpDuration).ToUniTask();
             plane.ControlTubeActivition(true);
-            availableSpot.ActivePlane = plane;
             await CheckSpotPlanes();
         }
     }

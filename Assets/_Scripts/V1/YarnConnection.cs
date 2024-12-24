@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Dreamteck.Splines;
 using R3;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class YarnConnection : MonoSingleton<YarnConnection>
@@ -13,6 +14,11 @@ public class YarnConnection : MonoSingleton<YarnConnection>
     private Node endNode;
     bool isActive;
     DisposableBag bag;
+
+    [Title("Rope Shake Settings")]
+    [SerializeField] private float shakeDuration = 0.5f;
+    [SerializeField] private float shakeStrength = 100f;
+    [SerializeField] private int shakeVibrato = 10;
     protected override void Awake()
     {
         base.Awake();
@@ -44,8 +50,8 @@ public class YarnConnection : MonoSingleton<YarnConnection>
             endNode.transform.position = EndConnect.Position;
             startNode.transform.position = StartConnect.Position;
         }
-        endNode.transform.DOShakeRotation(.5f, 100f, 10, 90, true, ShakeRandomnessMode.Harmonic);
-        startNode.transform.DOShakeRotation(.5f, 100f, 10, 90, true, ShakeRandomnessMode.Harmonic);
+        endNode.transform.DOShakeRotation(shakeDuration, shakeStrength, shakeVibrato, 90, true, ShakeRandomnessMode.Harmonic);
+        startNode.transform.DOShakeRotation(shakeDuration, shakeStrength, shakeVibrato, 90, true, ShakeRandomnessMode.Harmonic);
     }
     public async UniTask ActivateConnection(YarnData data)
     {
