@@ -26,7 +26,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHABLEND_ON
-  - _COLOROVERLAY_ON
   m_InvalidKeywords:
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING_LIGHTMASK
@@ -98,7 +97,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 14.98
     - _CameraNearFadeDistance: 15.27
-    - _ColorMode: 3
+    - _ColorMode: 0
     - _Cull: 0
     - _Cutoff: 0.5
     - _DirectIntensityOutline: 1
@@ -172,7 +171,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0.17671031, b: 0, a: 0.33333334}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.6698113, g: 0.08147863, b: 0, a: 0.49411765}
+    - _Color: {r: 0.8490566, g: 0.08286815, b: 0, a: 0.54901963}
     - _ColorAddSubDiff: {r: -1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 0.15225303, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}

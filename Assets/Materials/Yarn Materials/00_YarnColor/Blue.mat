@@ -28,7 +28,6 @@ Material:
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING_LIGHTMASK
   - TCP2_SHADOW_LIGHT_COLOR
-  - TCP2_SPECULAR
   - TCP2_SPECULAR_STYLIZED
   m_InvalidKeywords:
   - TCP2_DISABLE_WRAPPED_LIGHT
@@ -70,7 +69,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: f2d155c98d33eca47b606380ca6ecf3d, type: 3}
-        m_Scale: {x: 6, y: 6}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -371,8 +370,8 @@ Material:
     - _RampScale: -0.21
     - _RampSmooth: 0.2
     - _RampSmoothAdd: 0.75
-    - _RampSmoothing: 0.267
-    - _RampThreshold: 0.656
+    - _RampSmoothing: 1
+    - _RampThreshold: 1
     - _RampType: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
@@ -445,7 +444,7 @@ Material:
     - _UseRim: 0
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
-    - _UseSpecular: 1
+    - _UseSpecular: 0
     - _VertexAnimation: 0
     - _VertexAnimationIntensity: 0.05
     - _VertexAnimationStutter: 0

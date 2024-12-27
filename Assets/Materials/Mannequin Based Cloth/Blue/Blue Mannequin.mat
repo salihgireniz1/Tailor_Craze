@@ -98,7 +98,7 @@ Material:
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
     - _ColorMode: 0
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DirectIntensityOutline: 1
     - _DistortionBlend: 0.5
@@ -171,7 +171,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0, g: 0.50179243, b: 1, a: 0.5019608}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0, g: 0.69647646, b: 1, a: 0.54901963}
+    - _Color: {r: 0.3066038, g: 0.5859817, b: 1, a: 0.54901963}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
