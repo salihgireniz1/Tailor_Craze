@@ -1,9 +1,11 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using R3;
 using UnityEngine;
 
 public class DistributionManager : MonoSingleton<DistributionManager>
 {
+    [SerializeField] private ParticleSystem _spoolParticle;
     Mannequin[] _frontMannequins;
 
     IFillable latestFillable;
@@ -12,6 +14,30 @@ public class DistributionManager : MonoSingleton<DistributionManager>
 
     ClothPart clothPart;
     private bool _inProgress;
+    public SerializableReactiveProperty<int> CompletedMan { get; private set; } = new();
+    public SerializableReactiveProperty<float> ProgressPercent { get; private set; } = new();
+    private void Start()
+    {
+        GameManager.CurrentState.Subscribe(state =>
+        {
+            if (state == GameState.Initializing)
+            {
+                CompletedMan.Value = 0;
+            }
+        }).AddTo(this);
+        CompletedMan.Subscribe(completedMan =>
+        {
+            int total = LevelManager.CurrentLevel?.LevelInfo.PlaneData.Length * 3 ?? 0;
+            if (total > 0)
+            {
+                ProgressPercent.Value = (float)completedMan / total;
+            }
+            else
+            {
+                ProgressPercent.Value = 0; // Default to 0 progress if totalMan is 0 or invalid
+            }
+        }).AddTo(this);
+    }
     public async UniTask Distribute(SpoolPlane plane)
     {
         while (_inProgress)
@@ -27,11 +53,21 @@ public class DistributionManager : MonoSingleton<DistributionManager>
             }
         }
 
-        _inProgress = false;
 
         if (plane && plane.IsEmpty)
-            Destroy(plane.gameObject);
+        {
+            // Instantiate(_spoolParticle, plane.transform.position, Quaternion.identity);
 
+            await plane.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InBack).ToUniTask();
+            SoundManager.Instance.PlaySFX(SFXType.TrayDisappear);
+
+            _spoolParticle?.Stop();
+            _spoolParticle.transform.position = plane.transform.position;
+            _spoolParticle?.Play();
+            Destroy(plane.gameObject);
+        }
+
+        _inProgress = false;
     }
 
     public async UniTask KnitMannequin(Spool spool)
@@ -60,7 +96,6 @@ public class DistributionManager : MonoSingleton<DistributionManager>
                 if (mannequin != default && mannequin.FactoryCloth.IsCompleted())
                 {
                     CompleteMannequin(mannequin).Forget();
-
                 }
             }
 
@@ -163,6 +198,8 @@ public class DistributionManager : MonoSingleton<DistributionManager>
 
         mannequin.CurrentLine.ReturnFirst();
         mannequin.CurrentLine.OrderQueue().Forget();
+        CompletedMan.Value++;
+        DeskManager.Instance.CheckSpotPlanes().Forget();
 
         await mannequin.transform
             .DOMoveX(mannequin.transform.position.x + 15f, .4f)

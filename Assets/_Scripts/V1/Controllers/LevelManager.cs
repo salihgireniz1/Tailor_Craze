@@ -130,7 +130,6 @@ public class LevelManager : MonoSingleton<LevelManager>
         {
             Instance._level = value;
             LevelProperty.Value = value;
-            Debug.Log("Level Changed " + value);
             if (Instance.automated) ES3.Save(Consts.LevelKey, Instance._level);
         }
     }

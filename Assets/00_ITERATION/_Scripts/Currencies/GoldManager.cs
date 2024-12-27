@@ -1,19 +1,31 @@
+
 using R3;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GoldManager : MonoBehaviour
+[DefaultExecutionOrder(-1)]
+public class GoldManager : MonoSingleton<GoldManager>
 {
     public static SerializableReactiveProperty<int> Amount { get; set; }
     private static string key = "Gold";
 
-    private void Awake()
+    protected override void Awake()
     {
         Amount = new SerializableReactiveProperty<int>(ES3.Load(key, 100));
     }
-
-    public static void ChangeAmount(int change)
+    [Button]
+    public void AddGold()
     {
-        Amount.Value = Mathf.Min(Amount.Value + change, 0);
+        ChangeAmount(500);
+    }
+    public static bool ChangeAmount(int change)
+    {
+        if (Amount.Value + change < 0)
+        {
+            return false;
+        }
+        Amount.Value = Mathf.Max(Amount.Value + change, 0);
         ES3.Save(key, Amount.Value);
+        return true;
     }
 }

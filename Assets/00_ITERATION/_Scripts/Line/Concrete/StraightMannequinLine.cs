@@ -46,8 +46,8 @@ public class StraightMannequinLine : StraightLine<Mannequin>
         // _mannequins = Content.ToArray();
         // LineManager.Instance.RandomizeArray(ref _mannequins);
         await base.Initialize(_mannequins);
+        GameManager.CurrentState.Value = GameManager.IsRestart ? GameState.Playing : GameState.MainMenu;
 
-        GameManager.CurrentState.Value = GameState.Playing;
     }
     public override void ClearLine()
     {

@@ -31,7 +31,7 @@ public class DeskManager : MonoSingleton<DeskManager>
 
         for (int i = 0; i < sortedSpots.Length; i++)
         {
-            if (sortedSpots[i].ActivePlane != null)
+            if (sortedSpots[i].IsOccupied && !sortedSpots[i].IsLocked)
             {
                 if (cts.IsCancellationRequested) return;
                 await DistributionManager.Instance.Distribute(sortedSpots[i].ActivePlane).AttachExternalCancellation(cts.Token);
@@ -43,7 +43,6 @@ public class DeskManager : MonoSingleton<DeskManager>
 
         if (LineManager.Instance.AllMannequinsCleared())
         {
-            Debug.Log("GAME COMPLETED. WIN!");
             GameManager.CurrentState.Value = GameState.Victory;
             cts.Cancel();
             return;
@@ -62,14 +61,13 @@ public class DeskManager : MonoSingleton<DeskManager>
     {
         for (int i = 0; i < _spots.Length; i++)
         {
-            if (!_spots[i].IsOccupied)
+            if (!_spots[i].IsOccupied && !_spots[i].IsLocked)
             {
                 return _spots[i];
             }
         }
         return default;
     }
-
     public async UniTask FillSpot(SpoolPlane plane)
     {
         var availableSpot = FirstAvailableSpot();
@@ -78,7 +76,10 @@ public class DeskManager : MonoSingleton<DeskManager>
             availableSpot.ActivePlane = plane;
             var spotPosition = availableSpot.Position + Vector3.up * _positionYOffset;
             plane.ControlTubeActivition(false);
-            await plane.transform.DOJump(spotPosition, _jumpPower, 1, _jumpDuration).ToUniTask();
+            await plane.transform.DOJump(spotPosition, _jumpPower, 1, _jumpDuration).SetEase(Ease.OutFlash).ToUniTask();
+            SoundManager.Instance.PlaySFX(SFXType.TrayMove);
+            availableSpot.PlayDust();
+            await plane.transform.DOPunchScale(Vector3.down * 0.4f, 0.25f, 1).ToUniTask();
             plane.ControlTubeActivition(true);
             await CheckSpotPlanes();
         }

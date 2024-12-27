@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using Sirenix.OdinInspector;
 
 public enum LineType { StraightSpoolPlane, StraightMannequin }
 public class LineManager : MonoSingleton<LineManager>

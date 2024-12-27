@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 
 public enum SFXType
 {
-    Knitted, DepositPop, DepositFill
+    Knitted, DepositPop, DepositFill, TrayDisappear, TrayMove, UnlockGrid
 }
 
 [System.Serializable]
@@ -26,8 +26,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioClip backgroundMusic;
 
     private Dictionary<SFXType, AudioClip> sfxClipDictionary = new Dictionary<SFXType, AudioClip>();
-    private bool isSfxMuted;
-    private bool isBgmMuted;
+    public bool isSfxMuted;
+    public bool isBgmMuted;
 
     private const string SFXMutedKey = "SFXMuted";
     private const string BGMMutedKey = "BGMMuted";
@@ -52,7 +52,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void Reset()
     {
         ES3.Save(SFXMutedKey, false);
-        ES3.Save(BGMMutedKey, false);
+        ES3.Save(BGMMutedKey, true);
     }
 
     private void Start()
@@ -63,7 +63,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     private void LoadSoundSettings()
     {
         isSfxMuted = ES3.Load<bool>(SFXMutedKey, defaultValue: false);
-        isBgmMuted = ES3.Load<bool>(BGMMutedKey, defaultValue: false);
+        isBgmMuted = ES3.Load<bool>(BGMMutedKey, defaultValue: true);
 
         sfxSource.mute = isSfxMuted;
         bgmSource.mute = isBgmMuted;

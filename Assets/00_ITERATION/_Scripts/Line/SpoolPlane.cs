@@ -76,6 +76,7 @@ public class SpoolPlane : MonoBehaviour, IQueueable<SpoolPlane>, ISelectable
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject() || !CanBeSelected) return;
+        if (GameManager.CurrentState.Value != GameState.Playing) return;
         Select().Forget();
     }
     public async UniTask BringSpoolForward(Spool spool)
