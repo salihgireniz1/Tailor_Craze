@@ -579,3 +579,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Persistent: 0
   tube: {fileID: 1013330561172205981}
+  shakeDuration: 0.5
+  shakeStrength: 100
+  shakeVibrato: 10
