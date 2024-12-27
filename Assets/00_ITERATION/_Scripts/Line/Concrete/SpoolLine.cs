@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -51,8 +52,15 @@ public class SpoolLine : StraightLine<SpoolPlane>
 
         this._planes = _planes;
     }
+    [SerializeField] private Renderer _bandRenderer;
     public override async UniTask OrderQueue()
     {
+        DOTween.To(
+            () => _bandRenderer.material.mainTextureOffset,
+            x => _bandRenderer.material.mainTextureOffset = x,
+            _bandRenderer.material.mainTextureOffset + Vector2.up,
+            0.5F
+        );
         await base.OrderQueue();
         var firstMemberOfQueue = PeekFirst();
         if (firstMemberOfQueue != default)

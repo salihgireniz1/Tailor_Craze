@@ -52,6 +52,7 @@ MonoBehaviour:
   LineContent: []
   _linePoints: []
   _planes: []
+  _bandRenderer: {fileID: 2824275326581541731}
 --- !u!1001 &4301163832104504198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,6 +121,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d01ac73dc6b807468c66fa3e283846f, type: 3}
+--- !u!23 &2824275326581541731 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2053952339971391717, guid: 6d01ac73dc6b807468c66fa3e283846f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4301163832104504198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8218281974274557347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5313682818033339941, guid: 6d01ac73dc6b807468c66fa3e283846f,

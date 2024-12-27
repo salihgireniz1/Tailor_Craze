@@ -16,7 +16,7 @@ public class GoldManager : MonoSingleton<GoldManager>
     [Button]
     public void AddGold()
     {
-        ChangeAmount(500);
+        ChangeAmount(20);
     }
     public static bool ChangeAmount(int change)
     {

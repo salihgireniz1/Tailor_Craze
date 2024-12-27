@@ -68,11 +68,13 @@ public class DeskManager : MonoSingleton<DeskManager>
         }
         return default;
     }
+
     public async UniTask FillSpot(SpoolPlane plane)
     {
         var availableSpot = FirstAvailableSpot();
         if (availableSpot != default)
         {
+            cts?.Cancel();
             availableSpot.ActivePlane = plane;
             var spotPosition = availableSpot.Position + Vector3.up * _positionYOffset;
             plane.ControlTubeActivition(false);
