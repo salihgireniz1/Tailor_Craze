@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using R3;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -68,9 +69,10 @@ public class DeskManager : MonoSingleton<DeskManager>
         }
         return default;
     }
-
+    public ReactiveProperty<bool> FirstSelection { get; set; } = new();
     public async UniTask FillSpot(SpoolPlane plane)
     {
+        FirstSelection.Value = true;
         var availableSpot = FirstAvailableSpot();
         if (availableSpot != default)
         {

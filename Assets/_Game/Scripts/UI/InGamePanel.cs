@@ -22,15 +22,16 @@ public class InGamePanel : BasePanel
         confettiParticle.gameObject.SetActive(false);
         totalManCount = LevelManager.CurrentLevel.MannequinLines.Length;
         DistributionManager.Instance.ProgressPercent.Subscribe(percent => OnCharacterCountChanged(percent)).AddTo(this);
+        DeskManager.Instance.FirstSelection.Subscribe(v => { if (v) CloseTutorialPanel(); }).AddTo(this);
     }
 
 
     public override float Appear(float delay = 0)
     {
         levelText.text = $"Level {LevelManager.Level}";
-        if (LevelManager.Level == 0)
+        if (LevelManager.Level == 1)
         {
-            // OpenTutorialPanel(ConveyorController.Instance.GetFirstConveyor().transform);
+            OpenTutorialPanel(LevelManager.CurrentLevel.SpoolLines[0].PeekFirst().transform);
         }
         else
         {
