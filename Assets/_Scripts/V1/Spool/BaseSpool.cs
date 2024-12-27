@@ -52,10 +52,12 @@ public abstract class BaseSpool : MonoBehaviour
     {
         if (_inProgress) return;
         _rollDuration = duration;
+        Debug.Log(_rollDuration);
         _inProgress = true;
         var unroll = YarnController.Instance.Rolling(GetTopYarn(), RollType.UnRoll, this, duration);
-        RemoveContent(_contents.Count - 1);
+
         await unroll;
+        RemoveContent(_contents.Count - 1);
 
         _inProgress = false;
         transform.rotation = Quaternion.identity;

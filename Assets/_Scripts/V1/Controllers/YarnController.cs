@@ -57,7 +57,7 @@ public class YarnController : MonoSingleton<YarnController>
                 duration
             )
             .OnUpdate(
-                () => onUpdate?.Invoke()
+                () => Debug.Log(yarn.Tube.clipTo)
             )
             .SetEase(Ease.Linear)
             .ToUniTask();
