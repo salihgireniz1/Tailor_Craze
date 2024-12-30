@@ -56,9 +56,6 @@ public class YarnController : MonoSingleton<YarnController>
                 finalYarnClipAmount,
                 duration
             )
-            .OnUpdate(
-                () => Debug.Log(yarn.Tube.clipTo)
-            )
             .SetEase(Ease.Linear)
             .ToUniTask();
     }
