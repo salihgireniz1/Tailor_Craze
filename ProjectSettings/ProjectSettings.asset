@@ -160,7 +160,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.falan.tailorjam
     Standalone: com.Unity-Technologies.com.unity.template.urp-blank
-    iPhone: com.Unity-Technologies.com.unity.template.urp-blank
+    iPhone: com.falan.tailorjam
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -251,10 +251,10 @@ PlayerSettings:
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   useCustomMainManifest: 0
   useCustomLauncherManifest: 0
-  useCustomMainGradleTemplate: 0
+  useCustomMainGradleTemplate: 1
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 0
+  useCustomGradlePropertiesTemplate: 1
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
@@ -810,7 +810,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: DOTWEEN;UNITASK_DOTWEEN_SUPPORT;DREAMTECK_SPLINES;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;UNITY_VISUAL_SCRIPTING;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
+    Android: DOTWEEN;UNITASK_DOTWEEN_SUPPORT;DREAMTECK_SPLINES;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;UNITY_VISUAL_SCRIPTING;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;HOMA_BELLY;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED
     EmbeddedLinux: DOTWEEN;UNITY_VISUAL_SCRIPTING
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN
@@ -826,7 +826,7 @@ PlayerSettings:
     WebGL: DOTWEEN;UNITY_VISUAL_SCRIPTING
     Windows Store Apps: DOTWEEN;UNITY_VISUAL_SCRIPTING
     XboxOne: DOTWEEN;UNITY_VISUAL_SCRIPTING
-    iPhone: DOTWEEN;UNITY_VISUAL_SCRIPTING
+    iPhone: DOTWEEN;UNITY_VISUAL_SCRIPTING;HOMA_BELLY;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED
     tvOS: DOTWEEN;UNITY_VISUAL_SCRIPTING
   additionalCompilerArguments: {}
   platformArchitecture: {}
@@ -835,6 +835,7 @@ PlayerSettings:
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
+    Android: 1
     EmbeddedLinux: 1
     GameCoreScarlett: 1
     GameCoreXboxOne: 1
@@ -857,7 +858,9 @@ PlayerSettings:
   scriptingRuntimeVersion: 1
   gcIncremental: 1
   gcWBarrierValidation: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Android: 3
+    iPhone: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Tailor Craze

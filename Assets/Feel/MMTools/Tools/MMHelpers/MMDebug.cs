@@ -240,7 +240,7 @@ namespace MoreMountains.Tools
 			output += colorPrefix + message + colorSuffix;
 
 			// we output to the console
-			Debug.Log(output);
+			UnityEngine.Debug.Log(output);
 
 			// we log to the MM console
 			DebugLogItem item = LogDebugToConsole(message, color, timePrecision, displayFrameCount);
@@ -404,7 +404,7 @@ namespace MoreMountains.Tools
 		{	
 			if (drawGizmo && DebugDrawEnabled) 
 			{
-				Debug.DrawRay (rayOriginPoint, rayDirection * rayDistance, color);
+				UnityEngine.Debug.DrawRay (rayOriginPoint, rayDirection * rayDistance, color);
 			}
 			return Physics2D.Raycast(rayOriginPoint,rayDirection,rayDistance,mask);		
 		}
@@ -442,20 +442,20 @@ namespace MoreMountains.Tools
 				points[6] = rotation * ((origin + Vector2.right * halfSizeX - Vector2.up * halfSizeY) + length * direction); // bottom right
 				points[7] = rotation * ((origin + Vector2.left * halfSizeX - Vector2.up * halfSizeY) + length * direction); // bottom left
                                 
-				Debug.DrawLine(points[0], points[1], color);
-				Debug.DrawLine(points[1], points[2], color);
-				Debug.DrawLine(points[2], points[3], color);
-				Debug.DrawLine(points[3], points[0], color);
+				UnityEngine.Debug.DrawLine(points[0], points[1], color);
+				UnityEngine.Debug.DrawLine(points[1], points[2], color);
+				UnityEngine.Debug.DrawLine(points[2], points[3], color);
+				UnityEngine.Debug.DrawLine(points[3], points[0], color);
 
-				Debug.DrawLine(points[4], points[5], color);
-				Debug.DrawLine(points[5], points[6], color);
-				Debug.DrawLine(points[6], points[7], color);
-				Debug.DrawLine(points[7], points[4], color);
+				UnityEngine.Debug.DrawLine(points[4], points[5], color);
+				UnityEngine.Debug.DrawLine(points[5], points[6], color);
+				UnityEngine.Debug.DrawLine(points[6], points[7], color);
+				UnityEngine.Debug.DrawLine(points[7], points[4], color);
                 
-				Debug.DrawLine(points[0], points[4], color);
-				Debug.DrawLine(points[1], points[5], color);
-				Debug.DrawLine(points[2], points[6], color);
-				Debug.DrawLine(points[3], points[7], color);
+				UnityEngine.Debug.DrawLine(points[0], points[4], color);
+				UnityEngine.Debug.DrawLine(points[1], points[5], color);
+				UnityEngine.Debug.DrawLine(points[2], points[6], color);
+				UnityEngine.Debug.DrawLine(points[3], points[7], color);
 
 			}
 			return Physics2D.BoxCast(origin, size, angle, direction, length, mask);
@@ -476,7 +476,7 @@ namespace MoreMountains.Tools
 		{	
 			if (drawGizmo && DebugDrawEnabled) 
 			{
-				Debug.DrawRay (rayOriginPoint, rayDirection * rayDistance, color);
+				UnityEngine.Debug.DrawRay (rayOriginPoint, rayDirection * rayDistance, color);
 			}
 			if (Physics2D.RaycastNonAlloc(rayOriginPoint, rayDirection, array, rayDistance, mask) > 0)
 			{
@@ -500,7 +500,7 @@ namespace MoreMountains.Tools
 		{
 			if (drawGizmo && DebugDrawEnabled) 
 			{
-				Debug.DrawRay (rayOriginPoint, rayDirection * rayDistance, color);
+				UnityEngine.Debug.DrawRay (rayOriginPoint, rayDirection * rayDistance, color);
 			}
 			RaycastHit hit;
 			Physics.Raycast(rayOriginPoint, rayDirection, out hit, rayDistance, mask, queryTriggerInteraction);	
@@ -617,7 +617,7 @@ namespace MoreMountains.Tools
 				return;
 			}
 
-			Debug.DrawRay(origin, direction, color);
+			UnityEngine.Debug.DrawRay(origin, direction, color);
 	       
 			DrawArrowEnd(false,origin,direction,color,arrowHeadLength,arrowHeadAngle);
 		}
@@ -638,7 +638,7 @@ namespace MoreMountains.Tools
 				return;
 			}
 
-			Debug.DrawRay(origin, direction * arrowLength, color);
+			UnityEngine.Debug.DrawRay(origin, direction * arrowLength, color);
 
 			DrawArrowEnd(false,origin,direction * arrowLength,color,arrowHeadLength,arrowHeadAngle);
 		}
@@ -665,7 +665,7 @@ namespace MoreMountains.Tools
 			tempDirection.x = 1; 
 			tempDirection.y = 1;
 			tempDirection.z = 0;
-			Debug.DrawRay (tempOrigin, tempDirection * crossSize, color);
+			UnityEngine.Debug.DrawRay (tempOrigin, tempDirection * crossSize, color);
 
 			tempOrigin.x = spot.x - crossSize / 2;
 			tempOrigin.y = spot.y + crossSize / 2;
@@ -673,7 +673,7 @@ namespace MoreMountains.Tools
 			tempDirection.x = 1; 
 			tempDirection.y = -1;
 			tempDirection.z = 0;
-			Debug.DrawRay (tempOrigin, tempDirection * crossSize, color);
+			UnityEngine.Debug.DrawRay (tempOrigin, tempDirection * crossSize, color);
 		}
 
 		/// <summary>
@@ -710,10 +710,10 @@ namespace MoreMountains.Tools
 			}
 			else
 			{
-				Debug.DrawRay (arrowEndPosition + direction, right * arrowHeadLength, color);
-				Debug.DrawRay (arrowEndPosition + direction, left * arrowHeadLength, color);
-				Debug.DrawRay (arrowEndPosition + direction, up * arrowHeadLength, color);
-				Debug.DrawRay (arrowEndPosition + direction, down * arrowHeadLength, color);
+				UnityEngine.Debug.DrawRay (arrowEndPosition + direction, right * arrowHeadLength, color);
+				UnityEngine.Debug.DrawRay (arrowEndPosition + direction, left * arrowHeadLength, color);
+				UnityEngine.Debug.DrawRay (arrowEndPosition + direction, up * arrowHeadLength, color);
+				UnityEngine.Debug.DrawRay (arrowEndPosition + direction, down * arrowHeadLength, color);
 			}
 		}
 
@@ -833,10 +833,10 @@ namespace MoreMountains.Tools
 				position + new Vector3(halfSize.x,-halfSize.y,-halfSize.z),
 			};
 
-			Debug.DrawLine (points[0], points[1], color ); 
-			Debug.DrawLine (points[1], points[2], color ); 
-			Debug.DrawLine (points[2], points[3], color ); 
-			Debug.DrawLine (points[3], points[0], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[1], color ); 
+			UnityEngine.Debug.DrawLine (points[1], points[2], color ); 
+			UnityEngine.Debug.DrawLine (points[2], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[3], points[0], color ); 
 		}
 
 		/// <summary>
@@ -962,10 +962,10 @@ namespace MoreMountains.Tools
 				position + new Vector3(halfSize.x,-halfSize.y,halfSize.z),	
 			};
 
-			Debug.DrawLine (points[0], points[1], color ); 
-			Debug.DrawLine (points[1], points[2], color ); 
-			Debug.DrawLine (points[2], points[3], color ); 
-			Debug.DrawLine (points[3], points[0], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[1], color ); 
+			UnityEngine.Debug.DrawLine (points[1], points[2], color ); 
+			UnityEngine.Debug.DrawLine (points[2], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[3], points[0], color ); 
 		}
         
 		/// <summary>
@@ -991,21 +991,20 @@ namespace MoreMountains.Tools
 				position - (Vector3.forward * size)
 			}; 		
 
-			Debug.DrawLine (points[0], points[1], color ); 
-			Debug.DrawLine (points[2], points[3], color ); 
-			Debug.DrawLine (points[4], points[5], color ); 
-			Debug.DrawLine (points[0], points[2], color ); 
-			Debug.DrawLine (points[0], points[3], color ); 
-			Debug.DrawLine (points[0], points[4], color ); 
-			Debug.DrawLine (points[0], points[5], color ); 
-			Debug.DrawLine (points[1], points[2], color ); 
-			Debug.DrawLine (points[1], points[3], color ); 
-			Debug.DrawLine (points[1], points[4], color ); 
-			Debug.DrawLine (points[1], points[5], color ); 
-			Debug.DrawLine (points[4], points[2], color ); 
-			Debug.DrawLine (points[4], points[3], color ); 
-			Debug.DrawLine (points[5], points[2], color ); 
-			Debug.DrawLine (points[5], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[1], color ); 
+			UnityEngine.Debug.DrawLine (points[2], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[4], points[5], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[2], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[4], color ); 
+			UnityEngine.Debug.DrawLine (points[0], points[5], color ); 
+			UnityEngine.Debug.DrawLine (points[1], points[2], color ); 
+			UnityEngine.Debug.DrawLine (points[1], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[1], points[4], color ); 
+			UnityEngine.Debug.DrawLine (points[1], points[5], color ); 
+			UnityEngine.Debug.DrawLine (points[4], points[3], color ); 
+			UnityEngine.Debug.DrawLine (points[5], points[2], color ); 
+			UnityEngine.Debug.DrawLine (points[5], points[3], color ); 
 		}
         
 		/// <summary>

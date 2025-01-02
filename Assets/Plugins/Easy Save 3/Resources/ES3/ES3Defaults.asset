@@ -30,14 +30,36 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
+    - Adjust
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Dreamteck.Splines
     - Dreamteck.Utilities
+    - GameAnalyticsSDK
+    - HomaGames.Analytics.Facebook
+    - HomaGames.Analytics.GameAnalytics
+    - HomaGames.Analytics.HomaAnalytics
+    - HomaGames.Attribution.Adjust
+    - HomaGames.HomaBelly.Core
+    - HomaGames.HomaBelly.Privacy.Tracking
+    - HomaGames.HomaConsole
+    - HomaGames.HomaConsole.AdsModule
+    - HomaGames.HomaConsole.AnalyticsModule
+    - HomaGames.HomaConsole.CoreModule
+    - HomaGames.HomaConsole.GeryonModule
+    - HomaGames.HomaConsole.LiveDebug
+    - HomaGames.HomaConsole.LiveDebug.Attributes
+    - HomaGames.HomaConsole.Logging
+    - HomaGames.HomaConsole.Performance
+    - HomaGames.HomaConsole.SystemInfo
+    - JCMG.SemVer
     - KinoBloom.Runtime
     - MK.Toon
     - MK.Toon.URP
     - ParticleImage
+    - QuickEye.OneAsset
+    - QuickEye.OneAsset.GlobalHelpers
+    - QuickEye.OneAsset.HowToUseSingletons
     - R3.Unity
     - ToonyColorsPro.Runtime
     - ToonyColorsPro2.Demo
