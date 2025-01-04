@@ -29,6 +29,9 @@ public class SpoolLine : StraightLine<SpoolPlane>
         {
             if (item) DestroyImmediate(item.gameObject);
         }
+
+        while (LevelManager.CurrentLevel == null) await UniTask.Yield();
+        
         foreach (var item in LevelManager.CurrentLevel.SpoolLineInfos)
         {
             if (item.Line == this)

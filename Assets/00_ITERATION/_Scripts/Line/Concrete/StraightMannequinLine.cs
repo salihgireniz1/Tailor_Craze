@@ -22,6 +22,8 @@ public class StraightMannequinLine : StraightLine<Mannequin>
     }
     public override async UniTask Initialize(Mannequin[] values = null)
     {
+        while (LevelManager.CurrentLevel == null) await UniTask.Yield();
+        
         foreach (var info in LevelManager.CurrentLevel.MannequinLineInfos)
         {
             if (info.Line == this)
